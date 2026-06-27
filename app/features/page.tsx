@@ -22,7 +22,7 @@ export default function FeaturesPage() {
           <SectionHeading
             eyebrow="Features"
             title="Preview dial + one credit wallet"
-            description="Manual and preview outbound ready now. Platform-managed telephony. No customer Twilio account."
+            description="Manual and preview outbound ready now. Platform-managed telephony — we handle the stack."
             dark
             align="left"
           />

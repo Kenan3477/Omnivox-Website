@@ -16,7 +16,7 @@ export function HowItWorks() {
         <SectionHeading
           eyebrow="How it works"
           title="Onboarding in hours, not weeks"
-          description="No Twilio account. No carrier setup. No surprise telecom invoice."
+          description="We handle telephony. You top up credits. No carrier setup, no surprise invoices."
           dark
         />
 

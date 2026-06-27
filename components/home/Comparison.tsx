@@ -7,15 +7,15 @@ const omnivox = [
   "Preview dial out of the box",
   "£25/agent platform fee",
   "~5p/min inbound & outbound",
-  "No Twilio account needed",
+  "Platform-managed telephony",
   "Same-day pilot onboarding",
 ];
 
 const diy = [
-  "Separate Twilio account per team",
-  "Build your own dialer UI",
-  "Webhook and carrier plumbing",
-  "Multiple telecom invoices",
+  "Build your own dialer from scratch",
+  "Separate carrier contracts",
+  "Webhook and telecom plumbing",
+  "Multiple surprise invoices",
   "Spreadsheet compliance",
   "Weeks of developer time",
 ];
@@ -26,7 +26,7 @@ export function Comparison() {
       <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Compare"
-          title="OMNIVOX AI vs DIY Twilio + spreadsheets"
+          title="OMNIVOX AI vs building it yourself"
           description="We're built for manual and preview outbound that actually works — with transparent credits."
           light
         />
@@ -50,7 +50,7 @@ export function Comparison() {
 
           <AnimateOnScroll delay={100}>
             <div className="glass-card-light p-8 h-full">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">DIY Twilio + spreadsheets</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-6">DIY stack + spreadsheets</h3>
               <ul className="space-y-4">
                 {diy.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-slate-500">

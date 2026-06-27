@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 const benefits = [
   { title: "Onboard clients in a day", description: "Provision org, load contacts, grant credits — agents dialling within hours." },
-  { title: "One telephony stack", description: "No per-client Twilio accounts. Manage credits and orgs from one admin view." },
-  { title: "Grant pilot credits", description: "Start clients without Stripe. Manual credit grants for every pilot." },
+  { title: "One telephony stack", description: "No per-client carrier setup. Manage credits and orgs from one admin view." },
+  { title: "Grant pilot credits", description: "Start clients without payment. Manual credit grants for every pilot." },
   { title: "Multi-org management", description: "Isolated data, campaigns, and compliance per client organisation." },
 ];
 
@@ -27,7 +27,7 @@ export default function AgenciesPage() {
           <SectionHeading
             eyebrow="For Agencies"
             title="One platform for all your clients"
-            description="Stop setting up Twilio per client. Grant credits, onboard in a day, control one telephony stack."
+            description="Stop wrestling with telecom per client. Grant credits, onboard in a day, control one stack."
             dark
             align="left"
           />

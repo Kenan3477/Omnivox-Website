@@ -37,7 +37,7 @@ export function ValuePillars() {
       <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Simple model"
-          title="No Twilio. One credit wallet."
+          title="One platform. One credit wallet."
           description="Platform fee for software. Prepaid credits for every call — inbound and outbound from the same balance."
           light
         />

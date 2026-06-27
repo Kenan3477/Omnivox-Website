@@ -9,7 +9,7 @@ import { Starfield } from "@/components/brand/Starfield";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "£25 per agent per month platform fee. Prepaid call credits at ~5p/min for inbound and outbound. One wallet, no Twilio.",
+    "£25 per agent per month platform fee. Prepaid call credits at ~5p/min for inbound and outbound. One wallet.",
 };
 
 const rows = [
@@ -65,7 +65,7 @@ export default function PricingPage() {
             <blockquote className="mt-10 rounded-2xl border border-cyan-200 bg-cyan-50 p-6 md:p-8 text-slate-800 leading-relaxed">
               <strong>Worked example:</strong> 5 agents = <strong>£125/month</strong> platform.{" "}
               £100 credit top-up ≈ <strong>~2,000 minutes</strong> of calling (inbound or outbound).{" "}
-              No surprise Twilio invoice. No carrier setup.
+              No surprise telecom invoice. No carrier setup.
             </blockquote>
           </AnimateOnScroll>
 

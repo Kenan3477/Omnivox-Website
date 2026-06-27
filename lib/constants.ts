@@ -22,9 +22,9 @@ export const navLinks = [
 
 export const faqItems = [
   {
-    question: "Do I need Twilio?",
+    question: "Do I need my own telecom provider?",
     answer:
-      "No. OMNIVOX AI runs telephony on your behalf. You buy prepaid call credits and dial — no carrier account, no webhook plumbing, no separate telecom bill.",
+      "No. OMNIVOX AI includes platform-managed telephony. You buy prepaid call credits and dial — no carrier accounts, no webhook plumbing, no separate telecom bill.",
   },
   {
     question: "How are calls charged?",
@@ -110,7 +110,7 @@ export const featureGroups = [
     title: "Inbound",
     icon: "inbound",
     features: [
-      { name: "Inbound DIDs", status: "available" as const, description: "Platform-managed numbers — no Twilio account needed." },
+      { name: "Inbound DIDs", status: "available" as const, description: "Platform-managed numbers included — we handle the telecom stack." },
       { name: "Routing & queues", status: "available" as const, description: "Route to agents, teams, or queues." },
       { name: "Business hours & voicemail", status: "available" as const, description: "After-hours handling and greeting audio." },
     ],
