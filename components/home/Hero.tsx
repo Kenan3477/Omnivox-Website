@@ -12,7 +12,7 @@ export function Hero() {
         <div className="grid lg:grid-cols-[minmax(0,340px)_1fr] gap-8 lg:gap-12 items-center">
           {/* Left: brand */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <OmniCube size="md" className="lg:scale-90 lg:origin-left" />
+            <OmniCube size="md" className="lg:origin-left" />
           </div>
 
           {/* Right: copy + actions */}
