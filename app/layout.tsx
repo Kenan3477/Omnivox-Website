@@ -16,31 +16,30 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Omnivox — Outbound sales calling without the telecom stack",
-    template: "%s | Omnivox",
+    default: "OMNIVOX AI — Smart dialing with transparent credits",
+    template: "%s | OMNIVOX AI",
   },
   description: siteConfig.description,
   keywords: [
-    "outbound dialer",
+    "OMNIVOX AI",
     "preview dial",
     "manual dial",
-    "contact centre",
     "cloud dialer UK",
-    "sales dialer",
-    "click to dial",
+    "prepaid call credits",
+    "contact centre",
   ],
   openGraph: {
     type: "website",
     locale: "en_GB",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "Omnivox — Outbound sales calling without the telecom stack",
+    title: "OMNIVOX AI — Smart dialing with transparent credits",
     description: siteConfig.description,
-    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Omnivox dialer platform" }],
+    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "OMNIVOX AI" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Omnivox — Outbound sales calling without the telecom stack",
+    title: "OMNIVOX AI — Smart dialing with transparent credits",
     description: siteConfig.description,
     images: ["/og-image.svg"],
   },
@@ -50,29 +49,21 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Omnivox",
+  name: "OMNIVOX AI",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description: siteConfig.description,
   offers: {
     "@type": "Offer",
-    price: "59",
+    price: "25",
     priceCurrency: "GBP",
     priceSpecification: {
       "@type": "UnitPriceSpecification",
-      price: "59",
+      price: "25",
       priceCurrency: "GBP",
       unitText: "per agent per month",
     },
   },
-  featureList: [
-    "Manual dial",
-    "Preview dial",
-    "Prepaid call credits",
-    "Inbound routing",
-    "DNC compliance",
-    "Call recording",
-  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

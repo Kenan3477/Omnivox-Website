@@ -1,127 +1,88 @@
 export const siteConfig = {
-  name: "Omnivox",
-  tagline: "The dialer that just works — no Twilio, no telecom headaches.",
+  name: "OMNIVOX AI",
+  tagline: "Advanced conversational AI platform with intelligent workflow automation",
   description:
-    "Omnivox is an all-in-one agent workspace for outbound sales and inbound handling, with prepaid telephony credits, compliance built in, and onboarding in hours — not weeks.",
-  url: "https://omnivox.co.uk",
+    "OMNIVOX AI is a cloud dialer and agent workspace for UK/EU teams — manual and preview outbound, platform-managed telephony, and one prepaid credit wallet for all calls.",
+  url: "https://omnivox-website-three.vercel.app",
+  appLoginUrl: "https://omnivox-ai.vercel.app/login",
   contactEmail: "hello@omnivox.co.uk",
+  poweredBy: "Quanterae Solutions",
+  platformFeePerAgent: 25,
+  ratePerMinute: 0.05,
+  topUpPacks: [50, 100, 250, 500] as const,
 };
 
 export const navLinks = [
   { href: "/features", label: "Features" },
   { href: "/pricing", label: "Pricing" },
   { href: "/agencies", label: "For Agencies" },
-  { href: "/trust", label: "Trust & Security" },
+  { href: "/trust", label: "Trust" },
   { href: "/contact", label: "Contact" },
 ];
 
 export const faqItems = [
   {
-    question: "Do I need a Twilio account?",
+    question: "Do I need Twilio?",
     answer:
-      "No. Omnivox runs telephony on your behalf. You buy prepaid call credits and dial — no carrier account, no webhook plumbing, no separate telecom bill.",
+      "No. OMNIVOX AI runs telephony on your behalf. You buy prepaid call credits and dial — no carrier account, no webhook plumbing, no separate telecom bill.",
   },
   {
     question: "How are calls charged?",
     answer:
-      "Outbound calls are billed at approximately 5p per connected minute, with a one-minute minimum per call. Inbound calls include 500 minutes per month per organisation on the platform fee; overage is billed from your credit wallet at approximately 4p per minute.",
+      "Inbound and outbound both use your credit balance at approximately 5p per connected minute, with a one-minute minimum per call. One wallet for all telephony.",
   },
   {
-    question: "What dial modes are ready today?",
+    question: "What's ready today?",
     answer:
-      "Manual dial and preview dial are available now and pilot-proven. Progressive and predictive auto-dial at multi-agent scale is in development — join the waitlist if that is your priority.",
+      "Manual dial, preview dial, campaigns, inbound routing, prepaid credits, call recording, DNC registry, and audit logs. Progressive and predictive auto-dial is coming soon.",
   },
   {
-    question: "Can I try before committing?",
+    question: "Is there a big per-agent fee?",
     answer:
-      "Yes. We offer pilot onboarding with granted call credits and white-glove setup. No Stripe payment required for pilots — we provision your organisation and credits manually.",
+      "The platform fee is £25 per agent per month. Telephony is separate — you top up prepaid credits as you need them.",
+  },
+  {
+    question: "Can I pilot first?",
+    answer:
+      "Yes. We can provision your organisation and grant starter credits. Pilot customers can start with £50 free call credits and white-glove setup.",
   },
   {
     question: "Is recording included?",
     answer:
-      "Yes. Call recording is included and configurable per organisation or campaign. Recording consent remains your responsibility as the data controller.",
-  },
-  {
-    question: "Can I get inbound numbers?",
-    answer:
-      "Yes. Omnivox supports inbound DIDs with routing to agents, queues, voicemail, business hours, and greeting audio. 500 inbound minutes per month are included on the platform fee.",
-  },
-  {
-    question: "What about GDPR and DNC compliance?",
-    answer:
-      "DNC registry tools and audit logs are built in. Role-based access, IP allowlisting, and recording controls help you stay compliant. You own your consent processes and data handling obligations.",
-  },
-  {
-    question: "How fast is onboarding?",
-    answer:
-      "Same-day for pilots. Bring your contact list and campaign brief — we provision your organisation, credits, and agent workspace so your team can start dialling within hours, not weeks.",
+      "Yes. Call recording is configurable per organisation or campaign. Recording consent remains your responsibility as the data controller.",
   },
 ];
 
-export const pricingTiers = [
-  {
+export const pricingComparison = {
+  starter: {
     name: "Starter",
-    description: "For small teams getting started with outbound",
-    agents: "1–5 agents",
-    price: "From £59",
-    priceNote: "per agent / month",
-    features: [
-      "Manual & preview dial",
-      "Browser-based agent workspace",
-      "Campaign management",
-      "Prepaid call credits",
-      "DNC registry & audit logs",
-      "Call recording (policy-based)",
-    ],
-    cta: "Book a demo",
-    highlighted: false,
+    platform: "£25/agent/mo",
+    telephony: "Prepaid credits",
+    outbound: "~5p/min",
+    inbound: "~5p/min (same wallet)",
+    minTopUp: "£50",
+    bestFor: "1–5 agents, outbound sales",
   },
-  {
+  team: {
     name: "Team",
-    description: "For growing sales teams with inbound needs",
-    agents: "6–20 agents",
-    price: "From £59",
-    priceNote: "per agent / month",
-    features: [
-      "Everything in Starter",
-      "500 inbound minutes included",
-      "Supervisor tools & reports",
-      "Inbound routing & queues",
-      "Business hours & voicemail",
-      "Low-balance credit alerts",
-    ],
-    cta: "Book a demo",
-    highlighted: true,
+    platform: "£25/agent/mo",
+    telephony: "Prepaid credits",
+    outbound: "~5p/min",
+    inbound: "~5p/min (same wallet)",
+    minTopUp: "£50",
+    bestFor: "5–20 agents + inbound DIDs",
   },
-  {
-    name: "Agency / Custom",
-    description: "For agencies and multi-org deployments",
-    agents: "Custom",
-    price: "Let's talk",
-    priceNote: "volume pricing",
-    features: [
-      "Multi-organisation management",
-      "Custom inbound allowances",
-      "Pilot credit grants per client",
-      "Manual invoicing available",
-      "Dedicated onboarding support",
-      "White-label-ready positioning",
-    ],
-    cta: "Contact sales",
-    highlighted: false,
-  },
-];
+};
 
 export const featureGroups = [
   {
     title: "Dialing",
     icon: "phone",
     features: [
-      { name: "Manual dial", status: "available" as const, description: "Click-to-call with live call controls from the browser workspace." },
-      { name: "Preview dial", status: "available" as const, description: "Review each contact, skip or dial — proven in production pilots." },
-      { name: "Campaign dial methods", status: "available" as const, description: "Configure dial behaviour per campaign with flexible assignment." },
-      { name: "AMD-assisted connect", status: "pilot" as const, description: "Smart connect reduces wasted agent time on answering machines." },
-      { name: "Progressive / predictive dial", status: "coming-soon" as const, description: "Multi-agent auto-dial at scale — in development, waitlist open." },
+      { name: "Manual dial", status: "available" as const, description: "Click-to-call with live controls from the browser workspace." },
+      { name: "Preview dial", status: "available" as const, description: "Review each contact, skip or dial — pilot-proven in production." },
+      { name: "Campaign dial methods", status: "available" as const, description: "Configure dial behaviour per campaign." },
+      { name: "Progressive / predictive dial", status: "coming-soon" as const, description: "Multi-agent auto-dial — in development, waitlist open." },
     ],
   },
   {
@@ -129,65 +90,57 @@ export const featureGroups = [
     icon: "desktop",
     features: [
       { name: "Interaction queues", status: "available" as const, description: "Real-time queues: queued, allocated, outcomed, unallocated." },
-      { name: "Dispositions & call notes", status: "available" as const, description: "Outcome every call with structured dispositioning and notes." },
-      { name: "Customer info card", status: "available" as const, description: "Full contact context at your fingertips during every call." },
-      { name: "Search & filter", status: "available" as const, description: "Find contacts and interactions quickly across your data." },
-      { name: "Agent mobile access", status: "beta" as const, description: "Native mobile app complements the web PWA workspace." },
+      { name: "Dispositions & call notes", status: "available" as const, description: "Structured dispositioning and notes on every call." },
+      { name: "Customer info card", status: "available" as const, description: "Full contact context during every interaction." },
+      { name: "Low-balance warnings", status: "available" as const, description: "Banner on Work when credits run low." },
     ],
   },
   {
-    title: "Telephony wallet",
+    title: "Credit wallet",
     icon: "wallet",
     features: [
-      { name: "Prepaid call credits", status: "available" as const, description: "Top up via Stripe packs: £50, £100, £250, £500." },
-      { name: "Transparent usage", status: "available" as const, description: "~5p/min outbound, billable per connected minute." },
-      { name: "Admin credit grants", status: "available" as const, description: "Grant pilot credits manually — no Stripe required for pilots." },
-      { name: "Usage ledger", status: "available" as const, description: "Full visibility into credit spend and call costs." },
-      { name: "Low-balance alerts", status: "available" as const, description: "Banner on Work when credits run low so agents are never surprised." },
+      { name: "One wallet for all calls", status: "available" as const, description: "Inbound and outbound both deduct from the same prepaid balance." },
+      { name: "Stripe top-ups", status: "available" as const, description: "£50, £100, £250, £500 credit packs." },
+      { name: "Admin credit grants", status: "available" as const, description: "Manual pilot credits — no Stripe required for pilots." },
+      { name: "Usage ledger", status: "available" as const, description: "Full visibility in Admin → Call Credits." },
+      { name: "~5p/min transparent", status: "available" as const, description: "Approximately 5p per connected minute, inbound or outbound." },
     ],
   },
   {
     title: "Inbound",
     icon: "inbound",
     features: [
-      { name: "Inbound DIDs", status: "available" as const, description: "Platform-managed phone numbers — no Twilio account needed." },
-      { name: "Routing & queues", status: "available" as const, description: "Route inbound calls to agents, teams, or queues." },
-      { name: "Business hours", status: "available" as const, description: "Set operating hours with after-hours handling." },
-      { name: "Voicemail & greetings", status: "available" as const, description: "Custom greeting audio and voicemail capture." },
-      { name: "500 min/month included", status: "available" as const, description: "Inbound allowance per organisation on the platform fee." },
+      { name: "Inbound DIDs", status: "available" as const, description: "Platform-managed numbers — no Twilio account needed." },
+      { name: "Routing & queues", status: "available" as const, description: "Route to agents, teams, or queues." },
+      { name: "Business hours & voicemail", status: "available" as const, description: "After-hours handling and greeting audio." },
     ],
   },
   {
-    title: "Data",
+    title: "Data & campaigns",
     icon: "data",
     features: [
-      { name: "Contacts & lists", status: "available" as const, description: "Manage contact data with filtering and list segmentation." },
-      { name: "Campaigns", status: "available" as const, description: "Create campaigns with dial methods, scripts, and assignment rules." },
-      { name: "Lead assignment", status: "available" as const, description: "Assign leads to agents with full interaction history." },
-      { name: "Templates & scripts", status: "available" as const, description: "Talk tracks and templates to keep agents on message." },
-      { name: "Import-ready", status: "available" as const, description: "Bring your existing contact data and start dialling." },
+      { name: "Contacts & lists", status: "available" as const, description: "Filtering, segmentation, and import-ready data." },
+      { name: "Campaigns & scripts", status: "available" as const, description: "Templates, talk tracks, and assignment rules." },
+      { name: "Interaction history", status: "available" as const, description: "Full lead assignment and call history." },
     ],
   },
   {
     title: "Compliance",
     icon: "shield",
     features: [
-      { name: "DNC registry", status: "available" as const, description: "Do-not-call list management built into the platform." },
-      { name: "Audit logs", status: "available" as const, description: "Full audit trail of platform activity and changes." },
+      { name: "DNC registry", status: "available" as const, description: "Do-not-call list management built in." },
+      { name: "Audit logs", status: "available" as const, description: "Full audit trail of platform activity." },
       { name: "Recording controls", status: "available" as const, description: "Org and campaign-level recording policies." },
-      { name: "Role-based access", status: "available" as const, description: "Admin, Supervisor, and Agent roles with appropriate permissions." },
-      { name: "IP allowlisting", status: "available" as const, description: "Restrict platform access to approved IP addresses." },
+      { name: "Role-based access", status: "available" as const, description: "Admin, Supervisor, and Agent roles." },
     ],
   },
   {
     title: "Insights",
     icon: "chart",
     features: [
-      { name: "Reports & analytics", status: "available" as const, description: "Campaign performance, agent activity, and call outcomes." },
-      { name: "Call outcomes", status: "available" as const, description: "Track disposition trends across campaigns and teams." },
-      { name: "Agent activity", status: "available" as const, description: "Supervisor visibility into team performance." },
-      { name: "Flow automation", status: "available" as const, description: "Build voice channel automations with the flow builder." },
-      { name: "AI dispositioning", status: "coming-soon" as const, description: "Advanced sentiment and auto-disposition — secondary feature in development." },
+      { name: "Reports & analytics", status: "available" as const, description: "Campaign performance and agent activity." },
+      { name: "Real-time analytics", status: "available" as const, description: "Call outcomes and disposition trends." },
+      { name: "AI dispositioning", status: "coming-soon" as const, description: "Secondary feature in development." },
     ],
   },
 ];

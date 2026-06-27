@@ -2,12 +2,15 @@ import Link from "next/link";
 
 export function PilotBanner() {
   return (
-    <div className="bg-accent text-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2.5 text-center text-sm">
+    <div className="relative z-50 border-b border-cyan-400/20 bg-gradient-to-r from-purple-950/90 via-blue-950/90 to-slate-900/90 text-cyan-100">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-2 px-4 py-2.5 text-center text-sm">
         <span className="font-medium">
-          Pilot offer: first 5 organisations get £50 call credits + white-glove setup.
+          Start with £50 free call credits + white-glove setup
         </span>
-        <Link href="/contact" className="underline underline-offset-2 hover:text-white/80 whitespace-nowrap">
+        <Link
+          href="/contact"
+          className="text-cyan-400 underline underline-offset-2 hover:text-cyan-300 whitespace-nowrap"
+        >
           Start pilot →
         </Link>
       </div>

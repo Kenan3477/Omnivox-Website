@@ -2,122 +2,103 @@ import type { Metadata } from "next";
 import { SectionHeading } from "@/components/ui/Accordion";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { Button } from "@/components/ui/Button";
-import { CheckIcon } from "@/components/ui/Icons";
-import { pricingTiers } from "@/lib/constants";
+import { PricingCalculator } from "@/components/pricing/PricingCalculator";
+import { pricingComparison, siteConfig } from "@/lib/constants";
+import { Starfield } from "@/components/brand/Starfield";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent pricing for Omnivox — from £59/agent/month platform fee, prepaid call credits, and 500 inbound minutes included.",
+    "£25 per agent per month platform fee. Prepaid call credits at ~5p/min for inbound and outbound. One wallet, no Twilio.",
 };
+
+const rows = [
+  { label: "Platform", key: "platform" as const },
+  { label: "Telephony", key: "telephony" as const },
+  { label: "Outbound", key: "outbound" as const },
+  { label: "Inbound", key: "inbound" as const },
+  { label: "Min top-up", key: "minTopUp" as const },
+  { label: "Best for", key: "bestFor" as const },
+];
 
 export default function PricingPage() {
   return (
     <>
-      <section className="bg-navy py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        <Starfield />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Pricing"
-            title="One platform, one wallet"
-            description="Platform fee per agent, prepaid call credits for telephony, and inbound minutes included. No hidden Twilio bill."
+            title="Dead simple. Credits-first."
+            description="£25 per agent for the platform. One prepaid wallet for all telephony — inbound and outbound."
             dark
           />
         </div>
       </section>
 
-      <section className="py-20 md:py-28 -mt-10">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-3">
-            {pricingTiers.map((tier, i) => (
-              <AnimateOnScroll key={tier.name} delay={i * 100}>
-                <div
-                  className={`relative rounded-2xl border p-8 h-full flex flex-col ${
-                    tier.highlighted
-                      ? "border-accent bg-white shadow-xl shadow-accent/10 ring-2 ring-accent"
-                      : "border-navy-100 bg-white"
-                  }`}
-                >
-                  {tier.highlighted && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1 text-xs font-semibold text-white">
-                      Most popular
-                    </span>
-                  )}
-                  <div>
-                    <h3 className="font-display text-xl font-bold text-navy-900">{tier.name}</h3>
-                    <p className="mt-1 text-sm text-navy-500">{tier.description}</p>
-                    <p className="mt-1 text-xs font-medium text-accent">{tier.agents}</p>
-                  </div>
-
-                  <div className="mt-6">
-                    <span className="font-display text-4xl font-bold text-navy-900">{tier.price}</span>
-                    <span className="ml-2 text-sm text-navy-500">{tier.priceNote}</span>
-                  </div>
-
-                  <ul className="mt-8 space-y-3 flex-1">
-                    {tier.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3 text-sm text-navy-600">
-                        <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button
-                    href="/contact"
-                    variant={tier.highlighted ? "primary" : "secondary"}
-                    className="mt-8 w-full"
-                  >
-                    {tier.cta}
-                  </Button>
-                </div>
-              </AnimateOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-surface py-16 md:py-20">
-        <div className="mx-auto max-w-4xl px-4 md:px-6">
+      <section className="bg-slate-50 py-16 md:py-24 -mt-8">
+        <div className="mx-auto max-w-5xl px-4 md:px-6">
           <AnimateOnScroll>
-            <div className="rounded-2xl border border-navy-100 bg-white p-8 md:p-10">
-              <h3 className="font-display text-xl font-bold text-navy-900">Worked example</h3>
-              <blockquote className="mt-4 border-l-4 border-accent pl-6 text-navy-700 leading-relaxed">
-                10 agents on Team (£59/agent) = £590/mo platform fee. A £100 call credit top-up
-                gives you approximately 2,000 outbound minutes at 5p/min. 500 inbound minutes included
-                per organisation.
-              </blockquote>
+            <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-lg">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="border-b border-slate-100 bg-slate-50">
+                    <th className="p-4 md:p-6 text-sm font-semibold text-slate-500" />
+                    <th className="p-4 md:p-6 text-lg font-bold text-slate-900">Starter</th>
+                    <th className="p-4 md:p-6 text-lg font-bold text-cyan-700">Team</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((row) => (
+                    <tr key={row.key} className="border-b border-slate-50 last:border-0">
+                      <td className="p-4 md:p-6 text-sm font-medium text-slate-500">{row.label}</td>
+                      <td className="p-4 md:p-6 text-slate-800">{pricingComparison.starter[row.key]}</td>
+                      <td className="p-4 md:p-6 text-slate-800 bg-cyan-50/50">{pricingComparison.team[row.key]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </AnimateOnScroll>
 
-              <div className="mt-8 grid gap-6 sm:grid-cols-3">
-                <div className="rounded-xl bg-navy-50 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400">Outbound</p>
-                  <p className="mt-2 font-display text-2xl font-bold text-navy-900">~5p/min</p>
-                  <p className="mt-1 text-xs text-navy-500">Connected time, 1-min minimum</p>
-                </div>
-                <div className="rounded-xl bg-navy-50 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400">Inbound</p>
-                  <p className="mt-2 font-display text-2xl font-bold text-navy-900">500 min/mo</p>
-                  <p className="mt-1 text-xs text-navy-500">Included, then ~4p/min from credits</p>
-                </div>
-                <div className="rounded-xl bg-navy-50 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-navy-400">Top-ups</p>
-                  <p className="mt-2 font-display text-2xl font-bold text-navy-900">£50–£500</p>
-                  <p className="mt-1 text-xs text-navy-500">Stripe packs, pilot grants available</p>
-                </div>
+          <AnimateOnScroll delay={100}>
+            <blockquote className="mt-10 rounded-2xl border border-cyan-200 bg-cyan-50 p-6 md:p-8 text-slate-800 leading-relaxed">
+              <strong>Worked example:</strong> 5 agents = <strong>£125/month</strong> platform.{" "}
+              £100 credit top-up ≈ <strong>~2,000 minutes</strong> of calling (inbound or outbound).{" "}
+              No surprise Twilio invoice. No carrier setup.
+            </blockquote>
+          </AnimateOnScroll>
+
+          <AnimateOnScroll delay={200}>
+            <div className="mt-12">
+              <PricingCalculator />
+            </div>
+          </AnimateOnScroll>
+
+          <AnimateOnScroll delay={300}>
+            <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
+              <h3 className="font-bold text-slate-900">Credit top-up packs</h3>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {siteConfig.topUpPacks.map((pack) => (
+                  <span
+                    key={pack}
+                    className="rounded-xl border border-cyan-200 bg-cyan-50 px-5 py-3 text-lg font-bold text-cyan-800"
+                  >
+                    £{pack}
+                  </span>
+                ))}
               </div>
+              <p className="mt-4 text-sm text-slate-600">
+                Top up via Stripe in Admin → Call Credits. Pilots can receive manual credit grants.
+              </p>
             </div>
           </AnimateOnScroll>
         </div>
       </section>
 
-      <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-          <p className="text-navy-600">
-            Pilot offer: first 5 organisations get £50 call credits + white-glove setup.
-          </p>
-          <Button href="/contact" className="mt-6" size="lg">
-            Start pilot
-          </Button>
-        </div>
+      <section className="py-16 text-center">
+        <p className="text-slate-400 mb-6">Start with £50 free call credits + white-glove setup</p>
+        <Button href="/contact" size="lg">Start pilot</Button>
       </section>
     </>
   );

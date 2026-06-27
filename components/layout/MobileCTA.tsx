@@ -16,7 +16,7 @@ export function MobileCTA() {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-50 border-t border-navy-100 bg-white/95 backdrop-blur-md p-3 md:hidden"
+      className="fixed bottom-0 left-0 right-0 z-50 border-t border-cyan-400/20 bg-slate-900/95 backdrop-blur-md p-3 md:hidden"
       role="complementary"
       aria-label="Quick actions"
     >

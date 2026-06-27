@@ -12,16 +12,17 @@ interface ButtonProps {
   className?: string;
   type?: "button" | "submit";
   onClick?: () => void;
+  external?: boolean;
 }
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent text-white hover:bg-accent-dark shadow-lg shadow-accent/25 hover:shadow-accent/40",
+    "bg-gradient-to-r from-cyan-500 to-cyan-400 text-slate-900 hover:from-cyan-400 hover:to-cyan-300 shadow-lg shadow-cyan-500/25 font-semibold",
   secondary:
-    "bg-white text-navy-900 border border-navy-200 hover:bg-navy-50 hover:border-navy-300",
+    "bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-cyan-400/30 backdrop-blur-sm",
   outline:
-    "border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm",
-  ghost: "text-navy-700 hover:text-accent hover:bg-accent/5",
+    "border-2 border-cyan-400/40 text-cyan-300 hover:bg-cyan-400/10 backdrop-blur-sm",
+  ghost: "text-slate-300 hover:text-cyan-400 hover:bg-white/5",
 };
 
 const sizes: Record<ButtonSize, string> = {
@@ -38,10 +39,18 @@ export function Button({
   className = "",
   type = "button",
   onClick,
+  external = false,
 }: ButtonProps) {
-  const classes = `inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 ${variants[variant]} ${sizes[size]} ${className}`;
+  const classes = `inline-flex items-center justify-center rounded-xl transition-all duration-200 ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (href) {
+    if (external) {
+      return (
+        <a href={href} className={classes} target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
+      );
+    }
     return (
       <Link href={href} className={classes}>
         {children}

@@ -2,70 +2,66 @@ import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { SectionHeading } from "@/components/ui/Accordion";
 import { CheckIcon, XIcon } from "@/components/ui/Icons";
 
-const diyTwilio = {
-  title: "vs DIY Twilio + CRM",
-  items: [
-    { text: "No carrier account for customer", positive: true },
-    { text: "One credit wallet for all telephony", positive: true },
-    { text: "Faster onboarding — hours, not weeks", positive: true },
-    { text: "Platform handles CLI, webhooks, recording", positive: true },
-    { text: "You manage Twilio, SIP, and webhooks", positive: false },
-    { text: "Separate telecom bill every month", positive: false },
-  ],
-};
+const omnivox = [
+  "One prepaid credit wallet",
+  "Preview dial out of the box",
+  "£25/agent platform fee",
+  "~5p/min inbound & outbound",
+  "No Twilio account needed",
+  "Same-day pilot onboarding",
+];
 
-const legacyDialers = {
-  title: "vs Legacy dialers",
-  items: [
-    { text: "Modern web UI — no desktop install", positive: true },
-    { text: "Preview dial out of the box", positive: true },
-    { text: "500 inbound minutes included", positive: true },
-    { text: "Transparent per-minute pricing", positive: true },
-    { text: "Clunky interfaces and long contracts", positive: false },
-    { text: "Hidden fees and opaque billing", positive: false },
-  ],
-};
-
-function ComparisonCard({ title, items }: { title: string; items: { text: string; positive: boolean }[] }) {
-  return (
-    <div className="rounded-2xl border border-navy-100 bg-white p-6 md:p-8">
-      <h3 className="font-display text-xl font-bold text-navy-900 mb-6">{title}</h3>
-      <ul className="space-y-4">
-        {items.map((item) => (
-          <li key={item.text} className="flex items-start gap-3">
-            <span
-              className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                item.positive ? "bg-emerald-100 text-emerald-600" : "bg-red-50 text-red-400"
-              }`}
-            >
-              {item.positive ? <CheckIcon className="h-3 w-3" /> : <XIcon className="h-3 w-3" />}
-            </span>
-            <span className={`text-sm ${item.positive ? "text-navy-700" : "text-navy-400"}`}>
-              {item.text}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+const diy = [
+  "Separate Twilio account per team",
+  "Build your own dialer UI",
+  "Webhook and carrier plumbing",
+  "Multiple telecom invoices",
+  "Spreadsheet compliance",
+  "Weeks of developer time",
+];
 
 export function Comparison() {
   return (
-    <section className="bg-slate-surface py-20 md:py-28">
+    <section className="bg-slate-50 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Compare"
-          title="Why teams choose Omnivox"
-          description="Honest positioning — we're built for manual and preview outbound today, with room to grow."
+          title="OMNIVOX AI vs DIY Twilio + spreadsheets"
+          description="We're built for manual and preview outbound that actually works — with transparent credits."
+          light
         />
 
         <div className="grid gap-8 md:grid-cols-2">
           <AnimateOnScroll>
-            <ComparisonCard {...diyTwilio} />
+            <div className="glass-card-light p-8 h-full border-cyan-200/50">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">OMNIVOX AI</h3>
+              <ul className="space-y-4">
+                {omnivox.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-slate-700">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-100 text-cyan-600">
+                      <CheckIcon className="h-3 w-3" />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </AnimateOnScroll>
+
           <AnimateOnScroll delay={100}>
-            <ComparisonCard {...legacyDialers} />
+            <div className="glass-card-light p-8 h-full">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">DIY Twilio + spreadsheets</h3>
+              <ul className="space-y-4">
+                {diy.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-slate-500">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-50 text-red-400">
+                      <XIcon className="h-3 w-3" />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </AnimateOnScroll>
         </div>
       </div>

@@ -9,32 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          DEFAULT: "#0B1220",
-          50: "#F0F4FA",
-          100: "#E2E8F4",
-          200: "#C5D1E8",
-          300: "#94A8CC",
-          400: "#5B7299",
-          500: "#3D5278",
-          600: "#2A3A5C",
-          700: "#1A2740",
-          800: "#121C30",
-          900: "#0B1220",
-        },
-        accent: {
-          DEFAULT: "#2563EB",
-          light: "#3B82F6",
-          dark: "#1D4ED8",
-        },
-        slate: {
-          surface: "#F8FAFC",
-          muted: "#64748B",
+        cosmic: {
+          navy: "#0f172a",
+          blue: "#172554",
+          purple: "#3b0764",
         },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out forwards",

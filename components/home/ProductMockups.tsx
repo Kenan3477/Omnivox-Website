@@ -4,26 +4,25 @@ import { Badge } from "@/components/ui/Badge";
 
 const mockups = [
   {
-    title: "Agent Workspace",
-    subtitle: "Manual & preview dial with live controls",
+    title: "Agent Work",
+    subtitle: "Preview dial — review, skip, or call",
     badge: "available" as const,
     content: (
       <div className="space-y-3">
-        <div className="flex items-center justify-between rounded-lg bg-navy-50 p-3">
+        <div className="flex items-center justify-between rounded-lg bg-slate-100 p-3">
           <div>
-            <p className="text-sm font-semibold text-navy-900">Active call</p>
-            <p className="text-xs text-navy-500">02:34 · Connected</p>
+            <p className="text-sm font-semibold text-slate-900">Sarah Mitchell — Acme Ltd</p>
+            <p className="text-xs text-slate-500">+44 7700 900123</p>
           </div>
-          <div className="flex gap-2">
-            <div className="h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
-              <div className="h-3 w-3 rounded-full bg-red-500" />
-            </div>
-            <div className="h-8 w-8 rounded-full bg-navy-100 flex items-center justify-center text-navy-600 text-xs">⏸</div>
-          </div>
+          <Badge variant="available" />
+        </div>
+        <div className="flex gap-2">
+          <div className="flex-1 rounded-lg bg-cyan-500 py-2 text-center text-sm font-semibold text-white">Dial</div>
+          <div className="flex-1 rounded-lg border border-slate-200 py-2 text-center text-sm text-slate-600">Skip</div>
         </div>
         <div className="grid grid-cols-2 gap-2">
-          {["Callback", "Not interested", "Sale", "Voicemail"].map((d) => (
-            <div key={d} className="rounded-lg border border-navy-100 p-2 text-center text-xs font-medium text-navy-600">{d}</div>
+          {["Callback", "Sale", "Voicemail", "Not interested"].map((d) => (
+            <div key={d} className="rounded-lg border border-slate-100 p-2 text-center text-xs text-slate-600">{d}</div>
           ))}
         </div>
       </div>
@@ -31,49 +30,40 @@ const mockups = [
   },
   {
     title: "Call Credits",
-    subtitle: "Prepaid wallet with transparent usage",
+    subtitle: "Admin — one wallet for all telephony",
     badge: "available" as const,
     content: (
       <div className="space-y-3">
-        <div className="rounded-lg bg-emerald-50 border border-emerald-100 p-4">
-          <p className="text-xs text-emerald-600 font-medium">Credit balance</p>
-          <p className="text-2xl font-bold text-emerald-700">£247.50</p>
+        <div className="rounded-lg bg-cyan-50 border border-cyan-100 p-4">
+          <p className="text-xs text-cyan-700 font-medium">Credit balance</p>
+          <p className="text-2xl font-bold text-cyan-800">£247.50</p>
         </div>
-        <div className="space-y-2">
-          {[
-            { label: "Outbound — 12 min", cost: "-£0.60" },
-            { label: "Outbound — 4 min", cost: "-£0.20" },
-            { label: "Top-up £100", cost: "+£100.00" },
-          ].map((item) => (
-            <div key={item.label} className="flex justify-between text-xs">
-              <span className="text-navy-600">{item.label}</span>
-              <span className={item.cost.startsWith("+") ? "text-emerald-600 font-medium" : "text-navy-500"}>{item.cost}</span>
-            </div>
-          ))}
-        </div>
+        {[
+          { label: "Outbound — 12 min", cost: "-£0.60" },
+          { label: "Inbound — 8 min", cost: "-£0.40" },
+          { label: "Top-up £100", cost: "+£100.00" },
+        ].map((item) => (
+          <div key={item.label} className="flex justify-between text-xs">
+            <span className="text-slate-600">{item.label}</span>
+            <span className={item.cost.startsWith("+") ? "text-emerald-600 font-medium" : "text-slate-500"}>{item.cost}</span>
+          </div>
+        ))}
       </div>
     ),
   },
   {
-    title: "Campaign Manager",
-    subtitle: "Dial methods, scripts, and assignment",
+    title: "Campaigns",
+    subtitle: "Dial methods, scripts, assignment",
     badge: "available" as const,
     content: (
       <div className="space-y-3">
         {[
-          { name: "Q2 Renewal Outreach", method: "Preview", contacts: "1,247", status: "Active" },
-          { name: "New Business — London", method: "Manual", contacts: "856", status: "Active" },
-          { name: "Re-engagement", method: "Preview", contacts: "423", status: "Paused" },
+          { name: "Q2 Renewal", method: "Preview", contacts: "1,247" },
+          { name: "New Business", method: "Manual", contacts: "856" },
         ].map((c) => (
-          <div key={c.name} className="rounded-lg border border-navy-100 p-3">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-navy-900">{c.name}</p>
-              <span className={`text-xs font-medium ${c.status === "Active" ? "text-emerald-600" : "text-amber-600"}`}>{c.status}</span>
-            </div>
-            <div className="mt-1 flex gap-3 text-xs text-navy-500">
-              <span>{c.method} dial</span>
-              <span>{c.contacts} contacts</span>
-            </div>
+          <div key={c.name} className="rounded-lg border border-slate-100 p-3">
+            <p className="text-sm font-semibold text-slate-900">{c.name}</p>
+            <p className="text-xs text-slate-500 mt-1">{c.method} dial · {c.contacts} contacts</p>
           </div>
         ))}
       </div>
@@ -83,26 +73,22 @@ const mockups = [
 
 export function ProductMockups() {
   return (
-    <section className="py-20 md:py-28">
+    <section className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Product"
-          title="Everything your agents need in one workspace"
-          description="Browser-based — no softphone install required. Real-time queues, customer cards, and dispositioning built in."
+          title="Ready for onboarding today"
+          description="Browser-based agent workspace. Platform-managed telephony. No softphone install."
+          light
         />
 
         <div className="grid gap-8 lg:grid-cols-3">
           {mockups.map((mockup, i) => (
             <AnimateOnScroll key={mockup.title} delay={i * 100}>
-              <div className="rounded-2xl border border-navy-100 bg-white overflow-hidden shadow-sm">
-                <div className="bg-navy p-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="font-display text-lg font-bold text-white">{mockup.title}</h3>
-                      <p className="text-sm text-navy-300">{mockup.subtitle}</p>
-                    </div>
-                    <Badge variant={mockup.badge} />
-                  </div>
+              <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-lg">
+                <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-purple-950 p-4">
+                  <h3 className="text-lg font-bold text-white">{mockup.title}</h3>
+                  <p className="text-sm text-cyan-200/70">{mockup.subtitle}</p>
                 </div>
                 <div className="p-5">{mockup.content}</div>
               </div>
