@@ -12,6 +12,60 @@ const useCases = [
   { value: "both", label: "Both" },
 ];
 
+const pilotSteps = [
+  { title: "We reply within one business day", detail: "Usually same day for UK/EU enquiries." },
+  { title: "Same-day org provisioning", detail: "Pilot org, users, and dial methods set up for you." },
+  { title: "£50 free call credits", detail: "Qualified pilots get starter credits and white-glove setup." },
+];
+
+function ContactSidebar() {
+  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
+
+  return (
+    <div className="mt-8 space-y-6">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+        <p className="text-[11px] font-semibold uppercase tracking-widest text-cyan-700">What happens next</p>
+        <ol className="mt-5 space-y-5">
+          {pilotSteps.map((step, i) => (
+            <li key={step.title} className="flex gap-4">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-xs font-bold text-cyan-700 border border-cyan-100">
+                {i + 1}
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-slate-900">{step.title}</p>
+                <p className="mt-0.5 text-sm text-slate-600">{step.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+        <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500">Prefer email?</p>
+        <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+          Send your agent count, use case, and timeline — we&apos;ll come back with pilot options.
+        </p>
+        <a
+          href={`mailto:${siteConfig.contactEmail}?subject=OMNIVOX%20AI%20demo%20request`}
+          className="mt-4 inline-flex text-base font-semibold text-cyan-600 hover:text-cyan-500"
+        >
+          {siteConfig.contactEmail}
+        </a>
+      </div>
+
+      {calendlyUrl ? (
+        <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm min-h-[480px]">
+          <iframe
+            title="Book a demo with OMNIVOX AI"
+            src={calendlyUrl}
+            className="w-full h-[480px] border-0"
+          />
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -130,10 +184,7 @@ export function ContactPageContent() {
                   Sign in to OMNIVOX AI →
                 </a>
               </p>
-              <div className="mt-8 rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center">
-                <p className="text-sm font-medium text-slate-500">Calendar embed placeholder</p>
-                <p className="mt-2 text-xs text-slate-400">Connect Calendly or Cal.com</p>
-              </div>
+              <ContactSidebar />
             </div>
             <div className="glass-card-light p-6 md:p-8">
               <ContactForm />
