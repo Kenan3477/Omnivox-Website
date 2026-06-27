@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navLinks, siteConfig } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
-import { VoiceWaveV } from "@/components/brand/VoiceWaveV";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -33,14 +32,11 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2" aria-label="OMNIVOX AI home">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-400/30 bg-gradient-to-br from-purple-600/40 to-cyan-500/30 text-cyan-300 font-bold text-lg shadow-lg shadow-cyan-500/10">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="OMNIVOX AI home">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-400/25 bg-gradient-to-br from-violet-600/50 to-cyan-500/30 text-cyan-200 font-bold text-lg shadow-[0_0_20px_rgba(34,211,238,0.15)]">
             O
           </div>
-          <span className="hidden sm:flex items-center font-bold text-white text-lg">
-            OMNI<VoiceWaveV className="scale-50 mx-0" />OX
-            <span className="text-cyan-400 text-sm ml-1">AI</span>
-          </span>
+          <span className="font-semibold text-white hidden sm:block">OMNIVOX AI</span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">

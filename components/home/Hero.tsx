@@ -10,19 +10,13 @@ export function Hero() {
     <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
       <Starfield />
 
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 py-20 md:py-28 text-center">
-        {/* Centred stack — matches login page left panel */}
-        <OmniCube size="lg" className="mb-6 md:mb-8" />
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-8 pb-20 md:pt-12 md:pb-28 text-center">
+        <OmniCube size="lg" className="mb-4 md:mb-6" />
 
         <Wordmark size="hero" />
 
-        <p className="mt-5 max-w-2xl text-lg md:text-xl text-slate-300 leading-relaxed text-balance">
+        <p className="mt-5 max-w-2xl text-lg md:text-xl text-slate-200/90 leading-relaxed text-balance font-light">
           {siteConfig.tagline}
-        </p>
-
-        <p className="mt-4 max-w-xl text-sm md:text-base text-cyan-400/70 leading-relaxed">
-          Manual and preview outbound that actually works — transparent per-minute credits,
-          one wallet for every call.
         </p>
 
         <FeaturePills className="mt-8 md:mt-10" />
@@ -37,7 +31,7 @@ export function Hero() {
         </div>
 
         <p className="mt-8 text-xs text-slate-500 tracking-wide">
-          From £25/agent/month · One credit wallet · We handle the telecom
+          From £25/agent/month · One credit wallet · Preview dial included
         </p>
 
         <p className="mt-10 text-sm text-slate-500">

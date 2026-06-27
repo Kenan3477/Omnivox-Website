@@ -46,7 +46,7 @@ function OrbitIcon({ type }: { type: string }) {
     ),
   };
 
-  return <span className="text-cyan-300">{icons[type]}</span>;
+  return <span className="text-cyan-200">{icons[type]}</span>;
 }
 
 interface OmniCubeProps {
@@ -55,13 +55,14 @@ interface OmniCubeProps {
 }
 
 const stageSizes = {
-  sm: { stage: 200, scale: 0.65 },
-  md: { stage: 280, scale: 0.85 },
-  lg: { stage: 340, scale: 1 },
+  sm: { stage: 220, scale: 0.7 },
+  md: { stage: 300, scale: 0.88 },
+  lg: { stage: 360, scale: 1 },
 };
 
 export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
   const { stage, scale } = stageSizes[size];
+  const orbitRadius = stage * 0.4;
 
   return (
     <div
@@ -69,30 +70,23 @@ export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
       style={{ width: stage, height: stage, transform: `scale(${scale})` }}
       aria-hidden="true"
     >
-      {/* Ambient glow */}
-      <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/20 blur-[60px]" />
-      <div className="absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/25 blur-[50px]" />
+      <div className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/15 blur-[70px] animate-pulse-glow" />
+      <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/20 blur-[60px]" />
 
-      {/* Orbit ring */}
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/15"
-        style={{ width: stage * 0.88, height: stage * 0.88 }}
-      />
-      <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/10"
-        style={{ width: stage * 0.72, height: stage * 0.72 }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/20 orbit-ring-glow"
+        style={{ width: orbitRadius * 2.15, height: orbitRadius * 2.15 }}
       />
 
-      {/* Orbiting icons */}
       <div className="absolute inset-0 animate-orbit">
         {orbitIcons.map((item) => (
           <div
             key={item.icon}
             className="orbit-satellite"
-            style={{ transform: `rotate(${item.angle}deg) translateX(${stage * 0.42}px)` }}
+            style={{ transform: `rotate(${item.angle}deg) translateX(${orbitRadius}px)` }}
           >
             <div className="orbit-satellite-icon animate-orbit-counter">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-400/40 bg-slate-950/90 shadow-[0_0_20px_rgba(34,211,238,0.25)] backdrop-blur-md">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-violet-900/90 to-slate-950/95 shadow-[0_4px_24px_rgba(34,211,238,0.2)] backdrop-blur-xl">
                 <OrbitIcon type={item.icon} />
               </div>
             </div>
@@ -100,10 +94,10 @@ export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
         ))}
       </div>
 
-      {/* 3D cube */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <div className="cube-scene">
           <div className="cube animate-cube-spin">
+            <div className="cube-glow-core" />
             <div className="cube-face cube-face-front" />
             <div className="cube-face cube-face-back" />
             <div className="cube-face cube-face-right" />
