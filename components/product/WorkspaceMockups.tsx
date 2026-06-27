@@ -2,7 +2,7 @@
 
 export function AgentWorkspaceMockup() {
   return (
-    <div className="grid min-h-[420px] grid-cols-12 bg-slate-950 text-slate-200 text-sm">
+    <div className="grid min-h-[300px] grid-cols-12 bg-slate-950 text-slate-200 text-sm">
       {/* Sidebar */}
       <div className="col-span-3 border-r border-white/5 bg-slate-900/80 p-4 hidden sm:block">
         <div className="flex items-center gap-2 mb-6">
@@ -87,7 +87,7 @@ export function AgentWorkspaceMockup() {
 
 export function CreditsAdminMockup() {
   return (
-    <div className="p-6 md:p-8 bg-slate-50 min-h-[320px]">
+    <div className="p-5 md:p-6 bg-slate-50 min-h-[240px]">
       <div className="flex items-center justify-between mb-6">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Admin · Call Credits</p>

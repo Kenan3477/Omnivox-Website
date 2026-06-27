@@ -17,18 +17,18 @@ interface ButtonProps {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-gradient-to-r from-cyan-500 to-cyan-400 text-slate-900 hover:from-cyan-400 hover:to-cyan-300 shadow-lg shadow-cyan-500/25 font-semibold",
+    "bg-cyan-500 text-slate-950 hover:bg-cyan-400 font-semibold",
   secondary:
-    "bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-cyan-400/30 backdrop-blur-sm",
+    "bg-white/10 text-white border border-white/15 hover:bg-white/15",
   outline:
-    "border-2 border-cyan-400/40 text-cyan-300 hover:bg-cyan-400/10 backdrop-blur-sm",
+    "border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10",
   ghost: "text-slate-300 hover:text-cyan-400 hover:bg-white/5",
 };
 
 const sizes: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3 text-base",
-  lg: "px-8 py-4 text-lg",
+  sm: "px-3 py-1.5 text-xs",
+  md: "px-4 py-2 text-sm",
+  lg: "px-5 py-2.5 text-sm",
 };
 
 export function Button({

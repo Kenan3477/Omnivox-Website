@@ -31,7 +31,7 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 md:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 md:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5 group" aria-label="OMNIVOX AI home">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-400/20 bg-gradient-to-br from-violet-600/60 to-cyan-600/40 text-cyan-100 font-bold shadow-glow transition group-hover:shadow-glow-violet">
             O

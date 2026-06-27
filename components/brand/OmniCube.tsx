@@ -55,9 +55,9 @@ interface OmniCubeProps {
 }
 
 const stageSizes = {
-  sm: { stage: 220, scale: 0.7 },
-  md: { stage: 300, scale: 0.88 },
-  lg: { stage: 360, scale: 1 },
+  sm: { stage: 180, scale: 0.6 },
+  md: { stage: 240, scale: 0.75 },
+  lg: { stage: 280, scale: 0.85 },
 };
 
 export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
@@ -70,8 +70,7 @@ export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
       style={{ width: stage, height: stage, transform: `scale(${scale})` }}
       aria-hidden="true"
     >
-      <div className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/15 blur-[70px] animate-pulse-glow" />
-      <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/20 blur-[60px]" />
+      <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[50px]" />
 
       <div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/20 orbit-ring-glow"
