@@ -138,26 +138,48 @@ export const faqItems = [
   },
 ];
 
-export const pricingComparison = {
-  starter: {
-    name: "Starter",
-    platform: "£25/agent/mo",
-    telephony: "Prepaid credits",
-    outbound: "~5p/min",
-    inbound: "~5p/min (same wallet)",
-    minTopUp: "£50",
-    bestFor: "1–5 agents, outbound sales",
+export const pricingBreakdown = [
+  {
+    label: "Platform",
+    value: "£25 per agent / month",
+    detail: "Full workspace — manual & preview dial, campaigns, DNC, recording, roles",
   },
-  team: {
-    name: "Team",
-    platform: "£25/agent/mo",
-    telephony: "Prepaid credits",
-    outbound: "~5p/min",
-    inbound: "~5p/min (same wallet)",
-    minTopUp: "£50",
-    bestFor: "5–20 agents + inbound DIDs",
+  {
+    label: "Telephony",
+    value: "Prepaid credits",
+    detail: "Platform-managed — no carrier accounts or bundled minute pools",
   },
-};
+  {
+    label: "Outbound",
+    value: "~5p per connected minute",
+    detail: "One-minute minimum per call",
+  },
+  {
+    label: "Inbound",
+    value: "~5p per connected minute",
+    detail: "Same credit wallet as outbound",
+  },
+  {
+    label: "Minimum top-up",
+    value: "£50",
+    detail: "Top-up packs: £50 · £100 · £250 · £500 via Stripe in Admin",
+  },
+  {
+    label: "Teams",
+    value: "1–20+ agents",
+    detail: "Outbound sales, inbound DIDs, agencies — same pricing for everyone",
+  },
+] as const;
+
+export const pricingIncludes = [
+  "Manual & preview dial",
+  "Browser agent workspace",
+  "Campaigns & contact lists",
+  "Inbound DIDs & routing",
+  "DNC registry & audit logs",
+  "Call recording (configurable)",
+  "Admin, Supervisor & Agent roles",
+] as const;
 
 export const featureGroups = [
   {
