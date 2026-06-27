@@ -16,8 +16,8 @@ export default function TermsPage() {
           <section>
             <h2 className="font-display text-xl font-bold text-navy-900">Agreement</h2>
             <p className="mt-3">
-              By using Omnivox, you agree to these Terms of Service. This is a placeholder document
-              and should be reviewed by legal counsel before publication.
+              By using OMNIVOX AI, you agree to these Terms of Service. These terms apply to your use of the platform
+              operated by Quanterae Solutions. A separate Data Processing Agreement governs how we process personal data on your behalf.
             </p>
           </section>
 

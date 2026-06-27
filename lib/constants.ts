@@ -65,12 +65,12 @@ export const pillars = [
     eyebrow: "Operations",
     title: "Compliance and coaching without the spreadsheet",
     description:
-      "DNC registry, audit logs, recording policies, and role-based access — so supervisors stay accountable as you scale from 3 agents to 20.",
+      "UK GDPR-aligned processor tools — DNC registry, audit logs, recording policies, and role-based access. DPA provided at onboarding.",
     bullets: [
+      "Data controller / processor roles documented",
       "DNC registry and audit trail",
       "Recording per org or campaign",
       "Admin, Supervisor, Agent roles",
-      "Reports on outcomes and activity",
     ],
     cta: "Trust & security",
     href: "/trust",
@@ -136,7 +136,108 @@ export const faqItems = [
     answer:
       "Yes. Call recording is configurable per organisation or campaign. Recording consent remains your responsibility as the data controller.",
   },
+  {
+    question: "How does OMNIVOX handle GDPR?",
+    answer:
+      "You are the data controller for your contacts, campaigns, and call data. OMNIVOX AI acts as your data processor. We provide a Data Processing Agreement (DPA) at onboarding, org-level data isolation, audit logs, DNC tools, and recording controls. See our Trust page for the full breakdown.",
+  },
+  {
+    question: "Do you sign a Data Processing Agreement?",
+    answer:
+      "Yes. A DPA is provided when you onboard as a customer. It covers how we process personal data on your behalf, subprocessors, security measures, and breach notification. Email hello@omnivox.co.uk if you need a copy before signing up.",
+  },
+  {
+    question: "Who is responsible for calling compliance (TPS, consent, recording)?",
+    answer:
+      "You remain responsible as the data controller — including PECR, TPS/CTPS checks, lawful basis for processing, and recording announcements. OMNIVOX gives you DNC lists, audit trails, and configurable recording so your team can operate accountably.",
+  },
 ];
+
+export const dataCompliance = {
+  roles: {
+    title: "Clear data roles under UK GDPR",
+    description:
+      "Outbound dialers process personal data every day. We keep the split simple: you control your customer and prospect data; we process it to run the platform.",
+    controller: {
+      label: "You (customer)",
+      subtitle: "Data controller",
+      points: [
+        "Contact lists, campaigns, and dispositions",
+        "Lawful basis, consent, and TPS/CTPS obligations",
+        "Recording announcements and retention policies for your leads",
+        "Responding to data subject requests from your contacts",
+      ],
+    },
+    processor: {
+      label: "OMNIVOX AI",
+      subtitle: "Data processor",
+      points: [
+        "Hosts and processes data only to deliver the dialer service",
+        "Provides org isolation, access controls, and audit logging",
+        "Signs a DPA covering security, subprocessors, and breach notification",
+        "Supports your compliance workflows — DNC, recording controls, exports on request",
+      ],
+    },
+  },
+  controls: [
+    {
+      title: "Org-level isolation",
+      description: "Each customer organisation has separate users, contacts, campaigns, and call records.",
+    },
+    {
+      title: "DNC registry",
+      description: "Maintain do-not-call lists inside the platform and block dialling to flagged numbers.",
+    },
+    {
+      title: "Audit logs",
+      description: "Track administrative actions and configuration changes for accountability.",
+    },
+    {
+      title: "Recording controls",
+      description: "Enable or disable call recording per organisation or campaign. Consent is your responsibility.",
+    },
+    {
+      title: "Role-based access",
+      description: "Admin, Supervisor, and Agent roles limit who can change settings, listen to recordings, or export data.",
+    },
+    {
+      title: "Data Processing Agreement",
+      description: "Standard DPA provided at onboarding. Covers UK GDPR and EU GDPR processor obligations.",
+    },
+  ],
+  practices: [
+    {
+      title: "UK & EU focus",
+      content:
+        "Built for UK and European sales teams. We align our processor obligations with UK GDPR and EU GDPR. Subprocessor and hosting details are listed in your DPA.",
+    },
+    {
+      title: "Telemarketing & PECR",
+      content:
+        "You must comply with PECR, TPS/CTPS, and sector-specific rules for outbound calling. OMNIVOX does not replace legal advice — we give you tools (DNC, preview dial, audit trail) to run campaigns accountably.",
+    },
+    {
+      title: "Recording & call data",
+      content:
+        "Call recordings and metadata are processed to provide the service. Configure recording per org or campaign. Inform callers where required and define retention in your own policies.",
+    },
+    {
+      title: "Retention & deletion",
+      content:
+        "You control how long contact and call data is kept for your business needs. On contract end, we delete or return customer data per the DPA. Contact us for specific retention or export requests.",
+    },
+    {
+      title: "Security",
+      content:
+        "Encrypted connections, authenticated access, and role-scoped permissions. Administrative changes are logged. We do not claim certifications we have not earned — ask us for our current security posture during procurement.",
+    },
+    {
+      title: "Breaches & enquiries",
+      content:
+        "Processor breach notification terms are in the DPA. For privacy enquiries or to exercise rights relating to data we process on your behalf, contact hello@omnivox.co.uk.",
+    },
+  ],
+} as const;
 
 export const pricingBreakdown = [
   {
@@ -241,10 +342,12 @@ export const featureGroups = [
     id: "compliance",
     icon: "shield",
     features: [
-      { name: "DNC registry", status: "available" as const, description: "Do-not-call list management built in." },
-      { name: "Audit logs", status: "available" as const, description: "Full audit trail of platform activity." },
-      { name: "Recording controls", status: "available" as const, description: "Org and campaign-level recording policies." },
-      { name: "Role-based access", status: "available" as const, description: "Admin, Supervisor, and Agent roles." },
+      { name: "DNC registry", status: "available" as const, description: "Do-not-call list management — block flagged numbers before dialling." },
+      { name: "Audit logs", status: "available" as const, description: "Administrative actions and configuration changes logged for review." },
+      { name: "Recording controls", status: "available" as const, description: "Org and campaign-level recording. Consent remains your responsibility." },
+      { name: "Role-based access", status: "available" as const, description: "Admin, Supervisor, and Agent roles with scoped permissions." },
+      { name: "Data Processing Agreement", status: "available" as const, description: "UK/EU GDPR-aligned DPA provided at customer onboarding." },
+      { name: "Org data isolation", status: "available" as const, description: "Separate contacts, campaigns, and call data per organisation." },
     ],
   },
   {
