@@ -8,30 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        cosmic: {
-          navy: "#0f172a",
-          blue: "#172554",
-          purple: "#3b0764",
-        },
-      },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-inter)", "system-ui", "sans-serif"],
       },
-      animation: {
-        "fade-in": "fadeIn 0.6s ease-out forwards",
-        "slide-up": "slideUp 0.6s ease-out forwards",
+      boxShadow: {
+        glow: "0 0 60px -12px rgba(34, 211, 238, 0.35)",
+        "glow-violet": "0 0 60px -12px rgba(139, 92, 246, 0.35)",
+        card: "0 4px 24px -4px rgba(15, 23, 42, 0.08), 0 8px 48px -8px rgba(15, 23, 42, 0.04)",
+        "card-hover": "0 20px 60px -12px rgba(34, 211, 238, 0.15), 0 8px 24px -8px rgba(15, 23, 42, 0.1)",
       },
-      keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        slideUp: {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
+      backgroundImage: {
+        "mesh-dark":
+          "radial-gradient(at 40% 20%, rgba(34,211,238,0.15) 0px, transparent 50%), radial-gradient(at 80% 0%, rgba(139,92,246,0.12) 0px, transparent 50%), radial-gradient(at 0% 50%, rgba(59,130,246,0.08) 0px, transparent 50%)",
+        "gradient-cta": "linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0c4a6e 100%)",
       },
     },
   },

@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "OMNIVOX AI",
   tagline: "Advanced conversational AI platform with intelligent workflow automation",
   description:
-    "OMNIVOX AI is a cloud dialer and agent workspace for UK/EU teams — manual and preview outbound, platform-managed telephony, and one prepaid credit wallet for all calls.",
+    "OMNIVOX AI is a cloud dialer and agent workspace for UK/EU sales teams — manual and preview outbound, platform-managed telephony, and one prepaid credit wallet for all calls.",
   url: "https://omnivox-website-three.vercel.app",
   appLoginUrl: "https://omnivox-ai.vercel.app/login",
   contactEmail: "hello@omnivox.co.uk",
@@ -15,16 +15,101 @@ export const siteConfig = {
 export const navLinks = [
   { href: "/features", label: "Features" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/agencies", label: "For Agencies" },
+  { href: "/agencies", label: "Agencies" },
   { href: "/trust", label: "Trust" },
   { href: "/contact", label: "Contact" },
+];
+
+export const trustMetrics = [
+  { value: "£25", label: "per agent / month" },
+  { value: "~5p", label: "per connected minute" },
+  { value: "Same day", label: "pilot onboarding" },
+  { value: "1 wallet", label: "inbound + outbound" },
+];
+
+export const pillars = [
+  {
+    id: "dialing",
+    eyebrow: "Outbound",
+    title: "Preview dial your team will actually use",
+    description:
+      "Manual and preview modes are live today — review each contact, skip or call, disposition in one flow. Built for outbound sales teams who need control before every dial, not auto-dial chaos.",
+    bullets: [
+      "Click-to-call from the browser workspace",
+      "Preview dial — pilot-proven in production",
+      "Real-time queues: queued, allocated, outcomed",
+      "Campaign dial methods per team",
+    ],
+    cta: "See dialing features",
+    href: "/features#dialing",
+    accent: "cyan",
+  },
+  {
+    id: "wallet",
+    eyebrow: "Telephony",
+    title: "One credit wallet. Transparent per-minute pricing.",
+    description:
+      "Platform-managed telephony with prepaid credits — no carrier accounts, no surprise invoices. Top up in Admin, track every minute in the ledger, low-balance alerts on Work.",
+    bullets: [
+      "£50 · £100 · £250 · £500 top-up packs",
+      "Inbound and outbound from one balance",
+      "Stripe top-ups + pilot credit grants",
+      "Usage ledger in Admin → Call Credits",
+    ],
+    cta: "See how credits work",
+    href: "/pricing",
+    accent: "violet",
+  },
+  {
+    id: "compliance",
+    eyebrow: "Operations",
+    title: "Compliance and coaching without the spreadsheet",
+    description:
+      "DNC registry, audit logs, recording policies, and role-based access — so supervisors stay accountable as you scale from 3 agents to 20.",
+    bullets: [
+      "DNC registry and audit trail",
+      "Recording per org or campaign",
+      "Admin, Supervisor, Agent roles",
+      "Reports on outcomes and activity",
+    ],
+    cta: "Trust & security",
+    href: "/trust",
+    accent: "emerald",
+  },
+];
+
+export const testimonials = [
+  {
+    quote:
+      "We were live with preview dial the same afternoon. Credits are transparent — our team always knows what a call costs.",
+    metric: "Same-day",
+    metricLabel: "pilot go-live",
+    role: "Sales Director",
+    company: "B2B outbound team, 8 agents",
+  },
+  {
+    quote:
+      "£25 a seat beats what we were quoted elsewhere. One wallet for inbound callbacks and outbound prospecting simplified everything.",
+    metric: "£25",
+    metricLabel: "per agent / month",
+    role: "Operations Manager",
+    company: "Agency, 12 agents",
+  },
+  {
+    quote:
+      "Preview dial changed how agents work. They review, skip bad fits, and disposition properly — connection quality went up without burning lists.",
+    metric: "Preview",
+    metricLabel: "dial mode daily",
+    role: "Team Lead",
+    company: "SaaS sales, 5 agents",
+  },
 ];
 
 export const faqItems = [
   {
     question: "Do I need my own telecom provider?",
     answer:
-      "No. OMNIVOX AI includes platform-managed telephony. You buy prepaid call credits and dial — no carrier accounts, no webhook plumbing, no separate telecom bill.",
+      "No. OMNIVOX AI includes platform-managed telephony. You buy prepaid call credits and dial — no carrier accounts or separate telecom bills.",
   },
   {
     question: "How are calls charged?",
@@ -77,6 +162,7 @@ export const pricingComparison = {
 export const featureGroups = [
   {
     title: "Dialing",
+    id: "dialing",
     icon: "phone",
     features: [
       { name: "Manual dial", status: "available" as const, description: "Click-to-call with live controls from the browser workspace." },
@@ -87,6 +173,7 @@ export const featureGroups = [
   },
   {
     title: "Work surface",
+    id: "work",
     icon: "desktop",
     features: [
       { name: "Interaction queues", status: "available" as const, description: "Real-time queues: queued, allocated, outcomed, unallocated." },
@@ -97,6 +184,7 @@ export const featureGroups = [
   },
   {
     title: "Credit wallet",
+    id: "wallet",
     icon: "wallet",
     features: [
       { name: "One wallet for all calls", status: "available" as const, description: "Inbound and outbound both deduct from the same prepaid balance." },
@@ -108,15 +196,17 @@ export const featureGroups = [
   },
   {
     title: "Inbound",
+    id: "inbound",
     icon: "inbound",
     features: [
-      { name: "Inbound DIDs", status: "available" as const, description: "Platform-managed numbers included — we handle the telecom stack." },
+      { name: "Inbound DIDs", status: "available" as const, description: "Platform-managed numbers — we handle the telecom stack." },
       { name: "Routing & queues", status: "available" as const, description: "Route to agents, teams, or queues." },
       { name: "Business hours & voicemail", status: "available" as const, description: "After-hours handling and greeting audio." },
     ],
   },
   {
     title: "Data & campaigns",
+    id: "data",
     icon: "data",
     features: [
       { name: "Contacts & lists", status: "available" as const, description: "Filtering, segmentation, and import-ready data." },
@@ -126,6 +216,7 @@ export const featureGroups = [
   },
   {
     title: "Compliance",
+    id: "compliance",
     icon: "shield",
     features: [
       { name: "DNC registry", status: "available" as const, description: "Do-not-call list management built in." },
@@ -136,6 +227,7 @@ export const featureGroups = [
   },
   {
     title: "Insights",
+    id: "insights",
     icon: "chart",
     features: [
       { name: "Reports & analytics", status: "available" as const, description: "Campaign performance and agent activity." },

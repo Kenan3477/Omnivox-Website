@@ -12,7 +12,7 @@ export function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -21,31 +21,33 @@ export function Header() {
     setMobileOpen(false);
   }, [pathname]);
 
-  const isDarkHero = pathname === "/";
+  const glass = scrolled || pathname !== "/";
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
-        scrolled || !isDarkHero
-          ? "bg-slate-900/95 backdrop-blur-md border-b border-cyan-400/10 shadow-lg shadow-black/20"
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        glass
+          ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="OMNIVOX AI home">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-400/25 bg-gradient-to-br from-violet-600/50 to-cyan-500/30 text-cyan-200 font-bold text-lg shadow-[0_0_20px_rgba(34,211,238,0.15)]">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 md:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-2.5 group" aria-label="OMNIVOX AI home">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-400/20 bg-gradient-to-br from-violet-600/60 to-cyan-600/40 text-cyan-100 font-bold shadow-glow transition group-hover:shadow-glow-violet">
             O
           </div>
-          <span className="font-semibold text-white hidden sm:block">OMNIVOX AI</span>
+          <span className="font-display font-bold text-white hidden sm:block tracking-tight">OMNIVOX AI</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-cyan-400 ${
-                pathname === link.href ? "text-cyan-400" : "text-slate-300"
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                pathname === link.href
+                  ? "text-cyan-400 bg-cyan-400/10"
+                  : "text-slate-300 hover:text-white hover:bg-white/5"
               }`}
             >
               {link.label}
@@ -53,7 +55,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex">
           <Button href={siteConfig.appLoginUrl} variant="ghost" size="sm" external>
             Sign in
           </Button>
@@ -80,26 +82,24 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="lg:hidden border-t border-cyan-400/10 bg-slate-900/98 px-4 pb-6 backdrop-blur-md">
-          <nav className="flex flex-col gap-1 pt-4" aria-label="Mobile navigation">
+        <div className="lg:hidden border-t border-white/5 bg-slate-950/95 backdrop-blur-xl px-4 pb-6">
+          <nav className="flex flex-col gap-1 pt-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-lg px-4 py-3 text-base font-medium transition-colors hover:bg-white/5 ${
-                  pathname === link.href ? "text-cyan-400 bg-cyan-400/5" : "text-slate-300"
+                className={`rounded-xl px-4 py-3 text-base font-medium ${
+                  pathname === link.href ? "text-cyan-400 bg-cyan-400/10" : "text-slate-300"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="mt-4 flex flex-col gap-3 px-4">
-              <Button href={siteConfig.appLoginUrl} variant="secondary" size="md" className="w-full" external>
+            <div className="mt-4 flex flex-col gap-2 px-2">
+              <Button href={siteConfig.appLoginUrl} variant="secondary" className="w-full" external>
                 Sign in
               </Button>
-              <Button href="/contact" size="md" className="w-full">
-                Book a demo
-              </Button>
+              <Button href="/contact" className="w-full">Book a demo</Button>
             </div>
           </nav>
         </div>
