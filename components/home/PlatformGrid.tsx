@@ -4,17 +4,17 @@ import { testimonials } from "@/lib/constants";
 
 const omnivox = [
   "From £25/agent/month",
-  "Preview dial built in",
-  "One prepaid credit wallet",
-  "~5p/min transparent",
+  "Pay for usage, not empty seats",
+  "~5p/min — meter visible in Admin",
+  "No fair-use minute surprises",
   "Same-day pilot onboarding",
 ];
 
 const typical = [
   "Often £50–90+ per seat",
-  "Preview dial add-on or missing",
-  "Opaque bundled telephony",
-  "Hidden per-minute tiers",
+  "“Unlimited” with ~3k min/agent fair-use",
+  "Bundled telephony — opaque overage",
+  "Pay full seat price for part-timers",
   "Weeks to go live",
 ];
 

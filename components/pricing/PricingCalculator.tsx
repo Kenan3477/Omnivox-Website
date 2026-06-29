@@ -1,28 +1,40 @@
 "use client";
 
 import { useState } from "react";
-import { siteConfig } from "@/lib/constants";
+import { competitorBenchmark, siteConfig } from "@/lib/constants";
 
 export function PricingCalculator() {
   const [agents, setAgents] = useState(5);
-  const [minutes, setMinutes] = useState(2000);
+  const [callsPerDay, setCallsPerDay] = useState(100);
+  const [avgMinutes, setAvgMinutes] = useState(2);
 
+  const workingDays = siteConfig.workingDaysPerMonth;
+  const monthlyMinutes = callsPerDay * avgMinutes * workingDays;
   const platformCost = agents * siteConfig.platformFeePerAgent;
-  const telephonyCost = minutes * siteConfig.ratePerMinute;
-  const total = platformCost + telephonyCost;
+  const telephonyCost = monthlyMinutes * siteConfig.ratePerMinute;
+  const omnivoxTotal = platformCost + telephonyCost;
   const suggestedTopUp = Math.ceil(telephonyCost / 50) * 50 || 50;
 
+  const bundledPlatform = agents * competitorBenchmark.seatPricePerMonth;
+  const bundledIncludedMinutes = agents * competitorBenchmark.fairUseMinutesPerAgent;
+  const overFairUse = monthlyMinutes > bundledIncludedMinutes;
+  const bundledOverageMinutes = Math.max(0, monthlyMinutes - bundledIncludedMinutes);
+  const bundledOverageCost = bundledOverageMinutes * siteConfig.ratePerMinute;
+  const bundledTotal = bundledPlatform + (overFairUse ? bundledOverageCost : 0);
+
+  const formula = `${callsPerDay} calls/day × ${avgMinutes} min × ${workingDays} days × ${(siteConfig.ratePerMinute * 100).toFixed(0)}p`;
+
   return (
-    <div className="glass-card-light p-8">
-      <h3 className="text-xl font-bold text-slate-900">Cost calculator</h3>
+    <div className="glass-card-light p-6 md:p-8">
+      <h3 className="font-display text-xl font-bold text-slate-900">Total cost clarity</h3>
       <p className="mt-2 text-sm text-slate-600">
-        Estimate your monthly platform fee and suggested credit top-up.
+        See your telephony cost from real usage — then compare to a typical bundled seat that assumes average volume.
       </p>
 
-      <div className="mt-8 space-y-6">
+      <div className="mt-6 space-y-5">
         <div>
           <label htmlFor="agents" className="block text-sm font-medium text-slate-700 mb-2">
-            Agent count: <span className="text-cyan-600 font-bold">{agents}</span>
+            Agents: <span className="text-cyan-600 font-bold">{agents}</span>
           </label>
           <input
             id="agents"
@@ -36,43 +48,83 @@ export function PricingCalculator() {
         </div>
 
         <div>
-          <label htmlFor="minutes" className="block text-sm font-medium text-slate-700 mb-2">
-            Expected minutes/month: <span className="text-cyan-600 font-bold">{minutes.toLocaleString()}</span>
+          <label htmlFor="calls" className="block text-sm font-medium text-slate-700 mb-2">
+            Connected calls per day (team total): <span className="text-cyan-600 font-bold">{callsPerDay}</span>
           </label>
           <input
-            id="minutes"
+            id="calls"
             type="range"
-            min={100}
-            max={20000}
-            step={100}
-            value={minutes}
-            onChange={(e) => setMinutes(Number(e.target.value))}
+            min={10}
+            max={500}
+            step={10}
+            value={callsPerDay}
+            onChange={(e) => setCallsPerDay(Number(e.target.value))}
             className="w-full accent-cyan-500"
           />
-          <p className="mt-1 text-xs text-slate-500">Inbound and outbound combined</p>
+        </div>
+
+        <div>
+          <label htmlFor="avgMin" className="block text-sm font-medium text-slate-700 mb-2">
+            Average minutes per call: <span className="text-cyan-600 font-bold">{avgMinutes}</span>
+          </label>
+          <input
+            id="avgMin"
+            type="range"
+            min={1}
+            max={10}
+            value={avgMinutes}
+            onChange={(e) => setAvgMinutes(Number(e.target.value))}
+            className="w-full accent-cyan-500"
+          />
         </div>
       </div>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        <div className="rounded-xl bg-slate-50 p-4 border border-slate-100">
-          <p className="text-xs font-medium text-slate-500 uppercase">Platform</p>
-          <p className="text-2xl font-bold text-slate-900">£{platformCost}</p>
-          <p className="text-xs text-slate-500">/month</p>
+      <div className="mt-6 rounded-xl border border-cyan-100 bg-cyan-50/50 px-4 py-3 text-sm text-slate-700">
+        <span className="font-mono text-xs text-slate-500">Your usage → </span>
+        <strong>{formula}</strong>
+        <span className="text-slate-600"> = </span>
+        <strong className="text-cyan-800">{monthlyMinutes.toLocaleString()} min/mo</strong>
+        <span className="text-slate-600"> ≈ </span>
+        <strong className="text-cyan-800">£{telephonyCost.toFixed(0)} telephony</strong>
+      </div>
+
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <div className="rounded-xl border-2 border-cyan-200 bg-white p-5">
+          <p className="text-xs font-bold uppercase tracking-wider text-cyan-700">OMNIVOX AI</p>
+          <p className="mt-3 text-2xl font-bold text-slate-900">£{omnivoxTotal.toFixed(0)}<span className="text-sm font-normal text-slate-500">/mo</span></p>
+          <ul className="mt-3 space-y-1 text-xs text-slate-600">
+            <li>Platform: £{platformCost} (£25 × {agents})</li>
+            <li>Telephony: £{telephonyCost.toFixed(0)} (metered)</li>
+            <li>Suggested top-up: £{suggestedTopUp}</li>
+          </ul>
+          <p className="mt-3 text-[11px] text-cyan-700 font-medium">Pay for usage, not empty seats</p>
         </div>
-        <div className="rounded-xl bg-cyan-50 p-4 border border-cyan-100">
-          <p className="text-xs font-medium text-cyan-700 uppercase">Telephony</p>
-          <p className="text-2xl font-bold text-cyan-800">£{telephonyCost.toFixed(0)}</p>
-          <p className="text-xs text-cyan-600">~5p/min</p>
-        </div>
-        <div className="rounded-xl bg-purple-50 p-4 border border-purple-100">
-          <p className="text-xs font-medium text-purple-700 uppercase">Suggested top-up</p>
-          <p className="text-2xl font-bold text-purple-900">£{suggestedTopUp}</p>
-          <p className="text-xs text-purple-600">prepaid credits</p>
+
+        <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+          <p className="text-xs font-bold uppercase tracking-wider text-slate-500">{competitorBenchmark.label}</p>
+          <p className="mt-3 text-2xl font-bold text-slate-900">
+            £{bundledTotal.toFixed(0)}
+            <span className="text-sm font-normal text-slate-500">/mo{overFairUse ? "+" : ""}</span>
+          </p>
+          <ul className="mt-3 space-y-1 text-xs text-slate-600">
+            <li>Seats: £{bundledPlatform} (£{competitorBenchmark.seatPricePerMonth} × {agents})</li>
+            <li>
+              &ldquo;Included&rdquo; minutes: {bundledIncludedMinutes.toLocaleString()}/mo
+            </li>
+            {overFairUse ? (
+              <li className="text-amber-700 font-medium">
+                Over fair-use cap — +{bundledOverageMinutes.toLocaleString()} min ≈ £{bundledOverageCost.toFixed(0)} est.
+              </li>
+            ) : (
+              <li>Within typical ~3k min/agent fair-use cap</li>
+            )}
+          </ul>
+          <p className="mt-3 text-[11px] text-slate-500">{competitorBenchmark.note}</p>
         </div>
       </div>
 
-      <p className="mt-6 text-sm text-slate-600 border-t border-slate-100 pt-4">
-        Estimated total: <strong className="text-slate-900">£{total.toFixed(0)}/month</strong> (£{platformCost} platform + £{telephonyCost.toFixed(0)} credits)
+      <p className="mt-5 text-xs text-slate-500 border-t border-slate-100 pt-4">
+        Bundled comparison is illustrative (typical £50–90/seat dialers). OMNIVOX shows every minute in your credit ledger — no hidden ceiling.
       </p>
     </div>
   );

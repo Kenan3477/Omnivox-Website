@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { PricingCalculator } from "@/components/pricing/PricingCalculator";
 import { Section, SectionContainer, SectionHeader } from "@/components/ui/Section";
 import { CTABand } from "@/components/home/CTABand";
+import { UsagePricingSection } from "@/components/home/UsagePricingSection";
 import { CheckIcon } from "@/components/ui/Icons";
 import { pricingBreakdown, pricingIncludes, siteConfig } from "@/lib/constants";
 import { Starfield } from "@/components/brand/Starfield";
@@ -23,8 +24,8 @@ export default function PricingPage() {
         <SectionContainer className="relative z-10 text-center">
           <SectionHeader
             eyebrow="Pricing"
-            title="Half the seat price. Full transparency on calls."
-            description="One plan for everyone — £25 per agent for the platform, prepaid credits for telephony. No Starter vs Team upsell."
+            title="Half the seat price. Pay for what you dial."
+            description="£25 per agent for the platform. Telephony on prepaid credits at ~5p/min — no bundled “unlimited” fine print. Optional seat + credit bundles available."
             dark
           />
         </SectionContainer>
@@ -76,6 +77,10 @@ export default function PricingPage() {
           </AnimateOnScroll>
 
           <AnimateOnScroll delay={100}>
+            <UsagePricingSection variant="embedded" />
+          </AnimateOnScroll>
+
+          <AnimateOnScroll delay={150}>
             <blockquote className="mt-10 rounded-2xl border border-cyan-100 bg-gradient-to-br from-cyan-50 to-white p-8 text-slate-800 leading-relaxed">
               <strong>Worked example:</strong> 5 agents = <strong>£125/month</strong> platform.{" "}
               £100 credit top-up ≈ <strong>2,000 minutes</strong> (inbound or outbound).{" "}
@@ -84,7 +89,7 @@ export default function PricingPage() {
           </AnimateOnScroll>
 
           <AnimateOnScroll delay={200}>
-            <div className="mt-12 grid gap-8 lg:grid-cols-2">
+            <div id="calculator" className="mt-12 grid gap-8 lg:grid-cols-2 scroll-mt-24">
               <PricingCalculator />
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 flex flex-col justify-center">
                 <h3 className="font-display text-xl font-bold text-slate-900">Credit top-up packs</h3>

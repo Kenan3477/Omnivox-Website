@@ -9,8 +9,53 @@ export const siteConfig = {
   poweredBy: "Quanterae Solutions",
   platformFeePerAgent: 25,
   ratePerMinute: 0.05,
+  workingDaysPerMonth: 22,
   topUpPacks: [50, 100, 250, 500] as const,
 };
+
+/** Illustrative bundled-dialer benchmark for calculator comparisons (not a specific vendor quote). */
+export const competitorBenchmark = {
+  label: "Typical bundled dialer",
+  seatPricePerMonth: 59,
+  fairUseMinutesPerAgent: 3000,
+  note: "Many CloudTalk-style plans advertise “unlimited” calling but fair-use caps land around ~3,000 minutes per user per month.",
+} as const;
+
+export const pricingAdvantages = [
+  {
+    title: "Pay for usage, not empty seats",
+    description:
+      "£25 platform fee per active seat — telephony on prepaid credits. Ideal for part-time agents, seasonal ramps, and teams that do not dial every day.",
+  },
+  {
+    title: "No fair-use surprises",
+    description:
+      "Competitors often bundle “unlimited” minutes with hidden caps (~3,000 min/user/month). We show the meter in Admin → Call Credits. Every minute is visible.",
+  },
+  {
+    title: "Total cost clarity",
+    description:
+      "Separate platform and telephony line items. No guessing what “included minutes” actually cost when you scale or slow down.",
+  },
+  {
+    title: "Optional bundled plans",
+    description:
+      "Want predictable monthly spend? Ask about seat + credit bundles — committed top-up packs alongside your agent count. Metered transparency with a fixed credit budget.",
+  },
+] as const;
+
+export const bundledPlanOptions = [
+  {
+    name: "Metered (default)",
+    bestFor: "Variable volume, part-time agents, pilots",
+    detail: "£25/seat + top up credits as you go (~5p/min). Pay only for connected minutes.",
+  },
+  {
+    name: "Seat + credit bundle",
+    bestFor: "Predictable monthly telephony spend",
+    detail: "Same £25/seat with a committed monthly credit pack (e.g. £250 or £500). Still metered — you see every minute in the ledger.",
+  },
+] as const;
 
 export const navLinks = [
   { href: "/features", label: "Features" },
@@ -150,6 +195,16 @@ export const faqItems = [
     question: "Who is responsible for calling compliance (TPS, consent, recording)?",
     answer:
       "You remain responsible as the data controller — including PECR, TPS/CTPS checks, lawful basis for processing, and recording announcements. OMNIVOX gives you DNC lists, audit trails, and configurable recording so your team can operate accountably.",
+  },
+  {
+    question: "Why not just buy an “unlimited minutes” dialer plan?",
+    answer:
+      "Bundled plans look simple but often hide fair-use caps (~3,000 minutes per user/month on many CloudTalk-style tiers) and high per-seat fees (£50–90+). OMNIVOX separates a low £25 platform fee from prepaid telephony at ~5p/min — you pay for usage, not empty seats, and the meter is always visible.",
+  },
+  {
+    question: "Do you offer bundled or flat-rate plans?",
+    answer:
+      "Yes — optionally. Default is metered (£25/seat + credits). If you want predictable spend, we can quote seat + monthly credit bundles. You still get full usage transparency in the ledger.",
   },
 ];
 
