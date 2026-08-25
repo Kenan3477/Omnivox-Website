@@ -1,13 +1,26 @@
-import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const description = "Omnivox terms of service — platform usage terms and conditions.";
+
+export const metadata = pageMetadata({
   title: "Terms of Service",
-  description: "Omnivox terms of service — platform usage terms and conditions.",
-};
+  description,
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (
-    <section className="py-20 md:py-28">
+    <article className="py-20 md:py-28">
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/terms", name: "Terms of Service", description }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Terms of Service", path: "/terms" },
+          ]),
+        ]}
+      />
       <div className="mx-auto max-w-3xl px-4 md:px-6 lg:px-8">
         <h1 className="font-display text-4xl font-bold text-navy-900">Terms of Service</h1>
         <p className="mt-4 text-sm text-navy-500">Last updated: June 2026</p>
@@ -56,6 +69,6 @@ export default function TermsPage() {
           </section>
         </div>
       </div>
-    </section>
+    </article>
   );
 }

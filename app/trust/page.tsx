@@ -1,29 +1,44 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
 import { Section, SectionContainer, SectionHeader } from "@/components/ui/Section";
 import { CTABand } from "@/components/home/CTABand";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { dataCompliance, siteConfig } from "@/lib/constants";
+import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { Starfield } from "@/components/brand/Starfield";
 
-export const metadata: Metadata = {
+const description =
+  "How OMNIVOX AI handles data under UK GDPR — controller/processor roles, DPA, DNC, audit logs, recording controls, and security practices.";
+
+export const metadata = pageMetadata({
   title: "Trust & Security",
-  description:
-    "How OMNIVOX AI handles data under UK GDPR — controller/processor roles, DPA, DNC, audit logs, recording controls, and security practices.",
-};
+  description,
+  path: "/trust",
+  keywords: ["UK GDPR dialer", "dialer DPA", "call recording compliance", "DNC registry"],
+});
 
 export default function TrustPage() {
   const { roles, controls, practices } = dataCompliance;
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/trust", name: "Trust & Security", description, type: "AboutPage" }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Trust & Security", path: "/trust" },
+          ]),
+        ]}
+      />
       <section className="relative py-20 md:py-28 overflow-hidden bg-slate-950">
         <Starfield />
         <div className="absolute inset-0 bg-mesh-dark" />
         <SectionContainer className="relative z-10">
           <SectionHeader
+            as="h1"
             eyebrow="Trust"
             title="Data protection built for outbound teams"
             description="UK GDPR-aligned processor practices, clear controller responsibilities, and compliance tools in the product — not buried in a PDF."

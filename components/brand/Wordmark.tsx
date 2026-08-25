@@ -4,6 +4,7 @@ interface WordmarkProps {
   size?: "sm" | "md" | "lg" | "hero";
   className?: string;
   showAi?: boolean;
+  as?: "p" | "h1" | "span";
 }
 
 const sizes = {
@@ -13,15 +14,15 @@ const sizes = {
   hero: "text-4xl sm:text-5xl",
 };
 
-export function Wordmark({ size = "md", className = "", showAi = true }: WordmarkProps) {
+export function Wordmark({ size = "md", className = "", showAi = true, as: Tag = "p" }: WordmarkProps) {
   return (
-    <h1
+    <Tag
       className={`font-bold tracking-tight text-white inline-flex flex-wrap items-end ${sizes[size]} ${className}`}
     >
       <span>OMNI</span>
       <VoiceWaveV className={size === "lg" || size === "hero" ? "mx-1 mb-0.5" : "mx-0.5"} />
       <span className="text-cyan-300">OX</span>
       {showAi && <span className="text-cyan-400 font-semibold ml-1.5 self-center text-[0.45em]">AI</span>}
-    </h1>
+    </Tag>
   );
 }

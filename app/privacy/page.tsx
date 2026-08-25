@@ -1,15 +1,28 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/constants";
+import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const description = "How OMNIVOX AI and Quanterae Solutions collect, use, and protect personal data under UK GDPR.";
+
+export const metadata = pageMetadata({
   title: "Privacy Policy",
-  description: "How OMNIVOX AI and Quanterae Solutions collect, use, and protect personal data under UK GDPR.",
-};
+  description,
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
-    <section className="py-16 md:py-24 bg-slate-50">
+    <article className="py-16 md:py-24 bg-slate-50">
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/privacy", name: "Privacy Policy", description }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Privacy Policy", path: "/privacy" },
+          ]),
+        ]}
+      />
       <div className="mx-auto max-w-3xl px-4 md:px-6 lg:px-8">
         <h1 className="font-display text-4xl font-bold text-slate-900">Privacy Policy</h1>
         <p className="mt-4 text-sm text-slate-500">Last updated: June 2026 · {siteConfig.poweredBy}</p>
@@ -111,6 +124,6 @@ export default function PrivacyPage() {
           </section>
         </div>
       </div>
-    </section>
+    </article>
   );
 }

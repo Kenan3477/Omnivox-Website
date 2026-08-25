@@ -1,15 +1,20 @@
-import type { Metadata } from "next";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
 import { Section, SectionContainer, SectionHeader } from "@/components/ui/Section";
 import { CTABand } from "@/components/home/CTABand";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { Starfield } from "@/components/brand/Starfield";
 
-export const metadata: Metadata = {
+const description = "Onboard clients in a day. Grant pilot credits. One telephony stack — OMNIVOX AI for agencies.";
+
+export const metadata = pageMetadata({
   title: "For Agencies",
-  description: "Onboard clients in a day. Grant pilot credits. One telephony stack — OMNIVOX AI for agencies.",
-};
+  description,
+  path: "/agencies",
+  keywords: ["outbound dialer for agencies", "multi-org dialer", "agency contact centre"],
+});
 
 const benefits = [
   { title: "Onboard clients in a day", description: "Provision org, load contacts, grant credits — agents dialling within hours, not weeks." },
@@ -21,11 +26,21 @@ const benefits = [
 export default function AgenciesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/agencies", name: "OMNIVOX AI for agencies", description }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Agencies", path: "/agencies" },
+          ]),
+        ]}
+      />
       <section className="relative py-24 md:py-32 overflow-hidden bg-slate-950">
         <Starfield />
         <div className="absolute inset-0 bg-mesh-dark" />
         <SectionContainer className="relative z-10">
           <SectionHeader
+            as="h1"
             eyebrow="Agencies"
             title="One platform for every client you onboard"
             description="Compete with Connex and CloudTalk on capability — win on £25/seat pricing and transparent credits per client."
@@ -41,10 +56,10 @@ export default function AgenciesPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {benefits.map((b, i) => (
               <AnimateOnScroll key={b.title} delay={i * 80}>
-                <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-card h-full hover:shadow-card-hover transition-shadow">
-                  <h3 className="font-display text-xl font-bold text-slate-900">{b.title}</h3>
+                <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-card h-full hover:shadow-card-hover transition-shadow">
+                  <h2 className="font-display text-xl font-bold text-slate-900">{b.title}</h2>
                   <p className="mt-3 text-slate-600 leading-relaxed">{b.description}</p>
-                </div>
+                </article>
               </AnimateOnScroll>
             ))}
           </div>

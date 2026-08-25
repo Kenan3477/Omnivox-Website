@@ -23,11 +23,13 @@ export function ProductShowcase() {
             description="Preview dial, queues, dispositions — browser-based, no softphone."
             compact
           />
-          <div className="flex gap-1 shrink-0">
+          <div className="flex gap-1 shrink-0" role="tablist" aria-label="Product views">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 type="button"
+                role="tab"
+                aria-selected={active === tab.id}
                 onClick={() => setActive(tab.id)}
                 className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
                   active === tab.id

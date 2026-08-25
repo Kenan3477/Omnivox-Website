@@ -43,9 +43,9 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
+          <nav className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7" aria-label="Footer">
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-300">Product</h3>
+              <h2 className="text-xs font-bold uppercase tracking-widest text-slate-300">Product</h2>
               <ul className="mt-4 space-y-3">
                 {footerLinks.product.map((link) => (
                   <li key={link.href}>
@@ -55,12 +55,12 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-300">Company</h3>
+              <h2 className="text-xs font-bold uppercase tracking-widest text-slate-300">Company</h2>
               <ul className="mt-4 space-y-3">
                 {footerLinks.company.map((link) => (
                   <li key={link.href}>
                     {link.external ? (
-                      <a href={link.href} className="text-sm hover:text-cyan-400 transition-colors">{link.label}</a>
+                      <a href={link.href} className="text-sm hover:text-cyan-400 transition-colors" rel="noopener noreferrer" target="_blank">{link.label}</a>
                     ) : (
                       <Link href={link.href} className="text-sm hover:text-cyan-400 transition-colors">{link.label}</Link>
                     )}
@@ -69,7 +69,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-300">Legal</h3>
+              <h2 className="text-xs font-bold uppercase tracking-widest text-slate-300">Legal</h2>
               <ul className="mt-4 space-y-3">
                 {footerLinks.legal.map((link) => (
                   <li key={link.href}>
@@ -78,7 +78,7 @@ export function Footer() {
                 ))}
               </ul>
             </div>
-          </div>
+          </nav>
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row text-sm text-slate-600">

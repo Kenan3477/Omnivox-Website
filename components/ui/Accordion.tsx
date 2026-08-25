@@ -20,7 +20,8 @@ export function Accordion({ items, light = false }: AccordionProps) {
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         return (
-          <div key={item.question}>
+          <article key={item.question}>
+            <h3 className="m-0 text-inherit font-inherit">
             <button
               type="button"
               className={`flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors ${light ? "hover:bg-slate-50" : "hover:bg-white/5"}`}
@@ -37,10 +38,11 @@ export function Accordion({ items, light = false }: AccordionProps) {
                 </svg>
               </span>
             </button>
+            </h3>
             <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 pb-5" : "max-h-0"}`}>
               <p className={`px-6 leading-relaxed ${light ? "text-slate-600" : "text-slate-400"}`}>{item.answer}</p>
             </div>
-          </div>
+          </article>
         );
       })}
     </div>
@@ -54,6 +56,7 @@ interface SectionHeadingProps {
   align?: "left" | "center";
   dark?: boolean;
   light?: boolean;
+  as?: "h1" | "h2";
 }
 
 export function SectionHeading({
@@ -63,6 +66,7 @@ export function SectionHeading({
   align = "center",
   dark = false,
   light = false,
+  as: Heading = "h2",
 }: SectionHeadingProps) {
   return (
     <div className={`mb-12 md:mb-16 ${align === "center" ? "text-center mx-auto max-w-3xl" : "max-w-2xl"}`}>
@@ -71,11 +75,11 @@ export function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <h2
+      <Heading
         className={`text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl text-balance ${dark ? "text-white" : light ? "text-slate-900" : "text-white"}`}
       >
         {title}
-      </h2>
+      </Heading>
       {description && (
         <p className={`mt-4 text-lg leading-relaxed ${dark ? "text-slate-400" : light ? "text-slate-600" : "text-slate-400"}`}>
           {description}

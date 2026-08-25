@@ -22,7 +22,7 @@ function ContactSidebar() {
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
 
   return (
-    <div className="mt-8 space-y-6">
+    <aside className="mt-8 space-y-6">
       <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
         <p className="text-[11px] font-semibold uppercase tracking-widest text-cyan-700">What happens next</p>
         <ol className="mt-5 space-y-5">
@@ -62,7 +62,7 @@ function ContactSidebar() {
           />
         </div>
       ) : null}
-    </div>
+    </aside>
   );
 }
 
@@ -165,6 +165,7 @@ export function ContactPageContent() {
         <Starfield />
         <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <SectionHeading
+            as="h1"
             eyebrow="Contact"
             title="Book a demo or start a pilot"
             description="We'll provision your org and grant starter credits. Same-day onboarding for pilots."
@@ -186,9 +187,12 @@ export function ContactPageContent() {
               </p>
               <ContactSidebar />
             </div>
-            <div className="glass-card-light p-6 md:p-8">
+            <section className="glass-card-light p-6 md:p-8" aria-labelledby="contact-form-heading">
+              <h2 id="contact-form-heading" className="sr-only">
+                Demo request form
+              </h2>
               <ContactForm />
-            </div>
+            </section>
           </div>
         </div>
       </section>

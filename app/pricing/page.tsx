@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { Button } from "@/components/ui/Button";
 import { PricingCalculator } from "@/components/pricing/PricingCalculator";
@@ -6,23 +5,40 @@ import { Section, SectionContainer, SectionHeader } from "@/components/ui/Sectio
 import { CTABand } from "@/components/home/CTABand";
 import { UsagePricingSection } from "@/components/home/UsagePricingSection";
 import { CheckIcon } from "@/components/ui/Icons";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { pricingBreakdown, pricingIncludes, siteConfig } from "@/lib/constants";
+import { breadcrumbJsonLd, pageMetadata, softwareApplicationJsonLd, webPageJsonLd } from "@/lib/seo";
 import { Starfield } from "@/components/brand/Starfield";
 
-export const metadata: Metadata = {
+const description =
+  "£25 per agent per month. Prepaid call credits at ~5p/min. One wallet for inbound and outbound. OMNIVOX AI pricing.";
+
+export const metadata = pageMetadata({
   title: "Pricing",
-  description:
-    "£25 per agent per month. Prepaid call credits at ~5p/min. One wallet for inbound and outbound. OMNIVOX AI pricing.",
-};
+  description,
+  path: "/pricing",
+  keywords: ["cloud dialer pricing", "£25 per agent", "prepaid call credits", "outbound dialer cost"],
+});
 
 export default function PricingPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/pricing", name: "OMNIVOX AI pricing", description }),
+          softwareApplicationJsonLd(),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Pricing", path: "/pricing" },
+          ]),
+        ]}
+      />
       <section className="relative py-24 md:py-32 overflow-hidden bg-slate-950">
         <Starfield />
         <div className="absolute inset-0 bg-mesh-dark" />
         <SectionContainer className="relative z-10 text-center">
           <SectionHeader
+            as="h1"
             eyebrow="Pricing"
             title="Half the seat price. Pay for what you dial."
             description="£25 per agent for the platform. Telephony on prepaid credits at ~5p/min — no bundled “unlimited” fine print. Optional seat + credit bundles available."
