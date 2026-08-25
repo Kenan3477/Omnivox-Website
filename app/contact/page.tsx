@@ -1,13 +1,10 @@
 import { ContactPageContent } from "@/components/contact/ContactForm";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
-
-const description =
-  "Book a demo or start a pilot with Omnivox. We'll provision your organisation and call credits for same-day onboarding.";
+import { breadcrumbJsonLd, pageMetadata, pageSeo, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Contact",
-  description,
+  title: pageSeo.contact.title,
+  description: pageSeo.contact.description,
   path: "/contact",
   keywords: ["book a demo", "OMNIVOX AI pilot", "cloud dialer demo"],
 });
@@ -19,8 +16,8 @@ export default function ContactPage() {
         data={[
           webPageJsonLd({
             path: "/contact",
-            name: "Contact OMNIVOX AI",
-            description,
+            name: pageSeo.contact.title,
+            description: pageSeo.contact.description,
             type: "ContactPage",
           }),
           breadcrumbJsonLd([

@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/constants";
-import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
-
-const description = "How OMNIVOX AI and Quanterae Solutions collect, use, and protect personal data under UK GDPR.";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { breadcrumbJsonLd, pageMetadata, pageSeo, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Privacy Policy",
-  description,
+  title: pageSeo.privacy.title,
+  description: pageSeo.privacy.description,
   path: "/privacy",
 });
 
@@ -16,7 +15,7 @@ export default function PrivacyPage() {
     <article className="py-16 md:py-24 bg-slate-50">
       <JsonLd
         data={[
-          webPageJsonLd({ path: "/privacy", name: "Privacy Policy", description }),
+          webPageJsonLd({ path: "/privacy", name: pageSeo.privacy.title, description: pageSeo.privacy.description }),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
             { name: "Privacy Policy", path: "/privacy" },
@@ -24,8 +23,17 @@ export default function PrivacyPage() {
         ]}
       />
       <div className="mx-auto max-w-3xl px-4 md:px-6 lg:px-8">
+        <Breadcrumbs
+          light
+          crumbs={[
+            { name: "Home", href: "/" },
+            { name: "Privacy Policy", href: "/privacy" },
+          ]}
+        />
         <h1 className="font-display text-4xl font-bold text-slate-900">Privacy Policy</h1>
-        <p className="mt-4 text-sm text-slate-500">Last updated: June 2026 · {siteConfig.poweredBy}</p>
+        <p className="mt-4 text-sm text-slate-500">
+          Last updated: <time dateTime="2026-06-01">June 2026</time> · {siteConfig.poweredBy}
+        </p>
 
         <div className="mt-12 space-y-10 text-slate-600 leading-relaxed">
           <section>

@@ -1,6 +1,4 @@
-"use client";
-
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 interface AccordionItem {
   question: string;
@@ -13,38 +11,30 @@ interface AccordionProps {
 }
 
 export function Accordion({ items, light = false }: AccordionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   return (
     <div className={`divide-y rounded-2xl border ${light ? "divide-slate-100 border-slate-200 bg-white" : "divide-white/10 border-white/10 bg-white/5"}`}>
-      {items.map((item, index) => {
-        const isOpen = openIndex === index;
-        return (
-          <article key={item.question}>
-            <h3 className="m-0 text-inherit font-inherit">
-            <button
-              type="button"
-              className={`flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors ${light ? "hover:bg-slate-50" : "hover:bg-white/5"}`}
-              onClick={() => setOpenIndex(isOpen ? null : index)}
-              aria-expanded={isOpen}
+      {items.map((item, index) => (
+        <details key={item.question} className="group" open={index === 0}>
+          <summary
+            className={`flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-left [&::-webkit-details-marker]:hidden ${
+              light ? "hover:bg-slate-50" : "hover:bg-white/5"
+            }`}
+          >
+            <h3 className={`m-0 font-semibold ${light ? "text-slate-900" : "text-white"}`}>{item.question}</h3>
+            <span
+              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-transform duration-200 group-open:rotate-45 ${
+                light ? "bg-slate-100 text-slate-600" : "bg-white/10 text-cyan-400"
+              }`}
+              aria-hidden="true"
             >
-              <span className={`font-semibold ${light ? "text-slate-900" : "text-white"}`}>{item.question}</span>
-              <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-transform duration-200 ${isOpen ? "rotate-45" : ""} ${light ? "bg-slate-100 text-slate-600" : "bg-white/10 text-cyan-400"}`}
-                aria-hidden="true"
-              >
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                </svg>
-              </span>
-            </button>
-            </h3>
-            <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 pb-5" : "max-h-0"}`}>
-              <p className={`px-6 leading-relaxed ${light ? "text-slate-600" : "text-slate-400"}`}>{item.answer}</p>
-            </div>
-          </article>
-        );
-      })}
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </span>
+          </summary>
+          <p className={`px-6 pb-5 leading-relaxed ${light ? "text-slate-600" : "text-slate-400"}`}>{item.answer}</p>
+        </details>
+      ))}
     </div>
   );
 }

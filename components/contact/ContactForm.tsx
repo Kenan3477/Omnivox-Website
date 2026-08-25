@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { SectionHeading } from "@/components/ui/Accordion";
 import { Button } from "@/components/ui/Button";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { siteConfig } from "@/lib/constants";
 import { Starfield } from "@/components/brand/Starfield";
 
@@ -164,6 +165,12 @@ export function ContactPageContent() {
       <section className="relative py-16 md:py-24 overflow-hidden">
         <Starfield />
         <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+          <Breadcrumbs
+            crumbs={[
+              { name: "Home", href: "/" },
+              { name: "Contact", href: "/contact" },
+            ]}
+          />
           <SectionHeading
             as="h1"
             eyebrow="Contact"
@@ -180,8 +187,33 @@ export function ContactPageContent() {
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
               <p className="text-slate-600 leading-relaxed">
+                Tell us your agent count, outbound or inbound use case, and when you want to go live. We reply within
+                one UK business day, provision a pilot organisation, and can grant £50 starter credits so your team
+                can preview-dial the same afternoon. Review{" "}
+                <a href="/pricing" className="font-medium text-cyan-700 hover:text-cyan-600">
+                  pricing
+                </a>{" "}
+                and{" "}
+                <a href="/features" className="font-medium text-cyan-700 hover:text-cyan-600">
+                  features
+                </a>{" "}
+                first if you want the numbers before we talk. Agencies can ask for multi-org setup on the{" "}
+                <a href="/agencies" className="font-medium text-cyan-700 hover:text-cyan-600">
+                  agencies page
+                </a>
+                . Privacy questions belong on{" "}
+                <a href="/trust" className="font-medium text-cyan-700 hover:text-cyan-600">
+                  Trust
+                </a>{" "}
+                or the{" "}
+                <a href="/privacy" className="font-medium text-cyan-700 hover:text-cyan-600">
+                  Privacy Policy
+                </a>
+                .
+              </p>
+              <p className="mt-4 text-slate-600 leading-relaxed">
                 Already have an account?{" "}
-                <a href={siteConfig.appLoginUrl} className="text-cyan-600 hover:text-cyan-500 font-medium">
+                <a href={siteConfig.appLoginUrl} className="text-cyan-600 hover:text-cyan-500 font-medium" rel="noopener noreferrer">
                   Sign in to OMNIVOX AI →
                 </a>
               </p>

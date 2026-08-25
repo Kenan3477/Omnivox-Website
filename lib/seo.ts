@@ -8,6 +8,57 @@ export function absoluteUrl(path = "") {
   return `${siteUrl}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+export const pageSeo = {
+  home: {
+    title: "OMNIVOX AI — Cloud dialer for outbound sales teams",
+    description:
+      "UK and EU cloud dialer with preview outbound, £25 per seat, prepaid credits, and one wallet for inbound and outbound calls.",
+    path: "/",
+  },
+  features: {
+    title: "Cloud dialer features: preview, credits, DNC",
+    description:
+      "OMNIVOX AI features for outbound teams: preview and manual dial, prepaid credit wallet, inbound routing, campaigns, and UK GDPR tools.",
+    path: "/features",
+  },
+  pricing: {
+    title: "Cloud dialer pricing: £25/seat plus credits",
+    description:
+      "OMNIVOX AI pricing is £25 per agent per month plus prepaid call credits at about 5p per minute. No bundled fair-use minute caps.",
+    path: "/pricing",
+  },
+  agencies: {
+    title: "Cloud dialer for agencies and multi-client teams",
+    description:
+      "Onboard agency clients in a day on OMNIVOX AI. Isolated orgs, pilot credit grants, and one telephony stack at £25 per seat.",
+    path: "/agencies",
+  },
+  contact: {
+    title: "Book an OMNIVOX AI demo or same-day pilot",
+    description:
+      "Book a demo or start an OMNIVOX AI pilot. We provision your organisation, grant starter credits, and can have agents dialling the same day.",
+    path: "/contact",
+  },
+  trust: {
+    title: "Trust, UK GDPR, and dialer security controls",
+    description:
+      "How OMNIVOX AI handles data as your processor: DPA, DNC registry, audit logs, recording controls, and UK GDPR roles for outbound teams.",
+    path: "/trust",
+  },
+  privacy: {
+    title: "Privacy Policy for the OMNIVOX AI website",
+    description:
+      "How OMNIVOX AI and Quanterae Solutions collect and use website enquiry and platform data under UK GDPR, including processor roles.",
+    path: "/privacy",
+  },
+  terms: {
+    title: "OMNIVOX AI terms of service and acceptable use",
+    description:
+      "Terms for using the OMNIVOX AI cloud dialer: billing, prepaid credits, acceptable use, and your responsibility for calling compliance.",
+    path: "/terms",
+  },
+} as const;
+
 export function pageMetadata({
   title,
   description,
@@ -43,6 +94,14 @@ export function pageMetadata({
   };
 }
 
+const logoObject = {
+  "@type": "ImageObject",
+  url: `${siteUrl}/icon`,
+  width: 32,
+  height: 32,
+  caption: siteConfig.name,
+};
+
 export function organizationGraph() {
   return {
     "@context": "https://schema.org",
@@ -53,8 +112,14 @@ export function organizationGraph() {
         name: siteConfig.name,
         legalName: siteConfig.poweredBy,
         url: siteUrl,
-        logo: `${siteUrl}/icon`,
-        image: `${siteUrl}/opengraph-image`,
+        logo: logoObject,
+        image: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          caption: siteConfig.name,
+        },
         email: siteConfig.contactEmail,
         description: siteConfig.description,
         areaServed: [
@@ -96,7 +161,10 @@ export function softwareApplicationJsonLd() {
     description: siteConfig.description,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
+    image: `${siteUrl}/opengraph-image`,
+    screenshot: `${siteUrl}/opengraph-image`,
     featureList: availableFeatures,
+    brand: { "@id": `${siteUrl}/#organization` },
     offers: {
       "@type": "Offer",
       name: "OMNIVOX AI platform seat",
@@ -163,5 +231,6 @@ export function webPageJsonLd({
     isPartOf: { "@id": `${siteUrl}/#website` },
     about: { "@id": `${siteUrl}/#organization` },
     publisher: { "@id": `${siteUrl}/#organization` },
+    dateModified: "2026-08-25",
   };
 }

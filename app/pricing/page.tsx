@@ -1,4 +1,3 @@
-import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { Button } from "@/components/ui/Button";
 import { PricingCalculator } from "@/components/pricing/PricingCalculator";
 import { Section, SectionContainer, SectionHeader } from "@/components/ui/Section";
@@ -6,16 +5,14 @@ import { CTABand } from "@/components/home/CTABand";
 import { UsagePricingSection } from "@/components/home/UsagePricingSection";
 import { CheckIcon } from "@/components/ui/Icons";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { pricingBreakdown, pricingIncludes, siteConfig } from "@/lib/constants";
-import { breadcrumbJsonLd, pageMetadata, softwareApplicationJsonLd, webPageJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata, pageSeo, softwareApplicationJsonLd, webPageJsonLd } from "@/lib/seo";
 import { Starfield } from "@/components/brand/Starfield";
 
-const description =
-  "£25 per agent per month. Prepaid call credits at ~5p/min. One wallet for inbound and outbound. OMNIVOX AI pricing.";
-
 export const metadata = pageMetadata({
-  title: "Pricing",
-  description,
+  title: pageSeo.pricing.title,
+  description: pageSeo.pricing.description,
   path: "/pricing",
   keywords: ["cloud dialer pricing", "£25 per agent", "prepaid call credits", "outbound dialer cost"],
 });
@@ -25,7 +22,7 @@ export default function PricingPage() {
     <>
       <JsonLd
         data={[
-          webPageJsonLd({ path: "/pricing", name: "OMNIVOX AI pricing", description }),
+          webPageJsonLd({ path: "/pricing", name: pageSeo.pricing.title, description: pageSeo.pricing.description }),
           softwareApplicationJsonLd(),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -37,6 +34,12 @@ export default function PricingPage() {
         <Starfield />
         <div className="absolute inset-0 bg-mesh-dark" />
         <SectionContainer className="relative z-10 text-center">
+          <Breadcrumbs
+            crumbs={[
+              { name: "Home", href: "/" },
+              { name: "Pricing", href: "/pricing" },
+            ]}
+          />
           <SectionHeader
             as="h1"
             eyebrow="Pricing"
@@ -49,7 +52,6 @@ export default function PricingPage() {
 
       <Section className="-mt-8">
         <SectionContainer>
-          <AnimateOnScroll>
             <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-card">
               <div className="border-b border-slate-100 bg-gradient-to-r from-slate-50 to-cyan-50/40 px-6 py-8 md:px-8">
                 <p className="text-[11px] font-semibold uppercase tracking-widest text-cyan-700">One plan</p>
@@ -60,6 +62,7 @@ export default function PricingPage() {
               </div>
 
               <table className="w-full text-left">
+                <caption className="sr-only">OMNIVOX AI platform and telephony rates</caption>
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-100">
                     <th className="p-5 md:p-6 w-1/4 text-sm font-semibold text-slate-500">Line item</th>
@@ -90,21 +93,15 @@ export default function PricingPage() {
                 </ul>
               </div>
             </div>
-          </AnimateOnScroll>
 
-          <AnimateOnScroll delay={100}>
             <UsagePricingSection variant="embedded" />
-          </AnimateOnScroll>
 
-          <AnimateOnScroll delay={150}>
             <blockquote className="mt-10 rounded-2xl border border-cyan-100 bg-gradient-to-br from-cyan-50 to-white p-8 text-slate-800 leading-relaxed">
               <strong>Worked example:</strong> 5 agents = <strong>£125/month</strong> platform.{" "}
               £100 credit top-up ≈ <strong>2,000 minutes</strong> (inbound or outbound).{" "}
               No surprise telecom invoice.
             </blockquote>
-          </AnimateOnScroll>
 
-          <AnimateOnScroll delay={200}>
             <div id="calculator" className="mt-12 grid gap-8 lg:grid-cols-2 scroll-mt-24">
               <PricingCalculator />
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 flex flex-col justify-center">
@@ -122,7 +119,6 @@ export default function PricingPage() {
                 <Button href="/contact" className="mt-8 w-fit">Start pilot</Button>
               </div>
             </div>
-          </AnimateOnScroll>
         </SectionContainer>
       </Section>
 

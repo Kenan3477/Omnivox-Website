@@ -1,7 +1,7 @@
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/constants";
-import { organizationGraph } from "@/lib/seo";
+import { organizationGraph, pageSeo } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PilotBanner } from "@/components/layout/PilotBanner";
 import { Header } from "@/components/layout/Header";
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     default: "OMNIVOX AI — Cloud dialer for outbound sales teams",
     template: "%s | OMNIVOX AI",
   },
-  description: siteConfig.description,
+  description: pageSeo.home.description,
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.poweredBy, url: siteConfig.url }],
   creator: siteConfig.poweredBy,
@@ -49,12 +49,12 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     title: "OMNIVOX AI — Cloud dialer for outbound sales teams",
-    description: siteConfig.description,
+    description: pageSeo.home.description,
   },
   twitter: {
     card: "summary_large_image",
     title: "OMNIVOX AI — Cloud dialer for outbound sales teams",
-    description: siteConfig.description,
+    description: pageSeo.home.description,
   },
   robots: {
     index: true,
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <PilotBanner />
         <Header />
-        <main id="main-content">{children}</main>
+        <main id="main-content" className="pb-20 md:pb-0">{children}</main>
         <Footer />
         <MobileCTA />
       </body>

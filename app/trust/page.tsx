@@ -1,20 +1,17 @@
 import Link from "next/link";
-import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
 import { Section, SectionContainer, SectionHeader } from "@/components/ui/Section";
 import { CTABand } from "@/components/home/CTABand";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { dataCompliance, siteConfig } from "@/lib/constants";
-import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata, pageSeo, webPageJsonLd } from "@/lib/seo";
 import { Starfield } from "@/components/brand/Starfield";
 
-const description =
-  "How OMNIVOX AI handles data under UK GDPR — controller/processor roles, DPA, DNC, audit logs, recording controls, and security practices.";
-
 export const metadata = pageMetadata({
-  title: "Trust & Security",
-  description,
+  title: pageSeo.trust.title,
+  description: pageSeo.trust.description,
   path: "/trust",
   keywords: ["UK GDPR dialer", "dialer DPA", "call recording compliance", "DNC registry"],
 });
@@ -26,7 +23,7 @@ export default function TrustPage() {
     <>
       <JsonLd
         data={[
-          webPageJsonLd({ path: "/trust", name: "Trust & Security", description, type: "AboutPage" }),
+          webPageJsonLd({ path: "/trust", name: pageSeo.trust.title, description: pageSeo.trust.description, type: "AboutPage" }),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
             { name: "Trust & Security", path: "/trust" },
@@ -37,6 +34,12 @@ export default function TrustPage() {
         <Starfield />
         <div className="absolute inset-0 bg-mesh-dark" />
         <SectionContainer className="relative z-10">
+          <Breadcrumbs
+            crumbs={[
+              { name: "Home", href: "/" },
+              { name: "Trust & Security", href: "/trust" },
+            ]}
+          />
           <SectionHeader
             as="h1"
             eyebrow="Trust"
@@ -50,7 +53,7 @@ export default function TrustPage() {
 
       <Section>
         <SectionContainer>
-          <AnimateOnScroll>
+          <div>
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-8">
               <h2 className="font-display text-xl font-bold text-slate-900">{roles.title}</h2>
               <p className="mt-3 text-slate-600 leading-relaxed max-w-3xl">{roles.description}</p>
@@ -81,9 +84,9 @@ export default function TrustPage() {
                 </div>
               </div>
             </div>
-          </AnimateOnScroll>
+          </div>
 
-          <AnimateOnScroll delay={80}>
+          <div>
             <div className="mt-12">
               <SectionHeader
                 eyebrow="Platform controls"
@@ -101,9 +104,9 @@ export default function TrustPage() {
                 ))}
               </div>
             </div>
-          </AnimateOnScroll>
+          </div>
 
-          <AnimateOnScroll delay={120}>
+          <div>
             <div className="mt-12 space-y-8">
               <SectionHeader
                 eyebrow="Practices"
@@ -118,9 +121,9 @@ export default function TrustPage() {
                 </div>
               ))}
             </div>
-          </AnimateOnScroll>
+          </div>
 
-          <AnimateOnScroll delay={160}>
+          <div>
             <div className="mt-12 rounded-2xl border border-cyan-200 bg-gradient-to-br from-cyan-50 to-white p-8">
               <h3 className="font-display text-lg font-bold text-slate-900">Need a DPA or security questionnaire?</h3>
               <p className="mt-2 text-slate-600 leading-relaxed max-w-2xl">
@@ -141,7 +144,7 @@ export default function TrustPage() {
                 </Button>
               </div>
             </div>
-          </AnimateOnScroll>
+          </div>
         </SectionContainer>
       </Section>
 

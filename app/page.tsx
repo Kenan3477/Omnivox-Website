@@ -7,12 +7,11 @@ import { ComplianceSection } from "@/components/home/ComplianceSection";
 import { PricingFAQ } from "@/components/home/PricingFAQ";
 import { CTABand } from "@/components/home/CTABand";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { pageMetadata, faqPageJsonLd, softwareApplicationJsonLd, webPageJsonLd } from "@/lib/seo";
-import { siteConfig } from "@/lib/constants";
+import { pageMetadata, pageSeo, faqPageJsonLd, softwareApplicationJsonLd, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "OMNIVOX AI — Cloud dialer for outbound sales teams",
-  description: siteConfig.description,
+  title: pageSeo.home.title,
+  description: pageSeo.home.description,
   path: "/",
   keywords: [
     "OMNIVOX AI",
@@ -30,8 +29,8 @@ export default function HomePage() {
         data={[
           webPageJsonLd({
             path: "/",
-            name: "OMNIVOX AI — Cloud dialer for outbound sales teams",
-            description: siteConfig.description,
+            name: pageSeo.home.title,
+            description: pageSeo.home.description,
           }),
           softwareApplicationJsonLd(),
           faqPageJsonLd(),
