@@ -18,9 +18,9 @@ export function Hero() {
           {/* Right: copy + actions */}
           <div>
             <Wordmark size="lg" className="justify-center lg:justify-start" />
-            <p className="mt-4 text-base text-slate-300 leading-snug max-w-lg mx-auto lg:mx-0">
+            <h1 className="mt-4 text-base text-slate-300 leading-snug max-w-lg mx-auto lg:mx-0 font-normal">
               {siteConfig.tagline}
-            </p>
+            </h1>
             <p className="mt-2 text-sm text-slate-500 max-w-lg mx-auto lg:mx-0">
               Preview &amp; manual outbound · £25/seat · prepaid credits · platform-managed telephony
             </p>

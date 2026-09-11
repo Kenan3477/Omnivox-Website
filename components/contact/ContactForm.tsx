@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { SectionHeading } from "@/components/ui/Accordion";
 import { Button } from "@/components/ui/Button";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { siteConfig } from "@/lib/constants";
 import { Starfield } from "@/components/brand/Starfield";
 
@@ -22,7 +23,7 @@ function ContactSidebar() {
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
 
   return (
-    <div className="mt-8 space-y-6">
+    <aside className="mt-8 space-y-6">
       <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
         <p className="text-[11px] font-semibold uppercase tracking-widest text-cyan-700">What happens next</p>
         <ol className="mt-5 space-y-5">
@@ -62,7 +63,7 @@ function ContactSidebar() {
           />
         </div>
       ) : null}
-    </div>
+    </aside>
   );
 }
 
@@ -164,7 +165,14 @@ export function ContactPageContent() {
       <section className="relative py-16 md:py-24 overflow-hidden">
         <Starfield />
         <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+          <Breadcrumbs
+            crumbs={[
+              { name: "Home", href: "/" },
+              { name: "Contact", href: "/contact" },
+            ]}
+          />
           <SectionHeading
+            as="h1"
             eyebrow="Contact"
             title="Book a demo or start a pilot"
             description="We'll provision your org and grant starter credits. Same-day onboarding for pilots."
@@ -179,16 +187,44 @@ export function ContactPageContent() {
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
               <p className="text-slate-600 leading-relaxed">
+                Tell us your agent count, outbound or inbound use case, and when you want to go live. We reply within
+                one UK business day, provision a pilot organisation, and can grant £50 starter credits so your team
+                can preview-dial the same afternoon. Review{" "}
+                <a href="/pricing" className="font-medium text-cyan-700 hover:text-cyan-600">
+                  pricing
+                </a>{" "}
+                and{" "}
+                <a href="/features" className="font-medium text-cyan-700 hover:text-cyan-600">
+                  features
+                </a>{" "}
+                first if you want the numbers before we talk. Agencies can ask for multi-org setup on the{" "}
+                <a href="/agencies" className="font-medium text-cyan-700 hover:text-cyan-600">
+                  agencies page
+                </a>
+                . Privacy questions belong on{" "}
+                <a href="/trust" className="font-medium text-cyan-700 hover:text-cyan-600">
+                  Trust
+                </a>{" "}
+                or the{" "}
+                <a href="/privacy" className="font-medium text-cyan-700 hover:text-cyan-600">
+                  Privacy Policy
+                </a>
+                .
+              </p>
+              <p className="mt-4 text-slate-600 leading-relaxed">
                 Already have an account?{" "}
-                <a href={siteConfig.appLoginUrl} className="text-cyan-600 hover:text-cyan-500 font-medium">
+                <a href={siteConfig.appLoginUrl} className="text-cyan-600 hover:text-cyan-500 font-medium" rel="noopener noreferrer">
                   Sign in to OMNIVOX AI →
                 </a>
               </p>
               <ContactSidebar />
             </div>
-            <div className="glass-card-light p-6 md:p-8">
+            <section className="glass-card-light p-6 md:p-8" aria-labelledby="contact-form-heading">
+              <h2 id="contact-form-heading" className="sr-only">
+                Demo request form
+              </h2>
               <ContactForm />
-            </div>
+            </section>
           </div>
         </div>
       </section>

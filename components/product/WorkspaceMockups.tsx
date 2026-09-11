@@ -1,5 +1,3 @@
-"use client";
-
 export function AgentWorkspaceMockup() {
   return (
     <div className="grid min-h-[300px] grid-cols-12 bg-slate-950 text-slate-200 text-sm">

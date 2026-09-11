@@ -44,10 +44,12 @@ export function PricingFAQ() {
           </div>
 
           {/* FAQ */}
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500 mb-4">FAQ</p>
+          <section aria-labelledby="home-faq-heading">
+            <h2 id="home-faq-heading" className="text-[11px] font-semibold uppercase tracking-widest text-slate-500 mb-4">
+              FAQ
+            </h2>
             <Accordion items={faqItems} light />
-          </div>
+          </section>
         </div>
       </SectionContainer>
     </Section>

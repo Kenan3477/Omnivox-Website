@@ -19,10 +19,10 @@ export function UsagePricingSection({ variant = "section" }: UsagePricingSection
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {pricingAdvantages.map((item) => (
-          <div key={item.title} className="rounded-lg border border-slate-200 bg-white p-4 h-full">
+          <article key={item.title} className="rounded-lg border border-slate-200 bg-white p-4 h-full">
             <h3 className="text-sm font-bold text-slate-900 leading-snug">{item.title}</h3>
             <p className="mt-2 text-xs text-slate-600 leading-relaxed">{item.description}</p>
-          </div>
+          </article>
         ))}
       </div>
 

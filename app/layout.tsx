@@ -1,6 +1,8 @@
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/constants";
+import { organizationGraph, pageSeo } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PilotBanner } from "@/components/layout/PilotBanner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -25,59 +27,67 @@ export const metadata: Metadata = {
     default: "OMNIVOX AI — Cloud dialer for outbound sales teams",
     template: "%s | OMNIVOX AI",
   },
-  description: siteConfig.description,
+  description: pageSeo.home.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.poweredBy, url: siteConfig.url }],
+  creator: siteConfig.poweredBy,
+  publisher: siteConfig.poweredBy,
+  category: "business",
   keywords: [
     "OMNIVOX AI",
     "cloud dialer",
     "preview dial",
     "outbound dialer UK",
     "contact centre software",
+    "prepaid call credits",
+    "UK GDPR dialer",
   ],
+  alternates: { canonical: siteConfig.url },
   openGraph: {
     type: "website",
     locale: "en_GB",
     url: siteConfig.url,
     siteName: siteConfig.name,
     title: "OMNIVOX AI — Cloud dialer for outbound sales teams",
-    description: siteConfig.description,
-    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "OMNIVOX AI" }],
+    description: pageSeo.home.description,
   },
   twitter: {
     card: "summary_large_image",
     title: "OMNIVOX AI — Cloud dialer for outbound sales teams",
-    description: siteConfig.description,
-    images: ["/og-image.svg"],
+    description: pageSeo.home.description,
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  formatDetection: { telephone: false, email: false, address: false },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-icon",
+  },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "OMNIVOX AI",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  description: siteConfig.description,
-  offers: {
-    "@type": "Offer",
-    price: "25",
-    priceCurrency: "GBP",
-  },
+export const viewport: Viewport = {
+  themeColor: "#020617",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB" className={`${inter.variable} ${plusJakarta.variable}`}>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
       <body className="font-sans antialiased">
+        <JsonLd data={organizationGraph()} />
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <PilotBanner />
         <Header />
-        <main>{children}</main>
+        <main id="main-content" className="pb-20 md:pb-0">{children}</main>
         <Footer />
         <MobileCTA />
       </body>

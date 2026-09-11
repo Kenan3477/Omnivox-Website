@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect, useRef, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 const floatingIcons = [
   { icon: "phone", className: "top-2 left-1/2 -translate-x-1/2", delay: 0 },
@@ -80,37 +78,6 @@ interface OmniCubeProps {
 const sizeScale = { sm: 0.65, md: 0.8, lg: 1 };
 
 export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
-  const cubeRef = useRef<HTMLDivElement>(null);
-  const orbitRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const cube = cubeRef.current;
-    const orbit = orbitRef.current;
-    if (!cube || !orbit) return;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      cube.style.transform = "perspective(1000px) rotateX(-18deg) rotateY(24deg)";
-      return;
-    }
-
-    let rotX = 0;
-    let rotY = 0;
-    let rotZ = 0;
-    let frame = 0;
-
-    const animate = () => {
-      rotX += 0.5;
-      rotY += 0.7;
-      rotZ += 0.3;
-      cube.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotX * 0.5}deg)`;
-      orbit.style.transform = `rotateZ(${rotZ}deg)`;
-      frame = requestAnimationFrame(animate);
-    };
-
-    frame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frame);
-  }, []);
-
   const scale = sizeScale[size];
 
   return (
@@ -128,14 +95,14 @@ export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
       </div>
 
       {/* Orbiting icon ring */}
-      <div ref={orbitRef} className="absolute h-64 w-64">
+      <div className="omni-cube-orbit absolute h-64 w-64">
         {floatingIcons.map((item) => (
           <FloatingIcon key={item.icon} icon={item.icon} className={item.className} delay={item.delay} />
         ))}
       </div>
 
       {/* Glass cube */}
-      <div ref={cubeRef} className="omni-cube-scene relative h-28 w-28">
+      <div className="omni-cube-scene relative h-28 w-28">
         <CubeFace className="omni-face-front bg-gradient-to-br from-white/25 to-white/15 backdrop-blur-sm border border-white/40 rounded-2xl shadow-2xl">
           <span className="text-3xl font-bold text-white">O</span>
         </CubeFace>

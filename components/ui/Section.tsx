@@ -53,6 +53,7 @@ interface SectionHeaderProps {
   dark?: boolean;
   compact?: boolean;
   className?: string;
+  as?: "h1" | "h2";
 }
 
 export function SectionHeader({
@@ -63,6 +64,7 @@ export function SectionHeader({
   dark = false,
   compact = false,
   className = "",
+  as: Heading = "h2",
 }: SectionHeaderProps) {
   return (
     <div
@@ -73,13 +75,13 @@ export function SectionHeader({
           {eyebrow}
         </p>
       )}
-      <h2
+      <Heading
         className={`font-display font-bold tracking-tight text-balance ${
           compact ? "text-xl md:text-2xl" : "text-2xl md:text-3xl"
         } ${dark ? "text-white" : "text-slate-900"}`}
       >
         {title}
-      </h2>
+      </Heading>
       {description && (
         <p className={`mt-2 text-sm md:text-base leading-relaxed ${dark ? "text-slate-400" : "text-slate-600"}`}>
           {description}
