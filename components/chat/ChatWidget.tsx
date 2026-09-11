@@ -62,7 +62,7 @@ export function ChatWidget() {
     <>
       <button
         type="button"
-        className="fixed bottom-20 right-4 z-50 flex h-12 items-center gap-2 rounded-md border border-ink-600 bg-amber-400 px-3 font-semibold text-ink shadow-raised md:bottom-6 md:right-6"
+        className="fixed bottom-20 right-4 z-50 flex h-12 items-center gap-2 rounded-md border border-signal-400/40 bg-signal-400 px-3 font-semibold text-ink shadow-raised md:bottom-6 md:right-6"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls="omnivox-helper"
