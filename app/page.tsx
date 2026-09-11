@@ -1,48 +1,41 @@
 import { Hero } from "@/components/home/Hero";
-import { PillarsSection } from "@/components/home/PillarsSection";
-import { ProductShowcase } from "@/components/home/ProductShowcase";
-import { PlatformGrid } from "@/components/home/PlatformGrid";
-import { UsagePricingSection } from "@/components/home/UsagePricingSection";
-import { ComplianceSection } from "@/components/home/ComplianceSection";
-import { PricingFAQ } from "@/components/home/PricingFAQ";
+import { DialMethods } from "@/components/home/DialMethods";
+import { WallboardModule } from "@/components/home/WallboardModule";
+import { ProductSurfaces } from "@/components/home/ProductSurfaces";
+import { Comparison } from "@/components/home/Comparison";
+import { PricingTeaser } from "@/components/home/PricingTeaser";
+import { ProofPoints } from "@/components/home/ProofPoints";
+import { FAQ } from "@/components/home/FAQ";
 import { CTABand } from "@/components/home/CTABand";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { pageMetadata, pageSeo, faqPageJsonLd, softwareApplicationJsonLd, webPageJsonLd } from "@/lib/seo";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: pageSeo.home.title,
   description: pageSeo.home.description,
   path: "/",
   keywords: [
-    "OMNIVOX AI",
-    "cloud dialer",
+    "OMNIVOX",
+    "cloud contact centre",
     "preview dial",
+    "power dial",
     "outbound dialer UK",
-    "contact centre software",
+    "wallboards",
   ],
 });
 
 export default function HomePage() {
   return (
     <>
-      <JsonLd
-        data={[
-          webPageJsonLd({
-            path: "/",
-            name: pageSeo.home.title,
-            description: pageSeo.home.description,
-          }),
-          softwareApplicationJsonLd(),
-          faqPageJsonLd(),
-        ]}
-      />
+      <PageSeo page="home" includeApp includeFaq />
       <Hero />
-      <PillarsSection />
-      <ProductShowcase />
-      <UsagePricingSection />
-      <PlatformGrid />
-      <ComplianceSection />
-      <PricingFAQ />
+      <DialMethods />
+      <WallboardModule />
+      <ProductSurfaces />
+      <Comparison />
+      <PricingTeaser />
+      <ProofPoints />
+      <FAQ />
       <CTABand />
     </>
   );

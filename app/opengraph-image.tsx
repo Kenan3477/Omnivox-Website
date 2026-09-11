@@ -1,10 +1,11 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "OMNIVOX AI — Cloud dialer for outbound sales teams";
+export const runtime = "edge";
+export const alt = "OMNIVOX operations wallboard";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default function OpengraphImage() {
   return new ImageResponse(
     (
       <div
@@ -12,67 +13,58 @@ export default function OpenGraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          background: "#020617",
-          padding: "64px 72px",
-          color: "white",
+          background: "#08090B",
+          color: "#F4F1EA",
+          fontFamily: "ui-sans-serif, system-ui",
         }}
       >
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: 16,
-            fontSize: 28,
-            fontWeight: 700,
-            letterSpacing: "-0.04em",
+            flexDirection: "column",
+            width: "100%",
+            padding: 48,
+            border: "16px solid #12171D",
           }}
         >
-          <div
-            style={{
-              width: 48,
-              height: 48,
-              borderRadius: 12,
-              background: "linear-gradient(135deg, #7c3aed 0%, #0891b2 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#ecfeff",
-              fontSize: 26,
-            }}
-          >
-            O
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ display: "flex", fontSize: 28, fontWeight: 800, letterSpacing: -0.5 }}>OMNIVOX</div>
+            <div style={{ display: "flex", fontSize: 20, color: "#3DDBC8" }}>14:32:08 Europe/London</div>
           </div>
-          <span>
-            OMNIVOX <span style={{ color: "#22d3ee" }}>AI</span>
-          </span>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-          <div
-            style={{
-              fontSize: 64,
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: "-0.03em",
-              maxWidth: 900,
-            }}
-          >
-            Cloud dialer for outbound sales teams
+          <div style={{ display: "flex", marginTop: 28, gap: 16 }}>
+            {[
+              ["LIVE CALLS", "14"],
+              ["AVAILABLE", "9"],
+              ["OCCUPANCY", "78%"],
+              ["QUEUE", "3"],
+            ].map(([k, v]) => (
+              <div
+                key={k}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: 1,
+                  background: "#101318",
+                  border: "1px solid #2A323C",
+                  padding: 20,
+                }}
+              >
+                <div style={{ display: "flex", fontSize: 14, color: "#9AA3AE", letterSpacing: 2 }}>{k}</div>
+                <div style={{ display: "flex", fontSize: 56, color: "#3DDBC8", marginTop: 8 }}>{v}</div>
+              </div>
+            ))}
           </div>
-          <div style={{ fontSize: 28, color: "#94a3b8", maxWidth: 820 }}>
-            Preview &amp; manual outbound · £25/seat · prepaid credits · platform-managed telephony
+          <div style={{ display: "flex", flexDirection: "column", marginTop: 36 }}>
+            <div style={{ display: "flex", fontSize: 40, fontWeight: 700 }}>
+              Preview, power, inbound, wallboards.
+            </div>
+            <div style={{ display: "flex", fontSize: 22, color: "#E8A317", marginTop: 12 }}>
+              £25 a seat · ~5p / connected minute · UK/EU voice contact centre
+            </div>
           </div>
-        </div>
-
-        <div style={{ display: "flex", gap: 36, color: "#67e8f9", fontSize: 22, fontWeight: 600 }}>
-          <span>£25 / agent / month</span>
-          <span>~5p / connected minute</span>
-          <span>Same-day pilots</span>
         </div>
       </div>
     ),
-    size
+    { ...size }
   );
 }

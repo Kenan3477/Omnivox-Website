@@ -1,19 +1,17 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
-import { Section, SectionContainer, SectionHeader } from "@/components/ui/Section";
 import { CTABand } from "@/components/home/CTABand";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { dataCompliance, siteConfig } from "@/lib/constants";
-import { breadcrumbJsonLd, pageMetadata, pageSeo, webPageJsonLd } from "@/lib/seo";
-import { Starfield } from "@/components/brand/Starfield";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: pageSeo.trust.title,
   description: pageSeo.trust.description,
   path: "/trust",
-  keywords: ["UK GDPR dialer", "dialer DPA", "call recording compliance", "DNC registry"],
+  keywords: ["UK GDPR", "DPA", "data processor", "DNC", "call recording"],
 });
 
 export default function TrustPage() {
@@ -21,133 +19,94 @@ export default function TrustPage() {
 
   return (
     <>
-      <JsonLd
-        data={[
-          webPageJsonLd({ path: "/trust", name: pageSeo.trust.title, description: pageSeo.trust.description, type: "AboutPage" }),
-          breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: "Trust & Security", path: "/trust" },
-          ]),
-        ]}
-      />
-      <section className="relative py-20 md:py-28 overflow-hidden bg-slate-950">
-        <Starfield />
-        <div className="absolute inset-0 bg-mesh-dark" />
-        <SectionContainer className="relative z-10">
-          <Breadcrumbs
-            crumbs={[
-              { name: "Home", href: "/" },
-              { name: "Trust & Security", href: "/trust" },
-            ]}
-          />
-          <SectionHeader
-            as="h1"
-            eyebrow="Trust"
-            title="Data protection built for outbound teams"
-            description="UK GDPR-aligned processor practices, clear controller responsibilities, and compliance tools in the product — not buried in a PDF."
-            dark
-            align="left"
-          />
-        </SectionContainer>
+      <PageSeo page="trust" type="AboutPage" />
+      <section className="border-b border-ink-600 bg-ink py-16 md:py-20">
+        <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Trust", href: "/trust" }]} />
+          <p className="kicker">Trust</p>
+          <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">
+            You stay the controller. We process. The DPA is not a brochure footnote.
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg text-ink-300">
+            UK/EU GDPR processor practices, DNC before dial, recording per org or campaign. We do not claim SOC 2, ISO
+            27001, PCI-DSS, SSO/SAML, or enforced company-wide 2FA.
+          </p>
+        </div>
       </section>
 
-      <Section>
-        <SectionContainer>
-          <div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-8">
-              <h2 className="font-display text-xl font-bold text-slate-900">{roles.title}</h2>
-              <p className="mt-3 text-slate-600 leading-relaxed max-w-3xl">{roles.description}</p>
-              <div className="mt-8 grid md:grid-cols-2 gap-6">
-                <div className="rounded-xl border border-cyan-200 bg-white p-6">
-                  <p className="text-sm font-bold text-cyan-800">{roles.controller.label}</p>
-                  <p className="text-xs uppercase tracking-wider text-slate-400 mt-1">{roles.controller.subtitle}</p>
-                  <ul className="mt-4 space-y-3">
-                    {roles.controller.points.map((p) => (
-                      <li key={p} className="flex gap-2 text-sm text-slate-700">
-                        <CheckIcon className="h-4 w-4 text-cyan-500 shrink-0 mt-0.5" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="rounded-xl border border-violet-200 bg-white p-6">
-                  <p className="text-sm font-bold text-violet-800">{roles.processor.label}</p>
-                  <p className="text-xs uppercase tracking-wider text-slate-400 mt-1">{roles.processor.subtitle}</p>
-                  <ul className="mt-4 space-y-3">
-                    {roles.processor.points.map((p) => (
-                      <li key={p} className="flex gap-2 text-sm text-slate-700">
-                        <CheckIcon className="h-4 w-4 text-violet-500 shrink-0 mt-0.5" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+      <section className="bg-paper py-16 text-ink md:py-20">
+        <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+          <div className="border border-stone-300 bg-white p-6 md:p-8">
+            <h2 className="font-display text-2xl font-bold">{roles.title}</h2>
+            <p className="mt-3 max-w-3xl text-ink-500">{roles.description}</p>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <div className="border border-stone-300 p-6">
+                <p className="font-semibold">{roles.controller.label}</p>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-signal-800">{roles.controller.subtitle}</p>
+                <ul className="mt-4 space-y-3">
+                  {roles.controller.points.map((p) => (
+                    <li key={p} className="flex gap-2 text-sm text-ink-500">
+                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-signal-700" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="border border-ink bg-ink p-6 text-paper">
+                <p className="font-semibold">{roles.processor.label}</p>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-signal-400">{roles.processor.subtitle}</p>
+                <ul className="mt-4 space-y-3">
+                  {roles.processor.points.map((p) => (
+                    <li key={p} className="flex gap-2 text-sm text-ink-200">
+                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-signal-400" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
 
-          <div>
-            <div className="mt-12">
-              <SectionHeader
-                eyebrow="Platform controls"
-                title="What OMNIVOX provides"
-                description="Tools to help you meet your obligations as controller — available today, not on a roadmap slide."
-                compact
-                align="left"
-              />
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {controls.map((c) => (
-                  <div key={c.title} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                    <h3 className="font-semibold text-slate-900">{c.title}</h3>
-                    <p className="mt-2 text-sm text-slate-600 leading-relaxed">{c.description}</p>
-                  </div>
-                ))}
+          <h2 className="display mt-14 text-2xl">What the platform provides</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {controls.map((c) => (
+              <article key={c.title} className="border border-stone-300 bg-white p-5">
+                <h3 className="font-semibold">{c.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-500">{c.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-14 space-y-8">
+            {practices.map((p) => (
+              <div key={p.title} className="border-b border-stone-300 pb-8 last:border-0">
+                <h3 className="font-display text-lg font-bold">{p.title}</h3>
+                <p className="mt-2 max-w-3xl leading-relaxed text-ink-500">{p.content}</p>
               </div>
-            </div>
+            ))}
           </div>
 
-          <div>
-            <div className="mt-12 space-y-8">
-              <SectionHeader
-                eyebrow="Practices"
-                title="How we handle your data"
-                compact
-                align="left"
-              />
-              {practices.map((p) => (
-                <div key={p.title} className="border-b border-slate-200 pb-8 last:border-0">
-                  <h3 className="font-display text-lg font-bold text-slate-900">{p.title}</h3>
-                  <p className="mt-2 text-slate-600 leading-relaxed max-w-3xl">{p.content}</p>
-                </div>
-              ))}
+          <div className="mt-12 border border-stone-300 bg-white p-8">
+            <h3 className="font-display text-lg font-bold">Need a DPA or security questionnaire?</h3>
+            <p className="mt-2 max-w-2xl text-ink-500">
+              We provide a Data Processing Agreement at onboarding. For procurement, pilots, or privacy questions, email{" "}
+              <a href={`mailto:${siteConfig.contactEmail}`} className="font-medium text-signal-800">
+                {siteConfig.contactEmail}
+              </a>
+              . Read our <Link href="/privacy" className="font-medium text-signal-800">Privacy Policy</Link> for website
+              enquiries.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button href="/contact" variant="paper">
+                Book a demo
+              </Button>
+              <Button href={`mailto:${siteConfig.contactEmail}?subject=DPA%20request`} variant="outline" external>
+                Request DPA
+              </Button>
             </div>
           </div>
-
-          <div>
-            <div className="mt-12 rounded-2xl border border-cyan-200 bg-gradient-to-br from-cyan-50 to-white p-8">
-              <h3 className="font-display text-lg font-bold text-slate-900">Need a DPA or security questionnaire?</h3>
-              <p className="mt-2 text-slate-600 leading-relaxed max-w-2xl">
-                We provide a Data Processing Agreement at onboarding. For procurement, pilots, or privacy questions, email{" "}
-                <a href={`mailto:${siteConfig.contactEmail}`} className="text-cyan-700 font-medium hover:text-cyan-600">
-                  {siteConfig.contactEmail}
-                </a>
-                . Read our{" "}
-                <Link href="/privacy" className="text-cyan-700 font-medium hover:text-cyan-600">
-                  Privacy Policy
-                </Link>{" "}
-                for how we handle website and account enquiries.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Button href="/contact" size="md">Book a demo</Button>
-                <Button href={`mailto:${siteConfig.contactEmail}?subject=DPA%20request`} variant="outline" size="md" external>
-                  Request DPA
-                </Button>
-              </div>
-            </div>
-          </div>
-        </SectionContainer>
-      </Section>
-
+        </div>
+      </section>
       <CTABand />
     </>
   );

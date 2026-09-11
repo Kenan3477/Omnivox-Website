@@ -1,34 +1,33 @@
 import Link from "next/link";
-import { type ReactNode } from "react";
+import { type ButtonHTMLAttributes, type ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "paper";
 type ButtonSize = "sm" | "md" | "lg";
 
-interface ButtonProps {
+interface ButtonProps extends Pick<ButtonHTMLAttributes<HTMLButtonElement>, "type" | "disabled" | "onClick"> {
   href?: string;
   variant?: ButtonVariant;
   size?: ButtonSize;
   children: ReactNode;
   className?: string;
-  type?: "button" | "submit";
-  onClick?: () => void;
   external?: boolean;
 }
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-cyan-500 text-slate-950 hover:bg-cyan-400 font-semibold",
+    "bg-amber-400 text-ink hover:bg-amber-300 font-semibold shadow-[0_0_0_1px_rgba(232,163,23,0.4)]",
   secondary:
-    "bg-white/10 text-white border border-white/15 hover:bg-white/15",
+    "bg-ink-700 text-ink-100 border border-ink-600 hover:border-ink-400 hover:bg-ink-600",
   outline:
-    "border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10",
-  ghost: "text-slate-300 hover:text-cyan-400 hover:bg-white/5",
+    "border border-signal-400/50 text-signal-300 hover:bg-signal-400/10",
+  ghost: "text-ink-200 hover:text-signal-300 hover:bg-white/5",
+  paper: "bg-ink text-paper hover:bg-ink-800 font-semibold",
 };
 
 const sizes: Record<ButtonSize, string> = {
   sm: "px-3 py-1.5 text-xs",
-  md: "px-4 py-2 text-sm",
-  lg: "px-5 py-2.5 text-sm",
+  md: "px-4 py-2.5 text-sm",
+  lg: "px-5 py-3 text-sm",
 };
 
 export function Button({
@@ -40,13 +39,14 @@ export function Button({
   type = "button",
   onClick,
   external = false,
+  disabled,
 }: ButtonProps) {
-  const classes = `inline-flex items-center justify-center rounded-xl transition-all duration-200 ${variants[variant]} ${sizes[size]} ${className}`;
+  const classes = `inline-flex items-center justify-center gap-2 rounded-md transition-colors duration-150 disabled:opacity-60 ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (href) {
     if (external) {
       return (
-        <a href={href} className={classes} target="_blank" rel="noopener noreferrer">
+        <a href={href} className={classes} rel="noopener noreferrer">
           {children}
         </a>
       );
@@ -59,7 +59,7 @@ export function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes} disabled={disabled}>
       {children}
     </button>
   );

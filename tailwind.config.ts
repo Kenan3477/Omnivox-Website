@@ -9,19 +9,69 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-body)", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
+      colors: {
+        ink: {
+          DEFAULT: "#08090B",
+          50: "#F4F1EA",
+          100: "#E8E4D8",
+          200: "#C9C3B4",
+          300: "#9AA3AE",
+          400: "#6E7886",
+          500: "#4A5360",
+          600: "#2A323C",
+          700: "#1A2028",
+          800: "#12171D",
+          900: "#0C1014",
+          950: "#08090B",
+        },
+        // Product identity — voice / signal. Not the old cyan–violet pair.
+        signal: {
+          DEFAULT: "#2EC8B0",
+          50: "#E7FAF6",
+          100: "#C5F3EA",
+          200: "#8EE8D8",
+          300: "#5EE0CE",
+          400: "#3DDBC8",
+          500: "#2EC8B0",
+          600: "#1F9A8A",
+          700: "#17786C",
+          800: "#11574E",
+        },
+        // Commercial metal — CTAs, seats, credits. Kept on purpose.
+        amber: {
+          DEFAULT: "#E8A317",
+          50: "#FBF3DE",
+          100: "#F7E4B3",
+          200: "#F0CC6E",
+          300: "#F5C14A",
+          400: "#E8A317",
+          500: "#C8880F",
+          600: "#A06B0C",
+          700: "#7A520A",
+          800: "#5C3E08",
+        },
+        live: {
+          DEFAULT: "#3DDC97",
+          dim: "#1F8A5E",
+        },
+        paper: "#F4F1EA",
+        panel: "#101318",
+        raised: "#171C22",
       },
       boxShadow: {
-        glow: "0 0 60px -12px rgba(34, 211, 238, 0.35)",
-        "glow-violet": "0 0 60px -12px rgba(139, 92, 246, 0.35)",
-        card: "0 4px 24px -4px rgba(15, 23, 42, 0.08), 0 8px 48px -8px rgba(15, 23, 42, 0.04)",
-        "card-hover": "0 20px 60px -12px rgba(34, 211, 238, 0.15), 0 8px 24px -8px rgba(15, 23, 42, 0.1)",
+        board: "0 40px 80px -32px rgba(0,0,0,0.7), 0 0 0 1px rgba(46,200,176,0.14)",
+        raised: "0 12px 40px -16px rgba(0,0,0,0.55)",
       },
-      backgroundImage: {
-        "mesh-dark":
-          "radial-gradient(at 40% 20%, rgba(34,211,238,0.15) 0px, transparent 50%), radial-gradient(at 80% 0%, rgba(139,92,246,0.12) 0px, transparent 50%), radial-gradient(at 0% 50%, rgba(59,130,246,0.08) 0px, transparent 50%)",
-        "gradient-cta": "linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0c4a6e 100%)",
+      letterSpacing: {
+        display: "-0.03em",
+        kicker: "0.18em",
+      },
+      maxWidth: {
+        site: "72rem",
       },
     },
   },

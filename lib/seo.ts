@@ -10,54 +10,85 @@ export function absoluteUrl(path = "") {
 
 export const pageSeo = {
   home: {
-    title: "OMNIVOX AI — Cloud dialer for outbound sales teams",
+    title: "OMNIVOX — Contact centre for outbound teams",
     description:
-      "UK and EU cloud dialer with preview outbound, £25 per seat, prepaid credits, and one wallet for inbound and outbound calls.",
+      "UK/EU cloud contact centre: preview, progressive and power dial, inbound queues and IVR, custom wallboards. £25 a seat, prepaid minutes, no fair-use fiction.",
     path: "/",
+    crumb: "Home",
   },
   features: {
-    title: "Cloud dialer features: preview, credits, DNC",
+    title: "Features: dialer, inbound, wallboards — labelled live or waitlist",
     description:
-      "OMNIVOX AI features for outbound teams: preview and manual dial, prepaid credit wallet, inbound routing, campaigns, and UK GDPR tools.",
+      "Omnivox capabilities with honest labels. Live: preview, progressive, power, AMD, inbound IVR, wallboards. Predictive is waitlist only.",
     path: "/features",
+    crumb: "Features",
+  },
+  wallboards: {
+    title: "Contact-centre wallboards: TV mode, playlists, widgets",
+    description:
+      "Custom Omnivox wallboards for the floor: drag-and-drop builder, TV mode, playlist rotation, role templates, and about 40 ops widgets.",
+    path: "/wallboards",
+    crumb: "Wallboards",
+  },
+  inbound: {
+    title: "Inbound ACD and IVR on platform-managed UK numbers",
+    description:
+      "Omnivox inbound: platform DIDs, queues, ring groups, business hours, voicemail, and a visual IVR studio. No customer carrier account.",
+    path: "/inbound",
+    crumb: "Inbound",
   },
   pricing: {
-    title: "Cloud dialer pricing: £25/seat plus credits",
+    title: "Pricing: £25/seat plus prepaid credits",
     description:
-      "OMNIVOX AI pricing is £25 per agent per month plus prepaid call credits at about 5p per minute. No bundled fair-use minute caps.",
+      "Omnivox pricing is £25 per agent per month plus prepaid call credits at about 5p per connected minute. Wallboards and inbound included.",
     path: "/pricing",
+    crumb: "Pricing",
   },
   agencies: {
-    title: "Cloud dialer for agencies and multi-client teams",
+    title: "Agencies: multi-org, isolated credits, same-day onboard",
     description:
-      "Onboard agency clients in a day on OMNIVOX AI. Isolated orgs, pilot credit grants, and one telephony stack at £25 per seat.",
+      "Run multiple client organisations on Omnivox. Isolated users, campaigns, call data and wallets. £25/seat per client agent.",
     path: "/agencies",
+    crumb: "Agencies",
   },
   contact: {
-    title: "Book an OMNIVOX AI demo or same-day pilot",
+    title: "Book an Omnivox demo or same-day pilot",
     description:
-      "Book a demo or start an OMNIVOX AI pilot. We provision your organisation, grant starter credits, and can have agents dialling the same day.",
+      "Book a demo or start an Omnivox pilot. Same-day org provisioning, £50 credits, and white-glove setup for qualified teams.",
     path: "/contact",
+    crumb: "Contact",
   },
   trust: {
-    title: "Trust, UK GDPR, and dialer security controls",
+    title: "Trust, UK GDPR, and processor controls",
     description:
-      "How OMNIVOX AI handles data as your processor: DPA, DNC registry, audit logs, recording controls, and UK GDPR roles for outbound teams.",
+      "You are the data controller. Omnivox is the processor. DPA at onboarding, DNC, audit logs, recording controls. No SOC 2 theatre.",
     path: "/trust",
+    crumb: "Trust",
+  },
+  faq: {
+    title: "FAQ: carrier, minutes, predictive, wallboards, GDPR",
+    description:
+      "Do I need a carrier? How are minutes billed? Is predictive live? Do you have wallboards? GDPR/DPA? Recording consent?",
+    path: "/faq",
+    crumb: "FAQ",
   },
   privacy: {
-    title: "Privacy Policy for the OMNIVOX AI website",
+    title: "Privacy Policy",
     description:
-      "How OMNIVOX AI and Quanterae Solutions collect and use website enquiry and platform data under UK GDPR, including processor roles.",
+      "How OMNIVOX and Quanterae Solutions collect and use website enquiry and platform data under UK GDPR, including processor roles.",
     path: "/privacy",
+    crumb: "Privacy",
   },
   terms: {
-    title: "OMNIVOX AI terms of service and acceptable use",
+    title: "Terms of service and acceptable use",
     description:
-      "Terms for using the OMNIVOX AI cloud dialer: billing, prepaid credits, acceptable use, and your responsibility for calling compliance.",
+      "Terms for using the OMNIVOX contact centre: billing, prepaid credits, acceptable use, and your responsibility for calling compliance.",
     path: "/terms",
+    crumb: "Terms",
   },
 } as const;
+
+export type PageSeoKey = keyof typeof pageSeo;
 
 export function pageMetadata({
   title,
@@ -149,7 +180,7 @@ export function organizationGraph() {
 
 export function softwareApplicationJsonLd() {
   const availableFeatures = featureGroups.flatMap((group) =>
-    group.features.filter((feature) => feature.status === "available").map((feature) => feature.name)
+    group.features.filter((feature) => feature.status === "live").map((feature) => feature.name)
   );
 
   return {
@@ -167,7 +198,7 @@ export function softwareApplicationJsonLd() {
     brand: { "@id": `${siteUrl}/#organization` },
     offers: {
       "@type": "Offer",
-      name: "OMNIVOX AI platform seat",
+      name: "OMNIVOX platform seat",
       price: "25.00",
       priceCurrency: "GBP",
       availability: "https://schema.org/InStock",
@@ -231,6 +262,15 @@ export function webPageJsonLd({
     isPartOf: { "@id": `${siteUrl}/#website` },
     about: { "@id": `${siteUrl}/#organization` },
     publisher: { "@id": `${siteUrl}/#organization` },
-    dateModified: "2026-08-25",
+    dateModified: "2026-09-11",
   };
+}
+
+export function crumbsFor(key: PageSeoKey) {
+  const page = pageSeo[key];
+  if (page.path === "/") return [{ name: "Home", path: "/" }];
+  return [
+    { name: "Home", path: "/" },
+    { name: page.crumb, path: page.path },
+  ];
 }
