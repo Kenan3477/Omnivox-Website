@@ -28,6 +28,20 @@ const config: Config = {
           900: "#0C1014",
           950: "#08090B",
         },
+        // Product identity — voice / signal. Not the old cyan–violet pair.
+        signal: {
+          DEFAULT: "#2EC8B0",
+          50: "#E7FAF6",
+          100: "#C5F3EA",
+          200: "#8EE8D8",
+          300: "#5EE0CE",
+          400: "#3DDBC8",
+          500: "#2EC8B0",
+          600: "#1F9A8A",
+          700: "#17786C",
+          800: "#11574E",
+        },
+        // Commercial metal — CTAs, seats, credits. Kept on purpose.
         amber: {
           DEFAULT: "#E8A317",
           50: "#FBF3DE",
@@ -38,6 +52,7 @@ const config: Config = {
           500: "#C8880F",
           600: "#A06B0C",
           700: "#7A520A",
+          800: "#5C3E08",
         },
         live: {
           DEFAULT: "#3DDC97",
@@ -48,7 +63,7 @@ const config: Config = {
         raised: "#171C22",
       },
       boxShadow: {
-        board: "0 40px 80px -32px rgba(0,0,0,0.7), 0 0 0 1px rgba(232,163,23,0.12)",
+        board: "0 40px 80px -32px rgba(0,0,0,0.7), 0 0 0 1px rgba(46,200,176,0.14)",
         raised: "0 12px 40px -16px rgba(0,0,0,0.55)",
       },
       letterSpacing: {

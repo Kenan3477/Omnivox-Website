@@ -15,9 +15,9 @@ export function IvrCanvasMock() {
       </div>
       <div className="relative h-72 bg-[linear-gradient(to_right,rgba(42,50,60,0.35)_1px,transparent_1px),linear-gradient(to_bottom,rgba(42,50,60,0.35)_1px,transparent_1px)] bg-[size:28px_28px]">
         <svg className="absolute inset-0 h-full w-full" aria-hidden>
-          <line x1="18%" y1="26%" x2="38%" y2="26%" stroke="#E8A317" strokeWidth="1.2" />
+          <line x1="18%" y1="26%" x2="38%" y2="26%" stroke="#2EC8B0" strokeWidth="1.2" />
           <line x1="48%" y1="26%" x2="68%" y2="26%" stroke="#2A323C" strokeWidth="1.2" />
-          <line x1="44%" y1="34%" x2="44%" y2="58%" stroke="#E8A317" strokeWidth="1.2" />
+          <line x1="44%" y1="34%" x2="44%" y2="58%" stroke="#2EC8B0" strokeWidth="1.2" />
           <line x1="54%" y1="66%" x2="68%" y2="66%" stroke="#2A323C" strokeWidth="1.2" />
         </svg>
         {nodes.map((node) => (
@@ -26,7 +26,7 @@ export function IvrCanvasMock() {
             className="absolute w-40 -translate-x-1/2 border border-ink-600 bg-panel px-3 py-2 shadow-raised"
             style={{ left: node.x, top: node.y }}
           >
-            <p className="font-mono text-[10px] uppercase tracking-widest text-amber-400">{node.id}</p>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-signal-400">{node.id}</p>
             <p className="mt-1 text-xs text-ink-200">{node.note}</p>
           </div>
         ))}
@@ -71,7 +71,7 @@ export function CampaignListMock() {
             {rows.map((row) => (
               <tr key={row[0]} className="border-b border-ink-700 last:border-0">
                 <td className="px-4 py-3 text-paper">{row[0]}</td>
-                <td className="px-4 py-3 font-mono text-xs text-amber-300">{row[1]}</td>
+                <td className="px-4 py-3 font-mono text-xs text-signal-300">{row[1]}</td>
                 <td className="px-4 py-3 font-mono text-xs tabular text-ink-300">{row[2]}</td>
                 <td className="px-4 py-3 font-mono text-xs text-live">{row[3]}</td>
                 <td className="px-4 py-3 font-mono text-xs tabular text-ink-200">{row[4]}</td>

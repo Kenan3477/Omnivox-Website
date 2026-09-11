@@ -85,7 +85,7 @@ export function ChatWidget() {
             {messages.map((m, i) => (
               <p
                 key={`${m.role}-${i}`}
-                className={`text-sm leading-relaxed ${m.role === "user" ? "text-amber-200" : "text-ink-100"}`}
+                className={`text-sm leading-relaxed ${m.role === "user" ? "text-signal-300" : "text-ink-100"}`}
               >
                 <span className="font-mono text-[10px] uppercase tracking-widest text-ink-400">
                   {m.role === "user" ? "You" : "Omnivox"}
@@ -100,7 +100,7 @@ export function ChatWidget() {
               <button
                 key={q}
                 type="button"
-                className="border border-ink-600 px-2 py-1 font-mono text-[10px] text-ink-200 hover:border-amber-400/50 hover:text-amber-300"
+                className="border border-ink-600 px-2 py-1 font-mono text-[10px] text-ink-200 hover:border-signal-400/50 hover:text-signal-300"
                 onClick={() => send(q)}
               >
                 {q}

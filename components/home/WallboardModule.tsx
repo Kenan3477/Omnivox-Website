@@ -30,7 +30,7 @@ export function WallboardModule() {
         </div>
         <p className="mt-6 text-sm text-ink-400">
           Share a board with a view link. Not a public unauthenticated URL, not custom HTML, not WhatsApp waiting widgets.{" "}
-          <Link href="/wallboards" className="text-amber-300">
+          <Link href="/wallboards" className="text-signal-300">
             Widget catalogue →
           </Link>
         </p>

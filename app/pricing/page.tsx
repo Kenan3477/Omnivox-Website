@@ -66,7 +66,7 @@ export default function PricingPage() {
               <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
                 {pricingIncludes.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm">
-                    <CheckIcon className="h-4 w-4 shrink-0 text-amber-700" />
+                    <CheckIcon className="h-4 w-4 shrink-0 text-signal-700" />
                     {item}
                   </li>
                 ))}

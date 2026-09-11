@@ -41,7 +41,7 @@ export function Footer() {
               <span className="text-ink-400">by </span>
               <span className="text-ink-200">{siteConfig.poweredBy}</span>
             </p>
-            <a href={`mailto:${siteConfig.contactEmail}`} className="mt-3 inline-block font-mono text-sm text-amber-300">
+            <a href={`mailto:${siteConfig.contactEmail}`} className="mt-3 inline-block font-mono text-sm text-signal-300">
               {siteConfig.contactEmail}
             </a>
             <div className="mt-6">
@@ -57,7 +57,7 @@ export function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {footerLinks.product.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm hover:text-amber-300">
+                    <Link href={link.href} className="text-sm hover:text-signal-300">
                       {link.label}
                     </Link>
                   </li>
@@ -70,11 +70,11 @@ export function Footer() {
                 {footerLinks.company.map((link) => (
                   <li key={link.href}>
                     {link.external ? (
-                      <a href={link.href} className="text-sm hover:text-amber-300">
+                      <a href={link.href} className="text-sm hover:text-signal-300">
                         {link.label}
                       </a>
                     ) : (
-                      <Link href={link.href} className="text-sm hover:text-amber-300">
+                      <Link href={link.href} className="text-sm hover:text-signal-300">
                         {link.label}
                       </Link>
                     )}
@@ -87,7 +87,7 @@ export function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {footerLinks.legal.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm hover:text-amber-300">
+                    <Link href={link.href} className="text-sm hover:text-signal-300">
                       {link.label}
                     </Link>
                   </li>

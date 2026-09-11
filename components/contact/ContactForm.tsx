@@ -23,7 +23,7 @@ function ContactSidebar() {
   return (
     <div className="space-y-6">
       <div className="border border-stone-300 bg-white p-6 md:p-8">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-amber-800">What happens next</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest text-signal-800">What happens next</p>
         <ol className="mt-5 space-y-5">
           {pilotSteps.map((step, i) => (
             <li key={step.title} className="flex gap-4">
@@ -45,7 +45,7 @@ function ContactSidebar() {
         </p>
         <a
           href={`mailto:${siteConfig.contactEmail}?subject=OMNIVOX%20demo%20request`}
-          className="mt-4 inline-flex font-mono text-sm text-amber-800"
+          className="mt-4 inline-flex font-mono text-sm text-signal-800"
         >
           {siteConfig.contactEmail}
         </a>
@@ -113,7 +113,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-md border border-stone-300 bg-white px-4 py-3 text-ink placeholder:text-stone-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none";
+    "w-full rounded-md border border-stone-300 bg-white px-4 py-3 text-ink placeholder:text-stone-400 focus:border-signal-500 focus:ring-2 focus:ring-signal-500/20 outline-none";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -191,7 +191,7 @@ export function ContactPageContent() {
           <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">Book a demo or start a pilot.</h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-300">
             Same-day org provisioning for qualified teams. £50 credits and white-glove setup. Already on the platform?{" "}
-            <a href={siteConfig.appLoginUrl} className="text-amber-300">
+            <a href={siteConfig.appLoginUrl} className="text-signal-300">
               Sign in
             </a>
             .

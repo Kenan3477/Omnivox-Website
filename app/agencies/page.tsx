@@ -60,7 +60,7 @@ export default function AgenciesPage() {
           <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
             {["£25/agent per client", "Per-org credit grants", "Manual invoicing", "White-glove onboarding"].map((item) => (
               <li key={item} className="flex items-center gap-2 text-ink-200">
-                <CheckIcon className="h-4 w-4 text-amber-400" />
+                <CheckIcon className="h-4 w-4 text-signal-400" />
                 {item}
               </li>
             ))}

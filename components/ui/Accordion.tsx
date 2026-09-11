@@ -26,7 +26,7 @@ export function Accordion({ items, light = false }: { items: AccordionItem[]; li
             >
               <span className={`font-semibold ${light ? "text-ink" : "text-paper"}`}>{item.question}</span>
               <span
-                className={`flex h-7 w-7 shrink-0 items-center justify-center font-mono text-sm ${isOpen ? "text-amber-400" : light ? "text-ink-400" : "text-ink-300"}`}
+                className={`flex h-7 w-7 shrink-0 items-center justify-center font-mono text-sm ${isOpen ? "text-signal-400" : light ? "text-ink-400" : "text-ink-300"}`}
                 aria-hidden="true"
               >
                 {isOpen ? "−" : "+"}

@@ -11,7 +11,7 @@ export function ProofPoints() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {proofPoints.map((p) => (
             <article key={p.label} className="border border-ink-600 bg-ink p-6">
-              <p className="font-mono text-2xl tabular text-amber-300">{p.metric}</p>
+              <p className="font-mono text-2xl tabular text-signal-300">{p.metric}</p>
               <p className="mt-1 font-medium text-paper">{p.label}</p>
               <p className="mt-3 text-sm leading-relaxed text-ink-300">{p.detail}</p>
             </article>

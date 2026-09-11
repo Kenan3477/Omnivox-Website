@@ -37,11 +37,11 @@ export default function TrustPage() {
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               <div className="border border-stone-300 p-6">
                 <p className="font-semibold">{roles.controller.label}</p>
-                <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-amber-800">{roles.controller.subtitle}</p>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-signal-800">{roles.controller.subtitle}</p>
                 <ul className="mt-4 space-y-3">
                   {roles.controller.points.map((p) => (
                     <li key={p} className="flex gap-2 text-sm text-ink-500">
-                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" />
+                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-signal-700" />
                       {p}
                     </li>
                   ))}
@@ -49,11 +49,11 @@ export default function TrustPage() {
               </div>
               <div className="border border-ink bg-ink p-6 text-paper">
                 <p className="font-semibold">{roles.processor.label}</p>
-                <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-amber-400">{roles.processor.subtitle}</p>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-signal-400">{roles.processor.subtitle}</p>
                 <ul className="mt-4 space-y-3">
                   {roles.processor.points.map((p) => (
                     <li key={p} className="flex gap-2 text-sm text-ink-200">
-                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
+                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-signal-400" />
                       {p}
                     </li>
                   ))}
@@ -85,10 +85,10 @@ export default function TrustPage() {
             <h3 className="font-display text-lg font-bold">Need a DPA or security questionnaire?</h3>
             <p className="mt-2 max-w-2xl text-ink-500">
               We provide a Data Processing Agreement at onboarding. For procurement, pilots, or privacy questions, email{" "}
-              <a href={`mailto:${siteConfig.contactEmail}`} className="font-medium text-amber-800">
+              <a href={`mailto:${siteConfig.contactEmail}`} className="font-medium text-signal-800">
                 {siteConfig.contactEmail}
               </a>
-              . Read our <Link href="/privacy" className="font-medium text-amber-800">Privacy Policy</Link> for website
+              . Read our <Link href="/privacy" className="font-medium text-signal-800">Privacy Policy</Link> for website
               enquiries.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">

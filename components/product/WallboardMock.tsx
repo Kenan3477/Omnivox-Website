@@ -47,7 +47,7 @@ function Kpi({
   return (
     <div className="border border-ink-600 bg-ink-900/80 p-3 md:p-4">
       <p className="font-mono text-[10px] uppercase tracking-widest text-ink-400">{label}</p>
-      <p className={`mt-2 font-mono text-2xl tabular leading-none md:text-3xl ${accent ? "text-amber-400" : "text-paper"}`}>
+      <p className={`mt-2 font-mono text-2xl tabular leading-none md:text-3xl ${accent ? "text-signal-400" : "text-paper"}`}>
         {value}
       </p>
       {hint && <p className="mt-1.5 text-[11px] text-ink-400">{hint}</p>}
@@ -72,7 +72,7 @@ export function WallboardMock({ compact = false }: { compact?: boolean }) {
             {PLAYLIST.map((item, i) => (
               <span
                 key={item.name}
-                className={`font-mono text-[10px] uppercase tracking-wider ${i === 0 ? "text-amber-400" : "text-ink-400"}`}
+                className={`font-mono text-[10px] uppercase tracking-wider ${i === 0 ? "text-signal-400" : "text-ink-400"}`}
               >
                 {item.name} {item.dwell}s
                 {i < PLAYLIST.length - 1 ? " →" : ""}
@@ -85,7 +85,7 @@ export function WallboardMock({ compact = false }: { compact?: boolean }) {
       </div>
 
       <div className="relative h-0.5 bg-ink-700">
-        <div className="playlist-progress h-full bg-amber-400" />
+        <div className="playlist-progress h-full bg-signal-400" />
       </div>
 
       <div className="grid grid-cols-2 gap-px bg-ink-600 sm:grid-cols-3 lg:grid-cols-5">
@@ -111,7 +111,7 @@ export function WallboardMock({ compact = false }: { compact?: boolean }) {
               </div>
               <div>
                 <p className="text-[11px] text-ink-400">Power ratio</p>
-                <p className="font-mono text-xl tabular text-amber-400">1.8</p>
+                <p className="font-mono text-xl tabular text-signal-400">1.8</p>
               </div>
               <div>
                 <p className="text-[11px] text-ink-400">Inflight</p>
@@ -171,9 +171,9 @@ export function WallboardMock({ compact = false }: { compact?: boolean }) {
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-2 border-t border-ink-600 bg-[#0E1218] px-4 py-2.5 font-mono text-[11px] text-ink-300">
-        <span>Credits remaining · £184.20</span>
+        <span className="text-amber-300">Credits remaining · £184.20</span>
         <span>Callbacks due · 7</span>
-        <span className="text-amber-400">Theme · Dark Ops</span>
+        <span className="text-signal-400">Theme · Dark Ops</span>
       </div>
     </div>
   );
@@ -184,7 +184,7 @@ export function PlaylistStory() {
     <ol className="grid gap-3 md:grid-cols-3">
       {PLAYLIST.map((item, i) => (
         <li key={item.name} className="border border-ink-600 bg-panel p-5">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-amber-400">
+          <p className="font-mono text-[10px] uppercase tracking-widest text-signal-400">
             {String(i + 1).padStart(2, "0")} · {item.dwell}s dwell
           </p>
           <p className="mt-2 font-display text-xl font-bold text-paper">{item.name}</p>

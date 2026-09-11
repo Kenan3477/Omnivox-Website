@@ -15,7 +15,7 @@ export function WorkspaceMock() {
         <div className="border-b border-ink-600 lg:border-b-0 lg:border-r">
           <div className="flex items-center justify-between border-b border-ink-600 px-3 py-2">
             <p className="font-mono text-[10px] uppercase tracking-widest text-ink-400">Work queue</p>
-            <span className="font-mono text-[10px] text-amber-400">12 queued</span>
+            <span className="font-mono text-[10px] text-signal-400">12 queued</span>
           </div>
           <ul className="divide-y divide-ink-700 text-sm">
             {[
@@ -31,7 +31,7 @@ export function WorkspaceMock() {
                 </div>
                 <div className="text-right">
                   <p className="font-mono text-[10px] uppercase text-ink-300">{state}</p>
-                  <p className="font-mono text-[10px] text-amber-400/80">{method}</p>
+                  <p className="font-mono text-[10px] text-signal-400/80">{method}</p>
                 </div>
               </li>
             ))}
@@ -42,7 +42,7 @@ export function WorkspaceMock() {
           <p className="font-mono text-[10px] uppercase tracking-widest text-ink-400">Contact</p>
           <p className="mt-2 font-display text-xl font-bold text-paper">Sarah Mitchell</p>
           <p className="text-sm text-ink-300">Acme Ltd · Director of Ops</p>
-          <p className="mt-2 font-mono text-sm tabular text-amber-300">+44 7700 900123</p>
+          <p className="mt-2 font-mono text-sm tabular text-signal-300">+44 7700 900123</p>
           <p className="mt-4 text-xs leading-relaxed text-ink-300">
             Last interaction · called 3 days ago, left voicemail. Interested in Q2 renewal. Follow up on pricing.
           </p>

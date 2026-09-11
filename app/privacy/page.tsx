@@ -22,7 +22,7 @@ export default function PrivacyPage() {
               agent workspace for business customers. For platform customers, we typically act as a{" "}
               <strong className="text-ink">data processor</strong> — you remain the data controller for your contacts
               and call data. See our{" "}
-              <Link href="/trust" className="text-amber-800">
+              <Link href="/trust" className="text-signal-800">
                 Trust page
               </Link>{" "}
               for how that works.
@@ -112,7 +112,7 @@ export default function PrivacyPage() {
               data portability. If we process data on behalf of your organisation, direct contact data subject requests
               to your employer (the controller) in the first instance. For enquiries about data we control directly
               (e.g. this website), email{" "}
-              <a href={`mailto:${siteConfig.contactEmail}`} className="text-amber-800">
+              <a href={`mailto:${siteConfig.contactEmail}`} className="text-signal-800">
                 {siteConfig.contactEmail}
               </a>
               .
@@ -129,11 +129,11 @@ export default function PrivacyPage() {
             <h2 className="font-display text-xl font-bold text-ink">Contact</h2>
             <p className="mt-3">
               Privacy enquiries:{" "}
-              <a href={`mailto:${siteConfig.contactEmail}`} className="text-amber-800">
+              <a href={`mailto:${siteConfig.contactEmail}`} className="text-signal-800">
                 {siteConfig.contactEmail}
               </a>
               . For platform compliance detail, see{" "}
-              <Link href="/trust" className="text-amber-800">
+              <Link href="/trust" className="text-signal-800">
                 Trust
               </Link>
               .

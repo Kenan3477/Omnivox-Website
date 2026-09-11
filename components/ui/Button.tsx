@@ -19,8 +19,8 @@ const variants: Record<ButtonVariant, string> = {
   secondary:
     "bg-ink-700 text-ink-100 border border-ink-600 hover:border-ink-400 hover:bg-ink-600",
   outline:
-    "border border-amber-400/50 text-amber-300 hover:bg-amber-400/10",
-  ghost: "text-ink-200 hover:text-amber-300 hover:bg-white/5",
+    "border border-signal-400/50 text-signal-300 hover:bg-signal-400/10",
+  ghost: "text-ink-200 hover:text-signal-300 hover:bg-white/5",
   paper: "bg-ink text-paper hover:bg-ink-800 font-semibold",
 };
 

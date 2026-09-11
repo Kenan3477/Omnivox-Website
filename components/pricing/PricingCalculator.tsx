@@ -88,7 +88,7 @@ export function PricingCalculator() {
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <div className="border-2 border-ink bg-paper p-5">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-amber-800">OMNIVOX</p>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-signal-800">OMNIVOX</p>
           <p className="mt-3 font-mono text-2xl tabular text-ink">
             £{omnivoxTotal.toFixed(0)}
             <span className="text-sm font-normal text-ink-500">/mo</span>

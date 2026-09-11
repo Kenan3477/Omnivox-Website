@@ -16,7 +16,7 @@ export function Comparison() {
             <thead className="bg-ink-900 font-mono text-[10px] uppercase tracking-widest text-ink-400">
               <tr>
                 <th className="px-4 py-3 font-medium"> </th>
-                <th className="px-4 py-3 font-medium text-amber-300">Omnivox</th>
+                <th className="px-4 py-3 font-medium text-signal-300">Omnivox</th>
                 <th className="px-4 py-3 font-medium">Typical bundled dialer</th>
               </tr>
             </thead>

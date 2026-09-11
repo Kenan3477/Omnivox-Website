@@ -29,7 +29,7 @@ export default function OpengraphImage() {
         >
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div style={{ display: "flex", fontSize: 28, fontWeight: 800, letterSpacing: -0.5 }}>OMNIVOX</div>
-            <div style={{ display: "flex", fontSize: 20, color: "#E8A317" }}>14:32:08 Europe/London</div>
+            <div style={{ display: "flex", fontSize: 20, color: "#3DDBC8" }}>14:32:08 Europe/London</div>
           </div>
           <div style={{ display: "flex", marginTop: 28, gap: 16 }}>
             {[
@@ -50,7 +50,7 @@ export default function OpengraphImage() {
                 }}
               >
                 <div style={{ display: "flex", fontSize: 14, color: "#9AA3AE", letterSpacing: 2 }}>{k}</div>
-                <div style={{ display: "flex", fontSize: 56, color: "#E8A317", marginTop: 8 }}>{v}</div>
+                <div style={{ display: "flex", fontSize: 56, color: "#3DDBC8", marginTop: 8 }}>{v}</div>
               </div>
             ))}
           </div>
@@ -58,7 +58,7 @@ export default function OpengraphImage() {
             <div style={{ display: "flex", fontSize: 40, fontWeight: 700 }}>
               Preview, power, inbound, wallboards.
             </div>
-            <div style={{ display: "flex", fontSize: 22, color: "#C9C3B4", marginTop: 12 }}>
+            <div style={{ display: "flex", fontSize: 22, color: "#E8A317", marginTop: 12 }}>
               £25 a seat · ~5p / connected minute · UK/EU voice contact centre
             </div>
           </div>

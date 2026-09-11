@@ -49,7 +49,7 @@ export default function TermsPage() {
             <h2 className="font-display text-xl font-bold text-ink">Contact</h2>
             <p className="mt-3">
               For terms-related enquiries, email{" "}
-              <a href={`mailto:${siteConfig.contactEmail}`} className="text-amber-800">
+              <a href={`mailto:${siteConfig.contactEmail}`} className="text-signal-800">
                 {siteConfig.contactEmail}
               </a>
               .

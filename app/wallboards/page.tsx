@@ -79,7 +79,7 @@ export default function WallboardsPage() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {wallboardTemplates.map((t) => (
               <article key={t.role} className="border border-ink-600 p-5">
-                <p className="font-mono text-[10px] uppercase tracking-widest text-amber-400">Template</p>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-signal-400">Template</p>
                 <h3 className="mt-2 font-semibold text-paper">{t.role}</h3>
                 <p className="mt-2 text-sm text-ink-300">{t.use}</p>
               </article>
@@ -108,7 +108,7 @@ export default function WallboardsPage() {
                 {wallboardWidgets.map((w) => (
                   <tr key={w.name}>
                     <td className="px-4 py-3 text-paper">{w.name}</td>
-                    <td className="px-4 py-3 font-mono text-xs text-amber-300">{w.scope}</td>
+                    <td className="px-4 py-3 font-mono text-xs text-signal-300">{w.scope}</td>
                     <td className="px-4 py-3 text-ink-300">{w.why}</td>
                   </tr>
                 ))}

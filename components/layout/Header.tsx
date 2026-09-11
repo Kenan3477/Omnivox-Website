@@ -41,7 +41,7 @@ export function Header() {
               href={link.href}
               className={`rounded-md px-3 py-2 text-sm transition-colors ${
                 pathname === link.href || pathname.startsWith(`${link.href}/`)
-                  ? "bg-ink-700 text-amber-300"
+                  ? "bg-ink-700 text-signal-300"
                   : "text-ink-200 hover:bg-ink-800 hover:text-paper"
               }`}
             >
@@ -84,7 +84,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={`rounded-md px-3 py-3 text-base ${
-                  pathname === link.href ? "bg-ink-700 text-amber-300" : "text-ink-200"
+                  pathname === link.href ? "bg-ink-700 text-signal-300" : "text-ink-200"
                 }`}
               >
                 {link.label}

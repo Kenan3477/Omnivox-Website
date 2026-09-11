@@ -13,18 +13,18 @@
   }
 
   :focus-visible {
-    @apply outline outline-2 outline-offset-2 outline-amber-400;
+    @apply outline outline-2 outline-offset-2 outline-signal-400;
   }
 
   ::selection {
-    background: rgba(232, 163, 23, 0.28);
+    background: rgba(46, 200, 176, 0.28);
     color: #f4f1ea;
   }
 }
 
 @layer components {
   .kicker {
-    @apply font-mono text-[11px] font-medium uppercase tracking-kicker text-amber-400;
+    @apply font-mono text-[11px] font-medium uppercase tracking-kicker text-signal-400;
   }
 
   .display {
@@ -51,7 +51,7 @@
   }
 
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-amber-400 focus:px-3 focus:py-2 focus:text-ink focus:outline-none;
+    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-signal-400 focus:px-3 focus:py-2 focus:text-ink focus:outline-none;
   }
 }
 
