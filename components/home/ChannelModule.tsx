@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ChannelExplorer } from "@/components/product/ChannelExplorer";
 import { Button } from "@/components/ui/Button";
 
 export function ChannelModule() {
@@ -16,7 +15,24 @@ export function ChannelModule() {
           “Omnichannel matrix”.
         </p>
         <div className="mt-10">
-          <ChannelExplorer />
+          <ol className="grid gap-3 text-sm text-ink-300 md:grid-cols-4">
+            <li className="border border-ink-600 bg-ink p-4">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-signal-300">01</p>
+              <p className="mt-2 text-paper">Sign in → Admin → Channels</p>
+            </li>
+            <li className="border border-ink-600 bg-ink p-4">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-signal-300">02</p>
+              <p className="mt-2 text-paper">Channel Types · click WhatsApp</p>
+            </li>
+            <li className="border border-ink-600 bg-ink p-4">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-signal-300">03</p>
+              <p className="mt-2 text-paper">Read 24h / HX copy · DID via inbound numbers</p>
+            </li>
+            <li className="border border-ink-600 bg-ink p-4">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-signal-300">04</p>
+              <p className="mt-2 text-paper">Work → Inbox · channel filter WhatsApp</p>
+            </li>
+          </ol>
         </div>
         <p className="mt-6 text-sm text-ink-400">
           Click path: Sign in → Admin → Channels → Channel Types → WhatsApp. Then Work → Inbox, channel filter

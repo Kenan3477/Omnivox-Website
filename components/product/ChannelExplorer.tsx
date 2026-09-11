@@ -21,7 +21,7 @@ export function ChannelExplorer() {
   const orgReady = exampleConfigured;
 
   return (
-    <div className="overflow-hidden rounded-lg border border-ink-600 bg-panel shadow-raised">
+    <div className="rounded-lg border border-ink-600 bg-panel shadow-raised">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-600 bg-ink-900 px-4 py-3">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-widest text-ink-400">Admin → Channels</p>
@@ -41,7 +41,7 @@ export function ChannelExplorer() {
       <div className="grid gap-px bg-ink-600 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
         <div className="bg-ink p-3 sm:p-4">
           <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-ink-400">4 × 2 · catalog status</p>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 min-[480px]:grid-cols-4">
             {TILE_ORDER.map((id) => {
               const ch = channelCatalog.find((c) => c.id === id)!;
               const active = id === selectedId;
@@ -51,13 +51,13 @@ export function ChannelExplorer() {
                   key={id}
                   type="button"
                   onClick={() => setSelectedId(id)}
-                  className={`min-h-[5.5rem] border p-3 text-left transition-colors ${
+                  className={`min-h-[5.75rem] border p-2.5 text-left transition-colors ${
                     active
                       ? "border-cta-500 bg-cta-500/10"
                       : "border-ink-600 bg-panel hover:border-ink-400"
                   }`}
                 >
-                  <span className="block font-medium text-paper">{ch.name}</span>
+                  <span className="block text-sm font-medium leading-tight text-paper">{ch.name}</span>
                   <span className="mt-2 flex flex-wrap gap-1">
                     <span className="border border-live/40 bg-live/10 px-1 font-mono text-[9px] uppercase tracking-wider text-live">
                       Live
