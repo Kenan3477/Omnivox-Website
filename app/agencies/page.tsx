@@ -43,8 +43,8 @@ export default function AgenciesPage() {
             One stack. Many client floors. Credits that never mix.
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-ink-300">
-            Outbound agencies running preview and power for more than one brand. Same-day onboard. Wallboards per client
-            ops room.
+            Outbound agencies running preview and power, plus per-client DIDs and inboxes. Same-day onboard. Wallboards
+            per client ops room. Per-client channels = that org’s numbers and tokens, not a reseller channel pack.
           </p>
           <Button href="/contact" size="lg" className="mt-8">
             Talk to us

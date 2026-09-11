@@ -2,20 +2,26 @@ import type { FeatureStatus } from "@/lib/constants";
 
 const labels: Record<FeatureStatus, string> = {
   live: "Live",
+  pilot: "Pilot",
   waitlist: "Waitlist",
   coming: "Coming",
+  notus: "Not us",
 };
 
 const styles: Record<FeatureStatus, string> = {
   live: "border-live/40 bg-live/10 text-live",
+  pilot: "border-cta-400/40 bg-cta-500/15 text-cta-200",
   waitlist: "border-ink-400/40 bg-ink-700 text-ink-200",
   coming: "border-ink-600 bg-transparent text-ink-300",
+  notus: "border-ink-600 bg-ink-900 text-ink-400",
 };
 
 const lightStyles: Record<FeatureStatus, string> = {
   live: "border-emerald-700/30 bg-emerald-50 text-emerald-800",
+  pilot: "border-blue-300 bg-blue-50 text-blue-800",
   waitlist: "border-stone-300 bg-stone-100 text-stone-700",
   coming: "border-stone-300 bg-white text-stone-600",
+  notus: "border-stone-300 bg-stone-50 text-stone-500",
 };
 
 export function StatusLabel({

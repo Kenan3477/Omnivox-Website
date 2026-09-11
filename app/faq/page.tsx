@@ -20,7 +20,7 @@ export default function FaqPage() {
           <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "FAQ", href: "/faq" }]} />
           <p className="kicker">FAQ</p>
           <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">
-            Carrier, minutes, predictive, wallboards, GDPR.
+            Carrier, minutes, WhatsApp, predictive, wallboards, GDPR.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-300">
             Short answers a floor manager can take back to procurement. The site helper in the corner uses the same

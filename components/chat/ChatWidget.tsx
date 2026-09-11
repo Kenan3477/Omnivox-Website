@@ -14,7 +14,7 @@ export function ChatWidget() {
     {
       role: "assistant",
       content:
-        "Ask about dial methods, wallboards, inbound, pricing, or GDPR. I only answer from live Omnivox product facts — I will not invent features. Predictive is waitlist, not live.",
+        "Ask about channels, WhatsApp, dial methods, wallboards, inbound, pricing, or GDPR. I only answer from live Omnivox product facts — I will not invent features. Predictive is waitlist, not live.",
     },
   ]);
   const listRef = useRef<HTMLDivElement>(null);
@@ -62,12 +62,12 @@ export function ChatWidget() {
     <>
       <button
         type="button"
-        className="fixed bottom-20 right-4 z-50 flex h-12 items-center gap-2 rounded-md border border-signal-400/40 bg-signal-400 px-3 font-semibold text-ink shadow-raised md:bottom-6 md:right-6"
+        className="fixed bottom-20 right-4 z-50 flex h-12 items-center gap-2 rounded-md border border-cta-400/40 bg-cta-500 px-3 font-semibold text-white shadow-raised md:bottom-6 md:right-6"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls="omnivox-helper"
       >
-        <span className="h-1.5 w-1.5 bg-ink tick-live" aria-hidden />
+        <span className="h-1.5 w-1.5 bg-white tick-live" aria-hidden />
         {open ? "Close" : "Ask Omnivox"}
       </button>
 
@@ -127,14 +127,14 @@ export function ChatWidget() {
             <button
               type="submit"
               disabled={loading}
-              className="rounded-md bg-amber-400 px-3 py-2 text-sm font-semibold text-ink disabled:opacity-60"
+              className="rounded-md bg-cta-500 px-3 py-2 text-sm font-semibold text-white disabled:opacity-60"
             >
               Send
             </button>
           </form>
           <p className="border-t border-ink-600 px-3 py-2 text-[11px] text-ink-400">
             Prefer a human?{" "}
-            <Link href="/contact" className="text-amber-300">
+            <Link href="/contact" className="text-cta-300">
               Book a demo
             </Link>
             .

@@ -44,8 +44,8 @@ export default function InboundPage() {
             Queues, hours, IVR. Not a spare phone number on the side.
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-ink-300">
-            Small contact centres take inbound on platform DIDs while the same agents run preview and power. One wallet.
-            One work surface.
+            Small contact centres take inbound on platform DIDs while the same agents run preview, power, and the Work
+            Inbox. Voice wallet is separate from digital. One Work surface, two views.
           </p>
           <div className="mt-4 flex items-center gap-2">
             <StatusLabel status="live" />
@@ -66,8 +66,8 @@ export default function InboundPage() {
             ))}
           </div>
           <p className="mt-8 text-sm text-ink-400">
-            Attended transfer is not a polished telephony feature yet — labelled Coming on the features page. Supervisor
-            listen exists; whisper/barge/take-over is not sold as live coaching.
+            Attended transfer / listen / whisper / barge sit behind DIALER_CONFERENCE_BRIDGE, off by default — labelled
+            Coming. AI Voice Agent is a bounded inbound Pilot, not the product.
           </p>
           <Button href="/contact" className="mt-8">
             Book a demo

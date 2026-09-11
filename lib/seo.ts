@@ -10,25 +10,32 @@ export function absoluteUrl(path = "") {
 
 export const pageSeo = {
   home: {
-    title: "OMNIVOX — Contact centre for outbound teams",
+    title: "OMNIVOX — Contact centre: voice + Work Inbox",
     description:
-      "UK/EU cloud contact centre: preview, progressive and power dial, inbound queues and IVR, custom wallboards. £25 a seat, prepaid minutes, no fair-use fiction.",
+      "UK/EU cloud contact centre: preview, progressive and power dial, inbound ACD/IVR, Work Inbox for SMS, WhatsApp, email, chat and social DMs, custom wallboards. £25 a seat. Prepaid voice minutes.",
     path: "/",
     crumb: "Home",
   },
   features: {
-    title: "Features: dialer, inbound, wallboards — labelled live or waitlist",
+    title: "Features: dialer, inbox, inbound, wallboards — live or waitlist",
     description:
-      "Omnivox capabilities with honest labels. Live: preview, progressive, power, AMD, inbound IVR, wallboards. Predictive is waitlist only.",
+      "Omnivox capabilities with honest labels. Live: preview, progressive, power, AMD, 8-channel catalog, Work Inbox, inbound IVR, wallboards. Predictive is waitlist only.",
     path: "/features",
     crumb: "Features",
   },
   wallboards: {
-    title: "Contact-centre wallboards: TV mode, playlists, widgets",
+    title: "Contact-centre wallboards: TV mode, playlists, Digital waiting",
     description:
-      "Custom Omnivox wallboards for the floor: drag-and-drop builder, TV mode, playlist rotation, role templates, and about 40 ops widgets.",
+      "Custom Omnivox wallboards: drag-and-drop builder, TV mode, playlist rotation, role templates, ~40 widgets including Digital waiting.",
     path: "/wallboards",
     crumb: "Wallboards",
+  },
+  channels: {
+    title: "Channel Types: eight live in catalog, org-ready when configured",
+    description:
+      "Admin → Channels → Channel Types. Voice, SMS, WhatsApp, chat, email, Facebook, Instagram and X. Catalog live is not org-ready. Work Inbox is where agents handle digital.",
+    path: "/channels",
+    crumb: "Channels",
   },
   inbound: {
     title: "Inbound ACD and IVR on platform-managed UK numbers",
@@ -40,7 +47,7 @@ export const pageSeo = {
   pricing: {
     title: "Pricing: £25/seat plus prepaid credits",
     description:
-      "Omnivox pricing is £25 per agent per month plus prepaid call credits at about 5p per connected minute. Wallboards and inbound included.",
+      "Omnivox pricing is £25 per agent per month plus prepaid voice credits (~5p outbound / ~4p inbound). Digital is not in the voice wallet. Wallboards and inbox included.",
     path: "/pricing",
     crumb: "Pricing",
   },
@@ -66,9 +73,9 @@ export const pageSeo = {
     crumb: "Trust",
   },
   faq: {
-    title: "FAQ: carrier, minutes, predictive, wallboards, GDPR",
+    title: "FAQ: carrier, minutes, WhatsApp, predictive, wallboards, GDPR",
     description:
-      "Do I need a carrier? How are minutes billed? Is predictive live? Do you have wallboards? GDPR/DPA? Recording consent?",
+      "Do I need a carrier? Do you have WhatsApp? How are minutes billed? Is predictive live? Do you have wallboards? GDPR/DPA?",
     path: "/faq",
     crumb: "FAQ",
   },
@@ -204,7 +211,7 @@ export function softwareApplicationJsonLd() {
       availability: "https://schema.org/InStock",
       url: `${siteUrl}/pricing`,
       priceValidUntil: "2027-12-31",
-      description: "£25 per agent per month, plus prepaid call credits at approximately 5p per connected minute.",
+      description: "£25 per agent per month, plus prepaid voice credits at approximately 5p outbound / 4p inbound per connected minute. Digital is not in the voice wallet.",
     },
     provider: { "@id": `${siteUrl}/#organization` },
     publisher: { "@id": `${siteUrl}/#organization` },

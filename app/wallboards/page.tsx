@@ -97,8 +97,8 @@ export default function WallboardsPage() {
         <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
           <h2 className="display text-3xl text-paper">Widget catalogue a floor manager cares about</h2>
           <p className="mt-3 max-w-2xl text-ink-300">
-            About 40 widgets in product. Marketed here: the ones that belong on a dialler wall. No SMS/WhatsApp waiting.
-            No “80+ Connex reports”.
+            About 40 widgets in product. Marketed here: the ones a floor manager actually pins. Digital waiting is real
+            (inbox waitingOnAgent, last 24h). Not per-channel WhatsApp/chat tiles. No “80+ Connex reports”.
           </p>
           <div className="mt-8 overflow-x-auto border border-ink-600">
             <table className="w-full min-w-[560px] text-left text-sm">

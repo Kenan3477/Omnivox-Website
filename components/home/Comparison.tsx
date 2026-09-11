@@ -7,8 +7,9 @@ export function Comparison() {
         <p className="kicker">Compare</p>
         <h2 className="display mt-3 max-w-3xl text-3xl text-paper md:text-4xl">Fair contrast, not a smear sheet.</h2>
         <p className="mt-4 max-w-2xl text-ink-300">
-          CloudTalk and Aircall are prettier, with stronger CRM and mobile. Connex One is omnichannel with live
-          predictive — at two to three times the seat. Unlimited plans hide a ~3,000 minute fair-use cap.
+          CloudTalk and Aircall win CRM and mobile. Connex is the fuller suite (WFM, live predictive, deeper digital)
+          at two to three times the seat. We are campaign/DNC/power/AMD plus a real but thinner inbox — not voice-only.
+          Unlimited plans hide a ~3,000 minute fair-use cap.
         </p>
 
         <div className="mt-10 overflow-x-auto border border-ink-600">

@@ -89,11 +89,11 @@ export function WallboardMock({ compact = false }: { compact?: boolean }) {
       </div>
 
       <div className="grid grid-cols-2 gap-px bg-ink-600 sm:grid-cols-3 lg:grid-cols-5">
-        <Kpi label="Live calls" value="14" hint="voice only" accent />
+        <Kpi label="Live calls" value="14" hint="voice" accent />
         <Kpi label="Available" value="9" hint="of 23 online" />
         <Kpi label="On call" value="14" hint="0 in ACW" />
         <Kpi label="Occupancy" value="78%" hint="idle 12%" />
-        <Kpi label="Queue depth" value="3" hint="inbound +44" />
+        <Kpi label="Digital waiting" value="6" hint="inbox · 24h" />
       </div>
 
       {!compact && (
@@ -189,7 +189,7 @@ export function PlaylistStory() {
           </p>
           <p className="mt-2 font-display text-xl font-bold text-paper">{item.name}</p>
           <p className="mt-2 text-sm text-ink-300">
-            {i === 0 && "Live calls, occupancy, queue depth, credits. The floor pulse."}
+            {i === 0 && "Live calls, occupancy, Digital waiting, credits. The floor pulse."}
             {i === 1 && "Available, on call, ACW, idle rate. Who can take the next connect."}
             {i === 2 && "Connection rate, AMD, power ratio, inflight, remaining supply."}
           </p>

@@ -1,15 +1,16 @@
 export const siteConfig = {
   name: "OMNIVOX",
   legalName: "Quanterae Solutions",
-  tagline: "The contact-centre stack outbound teams actually run.",
+  tagline: "Voice operations for outbound campaigns, inbound queues, and live wallboards.",
   description:
-    "Omnivox is a UK/EU cloud contact centre for outbound sales and inbound voice: preview, progressive and power dial, inbound queues and IVR, and custom wallboards on the floor — £25 a seat, prepaid minutes, no fair-use fiction.",
+    "UK/EU cloud contact centre: Twilio voice (preview, progressive, power + AMD, inbound ACD/IVR), a Work inbox for SMS, WhatsApp, email, live chat and social DMs, and custom wallboards. £25 a seat. Prepaid voice minutes. Digital is not in the voice wallet.",
   url: "https://omnivox-website-three.vercel.app",
-  appLoginUrl: "https://omnivox-ai.vercel.app/login",
+  appLoginUrl: "https://omnivox.vercel.app/login",
   contactEmail: "hello@omnivox.co.uk",
   poweredBy: "Quanterae Solutions",
   platformFeePerAgent: 25,
   ratePerMinute: 0.05,
+  inboundRatePerMinute: 0.04,
   workingDaysPerMonth: 22,
   topUpPacks: [50, 100, 250, 500] as const,
   locale: "en-GB",
@@ -25,6 +26,7 @@ export const competitorBenchmark = {
 
 export const navLinks = [
   { href: "/features", label: "Features" },
+  { href: "/channels", label: "Channels" },
   { href: "/wallboards", label: "Wallboards" },
   { href: "/pricing", label: "Pricing" },
   { href: "/agencies", label: "Agencies" },
@@ -34,12 +36,12 @@ export const navLinks = [
 
 export const trustMetrics = [
   { value: "£25", label: "per agent / month" },
-  { value: "~5p", label: "per connected minute" },
-  { value: "Same day", label: "pilot onboarding" },
-  { value: "1 wallet", label: "inbound + outbound" },
+  { value: "5p / 4p", label: "out / inbound minute" },
+  { value: "8", label: "channels in catalog" },
+  { value: "1 wallet", label: "voice credits" },
 ] as const;
 
-export type FeatureStatus = "live" | "waitlist" | "coming";
+export type FeatureStatus = "live" | "pilot" | "waitlist" | "coming" | "notus";
 
 export const featureGroups: {
   title: string;
@@ -115,9 +117,70 @@ export const featureGroups: {
         description: "Hours, IVR menus, collect input, play audio, TTS, queue, voicemail, end call.",
       },
       {
-        name: "Attended transfer",
+        name: "AI Voice Agent (inbound)",
+        status: "pilot",
+        description:
+          "Channels → Voice → AI Voice Agent. Bounded inbound experiment. Not the homepage and not a conversational-AI platform.",
+      },
+      {
+        name: "Attended transfer, whisper, barge, take-over",
         status: "coming",
-        description: "Not a polished telephony feature yet. Do not buy Omnivox for warm transfer theatre.",
+        description:
+          "Conference bridge is off by default. Until it is on for a deploy, transfer / listen / whisper / barge return 501. Do not sell as live.",
+      },
+    ],
+  },
+  {
+    title: "Digital inbox",
+    id: "inbox",
+    summary:
+      "Eight channels live in the catalog. Shared Work Inbox. Catalog live is not the same as this org being receive/send ready.",
+    features: [
+      {
+        name: "8-channel catalog",
+        status: "live",
+        description:
+          "Admin → Channels → Channel Types. Voice, SMS, WhatsApp, live chat, email, Facebook DMs, Instagram DMs, X DMs. Tiles show catalog status, not org readiness.",
+      },
+      {
+        name: "Shared Work Inbox",
+        status: "live",
+        description:
+          "Work → Inbox. Open / Mine / Unassigned / Closed, channel chips. One OmniConversation per channel — SMS and WhatsApp for the same mobile stay two rows.",
+      },
+      {
+        name: "SMS (Twilio)",
+        status: "live",
+        description:
+          "SMS-capable DID plus campaign. UK 01/02 landlines are voice-only unless Twilio sms:true. No MMS product. Closed threads reuse then reopen.",
+      },
+      {
+        name: "WhatsApp (Twilio WABA)",
+        status: "live",
+        description:
+          "24h customer-care window. Free text only inside the window. Outside: approved Twilio Content SID (HX…) or SMS fallback. No stored HSM catalog, no broadcasts.",
+      },
+      {
+        name: "Email",
+        status: "live",
+        description: "Mailbox + campaign. Inbound parse (SendGrid/Mailgun). Replies need SMTP. Not a ticket product.",
+      },
+      {
+        name: "Live chat widget",
+        status: "live",
+        description: "Own embed at /chat-widget?key=…. Campaign required. Org from the widget key, not the visitor body. Not Intercom.",
+      },
+      {
+        name: "Facebook / Instagram / X DMs",
+        status: "live",
+        description:
+          "Messenger, Instagram professional, and X DMs only. Not comments, ads, feed, stories, tweets or mentions. Needs tokens on that org — catalog live ≠ this customer is live.",
+      },
+      {
+        name: "Unified timeline / tickets / digital SLA",
+        status: "notus",
+        description:
+          "No one-customer-one-thread. No tickets. No digital SLA widgets. Voice and Inbox are two views on /work, not the same contact card.",
       },
     ],
   },
@@ -150,7 +213,7 @@ export const featureGroups: {
         name: "Widget library (~40)",
         status: "live",
         description:
-          "Scoped to Me / Campaign / Organisation. Live calls, occupancy, queue depth, AMD scoreboard, pacing, power ratio, credits, clock.",
+          "Scoped to Me / Campaign / Organisation. Live calls, occupancy, queue depth, AMD scoreboard, pacing, power ratio, credits, clock, Digital waiting (inbox waitingOnAgent, last 24h).",
       },
     ],
   },
@@ -191,9 +254,15 @@ export const featureGroups: {
         description: "OAuth import. Not a 100-app marketplace.",
       },
       {
-        name: "Salesforce and HubSpot",
+        name: "HubSpot",
+        status: "live",
+        description:
+          "Pilot / live-narrow: OAuth plus completed calls written back as HubSpot call engagements. Not a HubSpot-native phone.",
+      },
+      {
+        name: "Salesforce",
         status: "coming",
-        description: "Coming soon. Do not buy Omnivox as a native Salesforce phone today.",
+        description: "Not implemented. Product copy: “Salesforce is not implemented.” Not a native CRM phone.",
       },
     ],
   },
@@ -210,7 +279,8 @@ export const featureGroups: {
       {
         name: "Roles",
         status: "live",
-        description: "Admin, Supervisor, Agent. Supervisor listen exists; whisper / barge / take-over is not sold as live coaching.",
+        description:
+          "Admin, Supervisor, Agent. Supervisor listen is pilot only if the conference bridge is on for that deploy; otherwise Coming. 2FA is enforced for admins when ENABLE_2FA is on.",
       },
       {
         name: "Audit logs",
@@ -223,6 +293,11 @@ export const featureGroups: {
         description: "Per organisation or campaign. Consent remains the customer’s job.",
       },
       {
+        name: "2FA for admins",
+        status: "live",
+        description: "Enforced for admins when ENABLE_2FA is on (default on). Not advertised as a customer-facing USP.",
+      },
+      {
         name: "Data Processing Agreement",
         status: "live",
         description: "DPA at onboarding. You are the controller. Omnivox is the processor.",
@@ -232,12 +307,14 @@ export const featureGroups: {
   {
     title: "Credits",
     id: "credits",
-    summary: "One prepaid wallet. ~5p a connected minute, inbound and outbound. Meter in Admin → Call Credits.",
+    summary:
+      "Prepaid voice wallet. Outbound default 5p/min, inbound default 4p/min. Digital (SMS / WhatsApp / email) is not in this wallet.",
     features: [
       {
-        name: "One wallet",
+        name: "Voice wallet",
         status: "live",
-        description: "Inbound and outbound from the same prepaid balance. 1-minute minimum.",
+        description:
+          "Inbound and outbound from the same prepaid balance. Outbound ~5p/min, inbound ~4p/min in code defaults. 1-minute minimum. Meter in Admin → Call Credits.",
       },
       {
         name: "Stripe top-up packs",
@@ -266,32 +343,41 @@ export const featureGroups: {
 export const comingSoon = [
   {
     name: "Predictive dial",
-    note: "Statistical / multi-line predictive. Waitlist only.",
+    note: "Statistical / multi-line predictive. isPredictiveLiveAllowed() is always false. Waitlist only.",
   },
   {
     name: "Adaptive Power live",
-    note: "Ratio that learns from occupancy and abandon. Waitlist.",
+    note: "Ratio that learns from occupancy and abandon. ADAPTIVE_POWER_LIVE_ALLOWED default false. Waitlist.",
   },
   {
-    name: "Salesforce + HubSpot",
-    note: "Native CRM phone is not the product today. Zoho import is live.",
+    name: "Salesforce",
+    note: "Not implemented. HubSpot is live-narrow (OAuth + call write-back). Zoho import is live.",
   },
   {
     name: "Native iOS / Android agent app",
-    note: "Web / PWA-style wrapper only. No App Store Voice app.",
+    note: "Expo WebView / PWA-ish only. Not in the stores.",
   },
   {
     name: "AI dispositioning / conversation intelligence",
-    note: "No live coaching transcripts. Do not buy us as an AI platform.",
+    note: "AI Voice Agent is a bounded inbound Pilot. Do not buy us as an AI platform.",
   },
   {
-    name: "Whisper / barge / take-over",
-    note: "Supervisor listen exists. Full live coaching is not shipped.",
+    name: "Conference transfer / listen / whisper / barge",
+    note: "DIALER_CONFERENCE_BRIDGE default OFF. 501 until that deploy turns it on.",
   },
-  {
-    name: "Attended transfer",
-    note: "Not a polished telephony feature yet.",
-  },
+] as const;
+
+export const notUs = [
+  "One customer, one timeline, any channel",
+  "Tickets / Zendesk-style CX",
+  "Instagram or Facebook comments, ads, feed, story replies",
+  "WhatsApp broadcasts or a stored HSM catalog",
+  "MMS",
+  "TikTok, LinkedIn, Telegram",
+  "Digital SLA widgets",
+  "Public unauthenticated wallboard URLs / HTML injection",
+  "Native WhatsApp without Twilio WABA",
+  "SOC 2 / ISO 27001 / PCI / SSO/SAML",
 ] as const;
 
 export const wallboardWidgets = [
@@ -302,7 +388,8 @@ export const wallboardWidgets = [
   { name: "ACW", scope: "Organisation", why: "Wrap-up still blocking the next dial." },
   { name: "Occupancy", scope: "Organisation", why: "Are you under-staffed or burning agents." },
   { name: "Idle rate", scope: "Organisation", why: "Time waiting on supply or pacing." },
-  { name: "Queue depth", scope: "Organisation", why: "Inbound waiting, not a digital inbox." },
+  { name: "Queue depth", scope: "Organisation", why: "Inbound voice waiting." },
+  { name: "Digital waiting", scope: "Organisation", why: "Inbox waitingOnAgent, last 24h. DIGITAL_WAITING is a real module — not per-channel WhatsApp tiles." },
   { name: "Campaign performance", scope: "Campaign", why: "Connects, outcomes, remaining supply." },
   { name: "Connection rate", scope: "Campaign", why: "Human answers vs attempts." },
   { name: "Sales today", scope: "Campaign", why: "Dispositions that pay the floor." },
@@ -360,7 +447,7 @@ export const pricingAdvantages = [
   {
     title: "Wallboards and inbound on every seat",
     description:
-      "Custom dashboards, TV mode, playlists, platform DIDs, queues and IVR are included. Not a premium SKU.",
+      "Custom dashboards, TV mode, playlists, Digital waiting, platform DIDs, queues, IVR and the Work Inbox catalog are included. Not a premium SKU.",
   },
   {
     title: "Optional bundles when you want a budget",
@@ -373,7 +460,7 @@ export const bundledPlanOptions = [
   {
     name: "Metered (default)",
     bestFor: "Variable volume, part-time agents, pilots",
-    detail: "£25/seat + top up credits as you go (~5p/min). Pay only for connected minutes.",
+    detail: "£25/seat + top up voice credits as you go (~5p outbound / ~4p inbound). Digital is not in that wallet.",
   },
   {
     name: "Seat + credit bundle",
@@ -386,7 +473,7 @@ export const pricingBreakdown = [
   {
     label: "Platform",
     value: "£25 per agent / month",
-    detail: "Workspace, dial methods, inbound, wallboards, DNC, recording, roles",
+    detail: "Workspace, dial methods, inbound, Work Inbox, wallboards, DNC, recording, roles. Sales policy, not a Stripe seat SKU.",
   },
   {
     label: "Telephony",
@@ -400,13 +487,18 @@ export const pricingBreakdown = [
   },
   {
     label: "Inbound",
-    value: "~5p per connected minute",
-    detail: "Same credit wallet as outbound",
+    value: "~4p per connected minute",
+    detail: "Code default. Same voice wallet as outbound. Confirm on the demo if a contract uses a different inbound rate.",
+  },
+  {
+    label: "SMS / WhatsApp / email",
+    value: "Not in the voice wallet",
+    detail: "No per-message debit in Call Credits. Do not invent a WhatsApp pence rate.",
   },
   {
     label: "Minimum top-up",
     value: "£50",
-    detail: "Packs: £50 · £100 · £250 · £500 via Stripe in Admin",
+    detail: "Packs: £50 · £100 · £250 · £500 via Stripe in Admin. Custom top-up £1–500 also allowed.",
   },
   {
     label: "Teams",
@@ -418,10 +510,11 @@ export const pricingBreakdown = [
 export const pricingIncludes = [
   "Manual, preview, progressive and power dial",
   "Twilio AMD on auto-dial",
+  "Work Inbox for SMS, WhatsApp, email, chat, social DMs",
   "Browser agent workspace",
   "Campaigns, lists, CSV, DNC",
   "Inbound DIDs, queues, hours, IVR studio",
-  "Custom wallboards, TV mode, playlists",
+  "Custom wallboards, TV mode, playlists, Digital waiting",
   "Reporting, recordings (ACL), exports",
   "Admin, Supervisor and Agent roles",
 ] as const;
@@ -435,7 +528,7 @@ export const faqItems = [
   {
     question: "How are minutes billed?",
     answer:
-      "Inbound and outbound both use one prepaid wallet at approximately 5p per connected minute, with a one-minute minimum per call. Top up in Admin → Call Credits via Stripe packs (£50 / £100 / £250 / £500), or receive a pilot grant.",
+      "Inbound uses the same prepaid wallet as outbound, at approximately 4p per connected minute (code default). Outbound is approximately 5p. One-minute minimum per call. Digital (SMS / WhatsApp / email) is not in that wallet. Top up in Admin → Call Credits via Stripe packs (£50 / £100 / £250 / £500), or receive a pilot grant.",
   },
   {
     question: "Is predictive live?",
@@ -445,12 +538,17 @@ export const faqItems = [
   {
     question: "Do you have wallboards?",
     answer:
-      "Yes — they are a first-class product. Drag-and-drop builder, dedicated TV mode, playlist rotation, shareable view links, role-aware templates, and a widget library of about 40 tiles scoped to Me / Campaign / Organisation. Built for a wall-mounted display, not only a browser tab.",
+      "Yes — they are a first-class product. Drag-and-drop builder, dedicated TV mode, playlist rotation, shareable view links, role-aware templates, and a widget library of about 40 tiles including Digital waiting (inbox waitingOnAgent, last 24h). Not per-channel WhatsApp tiles. Not public unauthenticated kiosk URLs.",
   },
   {
-    question: "Is this omnichannel or an AI platform?",
+    question: "Do you have WhatsApp, SMS, email and chat?",
     answer:
-      "No. Omnivox is a cloud contact centre for outbound sales and inbound voice. There is no WhatsApp, SMS inbox, email, live chat, or Instagram channel. We are not a conversational-AI platform. AI dispositioning is labelled Coming — not the product identity.",
+      "Yes — in the Work Inbox, not as a Genesys/Zendesk suite. Admin → Channels → Channel Types lists eight live catalog tiles. An org is only receive/send ready after numbers, WABA, mailbox, widget key or social tokens are configured. Catalog live ≠ this customer can take WhatsApp tomorrow. WhatsApp uses Twilio WABA and Meta’s 24h window. DMs only for Facebook, Instagram and X — not comments. No tickets, no unified timeline, no MMS.",
+  },
+  {
+    question: "Is this a conversational AI platform?",
+    answer:
+      "No. AI Voice Agent is a bounded inbound Pilot under Channels → Voice. AI dispositioning, live coaching transcripts and RAG are Coming — not the homepage. We are not an Intercom or conversational-AI product.",
   },
   {
     question: "What about GDPR and a DPA?",
@@ -475,12 +573,12 @@ export const faqItems = [
   {
     question: "Which integrations exist?",
     answer:
-      "Stripe for billing, Twilio for voice, Zoho CRM via OAuth import. Salesforce and HubSpot are coming soon. Webhooks and API keys have a UI; we do not sell a public developer platform yet.",
+      "Stripe for billing, Twilio for voice and WhatsApp/SMS, Zoho CRM via OAuth import. HubSpot is live-narrow (OAuth + completed calls → call engagements). Salesforce is not implemented. Webhooks and API keys have a UI; we do not sell a public developer platform yet.",
   },
   {
     question: "Why not just buy an “unlimited minutes” plan?",
     answer:
-      "Bundled plans look simple but often hide fair-use caps (~3,000 minutes per user/month) and high per-seat fees (£50–90+). Omnivox separates a £25 platform fee from prepaid telephony at ~5p/min. The meter is always visible.",
+      "Bundled plans look simple but often hide fair-use caps (~3,000 minutes per user/month) and high per-seat fees (£50–90+). Omnivox separates a £25 platform fee from prepaid voice at ~5p outbound / ~4p inbound. Digital is not in that meter. The voice ledger is always visible.",
   },
   {
     question: "Do you offer bundled or flat-rate plans?",
@@ -565,7 +663,7 @@ export const dataCompliance = {
     {
       title: "Security",
       content:
-        "Encrypted transport, authenticated access, and role-scoped permissions. Administrative changes are logged. We do not claim SOC 2, ISO 27001, PCI-DSS, SSO/SAML, or enforced company-wide 2FA. Ask us for the current security posture during procurement.",
+        "Encrypted transport, authenticated access, and role-scoped permissions. Administrative changes are logged. 2FA is live for admins when ENABLE_2FA is on (default on). We do not claim SOC 2, ISO 27001, PCI-DSS, or SSO/SAML. Ask us for the current security posture during procurement.",
     },
     {
       title: "Breaches & enquiries",
@@ -584,12 +682,17 @@ export const proofPoints = [
   {
     metric: "Metered",
     label: "prepaid wallet in Admin",
-    detail: "Every connected minute, inbound or outbound, lands in Admin → Call Credits. Agents see a low-balance banner on Work.",
+    detail: "Every connected voice minute lands in Admin → Call Credits. Outbound ~5p, inbound ~4p. Agents see a low-balance banner on Work. Digital is not in this wallet.",
   },
   {
     metric: "Production",
     label: "preview dial in live pilots",
     detail: "Preview is not a demo toggle. Teams review, skip, or dial, then disposition in the same flow.",
+  },
+  {
+    metric: "Inbox",
+    label: "SMS / WhatsApp in Work",
+    detail: "Shared OmniConversation inbox is in production code and in PRs #258 / #259. WhatsApp tells the truth about Meta’s 24h window.",
   },
   {
     metric: "Multi-org",
@@ -606,7 +709,7 @@ export const comparisonRows = [
   },
   {
     label: "Minutes",
-    omnivox: "~5p / connected minute, one wallet, 1-min minimum",
+    omnivox: "~5p outbound / ~4p inbound, 1-min minimum. Digital not in the wallet.",
     typical: "“Unlimited” with ~3k min/user fair-use",
   },
   {
@@ -626,17 +729,17 @@ export const comparisonRows = [
   },
   {
     label: "Wallboards",
-    omnivox: "Builder, TV mode, playlists, ~40 voice/ops widgets",
+    omnivox: "Builder, TV mode, playlists, ~40 widgets including Digital waiting",
     typical: "KPI tiles in-app; few true floor TVs for dialler ops",
   },
   {
     label: "Channels",
-    omnivox: "Voice only. No WhatsApp, email, chat, Instagram",
-    typical: "CloudTalk/Aircall/Connex sell omnichannel or CRM-native phone",
+    omnivox: "8-channel catalog + Work Inbox. Catalog live ≠ org-ready. No unified timeline.",
+    typical: "CloudTalk/Aircall win CRM + mobile; Connex sells the fuller omnichannel suite",
   },
   {
     label: "CRM",
-    omnivox: "Zoho import live; Salesforce / HubSpot coming",
+    omnivox: "Zoho import live; HubSpot call write-back (narrow); Salesforce not implemented",
     typical: "Stronger native Salesforce / HubSpot / mobile apps",
   },
   {
@@ -649,11 +752,11 @@ export const comparisonRows = [
 export const competitorNotes = [
   {
     name: "CloudTalk / Aircall",
-    take: "Prettier product, stronger CRM and mobile. Weaker campaign lists, DNC, power, AMD, and wallboards built for dialler operations.",
+    take: "They win CRM marketplace and native mobile. We win campaign lists, DNC, preview/progressive/power, AMD, floor wallboards, and WhatsApp with Meta’s 24h rules. They are phone products; we are contact-centre ops. Not “voice-only vs omnichannel”.",
   },
   {
     name: "Connex One",
-    take: "Omnichannel plus live predictive. Serious contact-centre kit — typically two to three times the seat cost. Buy them if you need WhatsApp and statistical predictive today.",
+    take: "The fuller suite: WFM, live predictive, deeper digital. Omnivox is a cheaper owned Twilio stack with a real but thinner inbox. Do not buy Connex “because they have WhatsApp” — we have WhatsApp (Twilio, 24h). Buy them for suite depth.",
   },
   {
     name: "“Unlimited” seats",
@@ -668,7 +771,7 @@ export const whoBuys = [
   },
   {
     title: "Small contact centres",
-    detail: "Outbound plus inbound on platform DIDs. Queues, hours, IVR, one wallet.",
+    detail: "Outbound plus inbound on platform DIDs, plus a Work Inbox for SMS/WhatsApp/email/chat if those assets are configured. Queues, hours, IVR, one voice wallet.",
   },
   {
     title: "Outbound agencies",
@@ -677,8 +780,9 @@ export const whoBuys = [
 ] as const;
 
 export const whoDoesNotBuy = [
-  "Teams that need WhatsApp, email, live chat or Instagram",
+  "Teams that need comments, tickets, broadcasts, or one customer / one timeline",
   "Salesforce- or HubSpot-native phone as the buying reason",
   "Native mobile Voice / App Store presence",
   "Live statistical predictive on day one",
+  "WhatsApp without Twilio WABA, or a stored HSM catalog",
 ] as const;

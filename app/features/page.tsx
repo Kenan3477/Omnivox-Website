@@ -1,7 +1,7 @@
 import { StatusLabel } from "@/components/ui/StatusLabel";
 import { Button } from "@/components/ui/Button";
 import { CTABand } from "@/components/home/CTABand";
-import { comingSoon, featureGroups } from "@/lib/constants";
+import { comingSoon, featureGroups, notUs } from "@/lib/constants";
 import { PageSeo } from "@/components/seo/PageSeo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { pageMetadata, pageSeo } from "@/lib/seo";
@@ -22,11 +22,11 @@ export default function FeaturesPage() {
           <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Features", href: "/features" }]} />
           <p className="kicker">Features</p>
           <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">
-            Everything a voice floor runs. Labelled honestly.
+            Dialer, inbox, inbound, wallboards. Labelled honestly.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-300">
-            Dialer, inbound, wallboards, data, compliance, credits. Progressive is live. Predictive is waitlist. If a
-            card is not labelled Live, do not buy it as if it were.
+            Eight-channel catalog, Work Inbox, preview/progressive/power, IVR, floor TVs. Predictive is waitlist. Catalog
+            live is not org-ready. If a card is not labelled Live, do not buy it as if it were.
           </p>
           <Button href="/contact" size="lg" className="mt-8">
             Book a demo
@@ -62,6 +62,18 @@ export default function FeaturesPage() {
                 <li key={item.name} className="grid gap-1 px-5 py-4 md:grid-cols-[220px_1fr]">
                   <span className="font-medium text-paper">{item.name}</span>
                   <span className="text-sm text-ink-300">{item.note}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="kicker">Not us</p>
+            <h2 className="display mt-2 text-2xl text-paper">Would be a new lie if we over-corrected.</h2>
+            <ul className="mt-6 divide-y divide-ink-700 border border-ink-600">
+              {notUs.map((item) => (
+                <li key={item} className="px-5 py-3 text-sm text-ink-300">
+                  {item}
                 </li>
               ))}
             </ul>

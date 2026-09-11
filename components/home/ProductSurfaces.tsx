@@ -10,11 +10,10 @@ export function ProductSurfaces() {
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div>
             <p className="kicker">Agent workspace</p>
-            <h2 className="display mt-3 text-3xl text-paper">Work queue, contact card, softphone. In the browser.</h2>
+            <h2 className="display mt-3 text-3xl text-paper">Inbox and My Interactions. Same /work. Two views.</h2>
             <p className="mt-4 text-ink-300">
-              Click-to-call, mute, hold, keypad, recording. Scripts where configured. Structured dispositions, notes,
-              callbacks. History: queued, allocated, outcomed, unallocated. Statuses a floor actually uses — including
-              Break, Lunch, Training, Meeting.
+              Softphone WebRTC, scripts, voice wrap codes, callbacks. Digital is claim / close / reply. An active call
+              forces My Interactions. Not one customer card across channels.
             </p>
             <Button href="/features#dialer" variant="outline" className="mt-6">
               Workspace features

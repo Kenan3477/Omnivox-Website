@@ -1,5 +1,7 @@
 import { Hero } from "@/components/home/Hero";
+import { ChannelModule } from "@/components/home/ChannelModule";
 import { DialMethods } from "@/components/home/DialMethods";
+import { InboxModule } from "@/components/home/InboxModule";
 import { WallboardModule } from "@/components/home/WallboardModule";
 import { ProductSurfaces } from "@/components/home/ProductSurfaces";
 import { Comparison } from "@/components/home/Comparison";
@@ -19,7 +21,7 @@ export const metadata = pageMetadata({
     "cloud contact centre",
     "preview dial",
     "power dial",
-    "outbound dialer UK",
+    "WhatsApp inbox",
     "wallboards",
   ],
 });
@@ -29,7 +31,9 @@ export default function HomePage() {
     <>
       <PageSeo page="home" includeApp includeFaq />
       <Hero />
+      <ChannelModule />
       <DialMethods />
+      <InboxModule />
       <WallboardModule />
       <ProductSurfaces />
       <Comparison />

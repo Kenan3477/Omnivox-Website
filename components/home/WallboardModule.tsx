@@ -29,7 +29,8 @@ export function WallboardModule() {
           <PlaylistStory />
         </div>
         <p className="mt-6 text-sm text-ink-400">
-          Share a board with a view link. Not a public unauthenticated URL, not custom HTML, not WhatsApp waiting widgets.{" "}
+          Share a board with a view link. Not a public unauthenticated URL, not custom HTML. Digital waiting is a real
+          module (inbox waitingOnAgent, last 24h) — not per-channel WhatsApp tiles.{" "}
           <Link href="/wallboards" className="text-signal-300">
             Widget catalogue →
           </Link>

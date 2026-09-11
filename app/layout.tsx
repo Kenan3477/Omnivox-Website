@@ -49,6 +49,7 @@ export const metadata: Metadata = {
     "outbound dialer UK",
     "preview dial",
     "power dial",
+    "WhatsApp inbox",
     "wallboards",
     "inbound ACD",
     "prepaid call credits",
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "OMNIVOX — Preview, power, inbound, wallboards",
+    title: "OMNIVOX — Voice, inbox, wallboards",
     description: pageSeo.home.description,
   },
   twitter: {
@@ -83,7 +84,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08090B",
+  themeColor: "#09090B",
   width: "device-width",
   initialScale: 1,
 };

@@ -14,12 +14,9 @@ interface ButtonProps extends Pick<ButtonHTMLAttributes<HTMLButtonElement>, "typ
 }
 
 const variants: Record<ButtonVariant, string> = {
-  primary:
-    "bg-amber-400 text-ink hover:bg-amber-300 font-semibold shadow-[0_0_0_1px_rgba(232,163,23,0.4)]",
-  secondary:
-    "bg-ink-700 text-ink-100 border border-ink-600 hover:border-ink-400 hover:bg-ink-600",
-  outline:
-    "border border-signal-400/50 text-signal-300 hover:bg-signal-400/10",
+  primary: "bg-cta-500 text-white hover:bg-cta-600 font-semibold shadow-[0_0_0_1px_rgba(37,99,235,0.35)]",
+  secondary: "bg-ink-700 text-ink-100 border border-ink-600 hover:border-ink-400 hover:bg-ink-600",
+  outline: "border border-signal-400/50 text-signal-300 hover:bg-signal-400/10",
   ghost: "text-ink-200 hover:text-signal-300 hover:bg-white/5",
   paper: "bg-ink text-paper hover:bg-ink-800 font-semibold",
 };

@@ -13,12 +13,12 @@
   }
 
   :focus-visible {
-    @apply outline outline-2 outline-offset-2 outline-signal-400;
+    @apply outline outline-2 outline-offset-2 outline-cta-400;
   }
 
   ::selection {
-    background: rgba(46, 200, 176, 0.28);
-    color: #f4f1ea;
+    background: rgba(37, 99, 235, 0.35);
+    color: #f8fafc;
   }
 }
 
@@ -51,7 +51,7 @@
   }
 
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-signal-400 focus:px-3 focus:py-2 focus:text-ink focus:outline-none;
+    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-cta-500 focus:px-3 focus:py-2 focus:text-white focus:outline-none;
   }
 }
 

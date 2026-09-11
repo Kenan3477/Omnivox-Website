@@ -6,6 +6,7 @@ import { LogoMark, Wordmark } from "@/components/brand/Wordmark";
 const footerLinks = {
   product: [
     { href: "/features", label: "Features" },
+    { href: "/channels", label: "Channels" },
     { href: "/wallboards", label: "Wallboards" },
     { href: "/inbound", label: "Inbound" },
     { href: "/pricing", label: "Pricing" },
@@ -34,8 +35,8 @@ export function Footer() {
               <Wordmark compact />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-300">
-              UK/EU cloud contact centre for outbound sales and inbound voice. Preview, progressive and power dial.
-              Custom wallboards on the floor.
+            UK/EU cloud contact centre: Twilio voice plus a Work Inbox for SMS, WhatsApp, email, live chat and social
+            DMs. Custom wallboards on the floor.
             </p>
             <p className="mt-4 text-sm">
               <span className="text-ink-400">by </span>

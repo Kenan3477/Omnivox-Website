@@ -34,8 +34,8 @@ export default function PricingPage() {
             Half the typical seat. Pay for the minutes you actually connect.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-ink-300">
-            £25 per agent for the platform. Telephony on prepaid credits at ~5p/min. Wallboards, inbound IVR and AMD
-            included — not a premium SKU.
+            £25 per agent for the platform. Voice on prepaid credits: ~5p outbound, ~4p inbound. Digital is not in that
+            wallet. Wallboards, inbox catalog and inbound IVR included — not a premium SKU.
           </p>
         </div>
       </section>
@@ -48,7 +48,7 @@ export default function PricingPage() {
               <p className="mt-2 font-mono text-4xl tabular md:text-5xl">
                 £25<span className="text-xl text-ink-500"> / agent / month</span>
               </p>
-              <p className="mt-2 text-ink-500">+ prepaid call credits at ~5p per connected minute</p>
+              <p className="mt-2 text-ink-500">+ prepaid voice credits · ~5p outbound / ~4p inbound</p>
             </div>
             <table className="w-full text-left">
               <thead>
@@ -102,7 +102,8 @@ export default function PricingPage() {
 
           <blockquote className="mt-10 border border-amber-200 bg-amber-50 p-6 leading-relaxed">
             <strong>Worked example:</strong> 5 agents = <strong>£125/month</strong> platform. £100 credit top-up ≈{" "}
-            <strong>2,000 minutes</strong> (inbound or outbound). No surprise telecom invoice.
+            <strong>2,000 outbound minutes</strong> at 5p, or ~2,500 inbound minutes at 4p. SMS / WhatsApp / email are
+            not deducted from that wallet.
           </blockquote>
 
           <div id="calculator" className="mt-12 grid scroll-mt-28 gap-8 lg:grid-cols-2">

@@ -28,13 +28,13 @@ export function PricingCalculator() {
     <div className="border border-stone-300 bg-white p-6 md:p-8">
       <h3 className="font-display text-xl font-bold text-ink">Total cost clarity</h3>
       <p className="mt-2 text-sm text-ink-500">
-        Telephony from real usage — then compare to a typical bundled seat that assumes average volume.
+        Telephony from real usage at the outbound default (~5p/min). Inbound in code is ~4p. Digital is not in this meter.
       </p>
 
       <div className="mt-6 space-y-5">
         <div>
           <label htmlFor="agents" className="mb-2 block text-sm font-medium text-ink">
-            Agents: <span className="font-mono tabular text-amber-700">{agents}</span>
+            Agents: <span className="font-mono tabular text-cta-700">{agents}</span>
           </label>
           <input
             id="agents"
@@ -43,12 +43,12 @@ export function PricingCalculator() {
             max={50}
             value={agents}
             onChange={(e) => setAgents(Number(e.target.value))}
-            className="w-full accent-amber-500"
+            className="w-full accent-cta-500"
           />
         </div>
         <div>
           <label htmlFor="calls" className="mb-2 block text-sm font-medium text-ink">
-            Connected calls per day (team total): <span className="font-mono tabular text-amber-700">{callsPerDay}</span>
+            Connected calls per day (team total): <span className="font-mono tabular text-cta-700">{callsPerDay}</span>
           </label>
           <input
             id="calls"
@@ -58,12 +58,12 @@ export function PricingCalculator() {
             step={10}
             value={callsPerDay}
             onChange={(e) => setCallsPerDay(Number(e.target.value))}
-            className="w-full accent-amber-500"
+            className="w-full accent-cta-500"
           />
         </div>
         <div>
           <label htmlFor="avgMin" className="mb-2 block text-sm font-medium text-ink">
-            Average minutes per call: <span className="font-mono tabular text-amber-700">{avgMinutes}</span>
+            Average minutes per call: <span className="font-mono tabular text-cta-700">{avgMinutes}</span>
           </label>
           <input
             id="avgMin"
@@ -72,7 +72,7 @@ export function PricingCalculator() {
             max={10}
             value={avgMinutes}
             onChange={(e) => setAvgMinutes(Number(e.target.value))}
-            className="w-full accent-amber-500"
+            className="w-full accent-cta-500"
           />
         </div>
       </div>

@@ -15,10 +15,10 @@ export function IvrCanvasMock() {
       </div>
       <div className="relative h-72 bg-[linear-gradient(to_right,rgba(42,50,60,0.35)_1px,transparent_1px),linear-gradient(to_bottom,rgba(42,50,60,0.35)_1px,transparent_1px)] bg-[size:28px_28px]">
         <svg className="absolute inset-0 h-full w-full" aria-hidden>
-          <line x1="18%" y1="26%" x2="38%" y2="26%" stroke="#2EC8B0" strokeWidth="1.2" />
-          <line x1="48%" y1="26%" x2="68%" y2="26%" stroke="#2A323C" strokeWidth="1.2" />
-          <line x1="44%" y1="34%" x2="44%" y2="58%" stroke="#2EC8B0" strokeWidth="1.2" />
-          <line x1="54%" y1="66%" x2="68%" y2="66%" stroke="#2A323C" strokeWidth="1.2" />
+          <line x1="18%" y1="26%" x2="38%" y2="26%" stroke="#6366F1" strokeWidth="1.2" />
+          <line x1="48%" y1="26%" x2="68%" y2="26%" stroke="#1E293B" strokeWidth="1.2" />
+          <line x1="44%" y1="34%" x2="44%" y2="58%" stroke="#6366F1" strokeWidth="1.2" />
+          <line x1="54%" y1="66%" x2="68%" y2="66%" stroke="#1E293B" strokeWidth="1.2" />
         </svg>
         {nodes.map((node) => (
           <div

@@ -14,7 +14,7 @@ export function WorkspaceMock() {
       <div className="grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)_220px]">
         <div className="border-b border-ink-600 lg:border-b-0 lg:border-r">
           <div className="flex items-center justify-between border-b border-ink-600 px-3 py-2">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-ink-400">Work queue</p>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-ink-400">Work queue · My Interactions</p>
             <span className="font-mono text-[10px] text-signal-400">12 queued</span>
           </div>
           <ul className="divide-y divide-ink-700 text-sm">

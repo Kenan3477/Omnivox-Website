@@ -8,7 +8,8 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 const useCases = [
   { value: "outbound", label: "Outbound" },
   { value: "inbound", label: "Inbound" },
-  { value: "both", label: "Both" },
+  { value: "inbox", label: "Digital inbox" },
+  { value: "both", label: "Voice + inbox" },
   { value: "agency", label: "Agency / multi-org" },
 ];
 

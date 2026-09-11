@@ -1,19 +1,20 @@
 # OMNIVOX
 
-> UK/EU cloud contact centre for outbound sales and inbound voice. Preview, progressive and power dial, inbound queues and IVR, custom wallboards. £25 a seat, prepaid minutes, no fair-use fiction.
+> UK/EU cloud contact centre: Twilio voice (preview, progressive, power + AMD, inbound ACD/IVR), a Work Inbox for SMS, WhatsApp, email, live chat and social DMs, and custom wallboards. £25 a seat. Prepaid voice minutes. Digital is not in the voice wallet.
 
-OMNIVOX is operated by Quanterae Solutions. Platform fee £25 per agent per month. Telephony is prepaid at approximately 5p per connected minute, inbound and outbound, one wallet, one-minute minimum. Usage is visible in Admin → Call Credits.
+OMNIVOX is operated by Quanterae Solutions. Platform fee £25 per agent per month (sales policy). Voice credits: approximately 5p outbound / 4p inbound per connected minute, one-minute minimum. SMS / WhatsApp / email are not deducted from Call Credits. Sign-in: https://omnivox.vercel.app/login (IP-whitelisted; /WL).
 
 ## Pages
 
-- [Home](https://omnivox-website-three.vercel.app/): Product overview, dial methods, wallboards, comparison, FAQ
-- [Features](https://omnivox-website-three.vercel.app/features): Live / Waitlist / Coming labels
-- [Wallboards](https://omnivox-website-three.vercel.app/wallboards): Builder, TV mode, playlists, widget catalogue
+- [Home](https://omnivox-website-three.vercel.app/): Channel Types explorer, dial methods, Work Inbox, wallboards, comparison, FAQ
+- [Channels](https://omnivox-website-three.vercel.app/channels): 8-tile Channel Types, catalog vs org-ready, Inbox rules
+- [Features](https://omnivox-website-three.vercel.app/features): Live / Pilot / Waitlist / Coming / Not us labels
+- [Wallboards](https://omnivox-website-three.vercel.app/wallboards): Builder, TV mode, playlists, Digital waiting
 - [Inbound](https://omnivox-website-three.vercel.app/inbound): Platform DIDs, ACD, hours, IVR studio
-- [Pricing](https://omnivox-website-three.vercel.app/pricing): £25/seat plus prepaid credits, calculator, top-up packs
+- [Pricing](https://omnivox-website-three.vercel.app/pricing): £25/seat plus prepaid voice credits, calculator, top-up packs
 - [Agencies](https://omnivox-website-three.vercel.app/agencies): Multi-org isolation, per-client credits, same-day onboard
 - [Trust](https://omnivox-website-three.vercel.app/trust): UK GDPR controller/processor, DPA, DNC, audit, recording
-- [FAQ](https://omnivox-website-three.vercel.app/faq): Carrier, minutes, predictive, wallboards, GDPR
+- [FAQ](https://omnivox-website-three.vercel.app/faq): Carrier, minutes, WhatsApp, predictive, wallboards, GDPR
 - [Contact](https://omnivox-website-three.vercel.app/contact): Book a demo or start a same-day pilot
 - [Privacy Policy](https://omnivox-website-three.vercel.app/privacy)
 - [Terms of Service](https://omnivox-website-three.vercel.app/terms)
@@ -22,16 +23,18 @@ OMNIVOX is operated by Quanterae Solutions. Platform fee £25 per agent per mont
 
 - Live dial methods: manual / click-to-call, preview, progressive (1:1), power (ratio > 1, AMD-gated)
 - Twilio AMD is live. Adaptive Power and statistical predictive are waitlist only — predictive is not shipped
-- Custom wallboards are first-class: builder, TV mode, playlists, ~40 widgets
-- Inbound is a contact-centre stack: platform-managed UK numbers, queues, hours, visual IVR
-- One prepaid credit wallet covers inbound and outbound
-- No BYOC / multi-carrier — we run Twilio
-- Call recording is configurable per organisation or campaign; consent is the customer’s job
+- Eight-channel catalog is live in code. Org-ready requires DID / WABA / mailbox / widget / social tokens
+- Work Inbox is live. One OmniConversation per channel. No unified timeline. No tickets
+- WhatsApp: Twilio WABA, Meta 24h window, HX Content SID or SMS fallback. No broadcasts / HSM catalog
+- Custom wallboards: builder, TV mode, playlists, ~40 widgets including DIGITAL_WAITING
+- Inbound: platform-managed UK numbers, queues, hours, visual IVR. No BYOC
+- Conference transfer / whisper / barge off by default
+- Prepaid voice wallet covers inbound and outbound only
 - UK GDPR: the customer is the data controller; OMNIVOX is the data processor
 - A Data Processing Agreement is provided at onboarding
-- Not omnichannel. Not a conversational-AI platform
+- Not a conversational-AI platform. AI Voice Agent is a bounded inbound Pilot
 - Contact: hello@omnivox.co.uk
-- App login: https://omnivox-ai.vercel.app/login
+- App login: https://omnivox.vercel.app/login
 
 ## Optional
 
