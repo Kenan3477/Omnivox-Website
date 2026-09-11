@@ -1,15 +1,15 @@
-# Omnivox Marketing Website
+# OMNIVOX marketing site
 
-Conversion-focused marketing site for **Omnivox** — a cloud contact centre and outbound sales dialer for UK/EU teams.
+Public site for **OMNIVOX** — a UK/EU cloud contact centre for outbound sales and inbound voice, operated by Quanterae Solutions.
 
-## Tech stack
+## Stack
 
-- [Next.js 14](https://nextjs.org/) (App Router)
-- [Tailwind CSS](https://tailwindcss.com/)
+- Next.js 14 (App Router)
+- Tailwind CSS
 - TypeScript
-- Deployed on [Vercel](https://vercel.com/)
+- Deployed on Vercel
 
-## Getting started
+## Scripts
 
 ```bash
 npm install
@@ -20,39 +20,29 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Pages
 
-| Route | Description |
-|-------|-------------|
-| `/` | Home — hero, value pillars, product mockups, FAQ |
-| `/features` | Full feature breakdown with availability badges |
-| `/pricing` | Three-tier pricing with worked example |
-| `/agencies` | Agency positioning and multi-org benefits |
-| `/contact` | Demo/pilot enquiry form |
-| `/trust` | Trust & security |
-| `/privacy` | Privacy policy (stub) |
-| `/terms` | Terms of service (stub) |
+| Route | Purpose |
+| --- | --- |
+| `/` | Home — dial methods, wallboard, inbound, comparison |
+| `/features` | Live / Waitlist / Coming labels |
+| `/wallboards` | Builder, TV mode, playlists, widgets |
+| `/inbound` | DIDs, ACD, hours, IVR studio |
+| `/pricing` | £25 seat + calculator |
+| `/agencies` | Multi-org |
+| `/trust` | Controller / processor |
+| `/faq` | Carrier, minutes, predictive, GDPR |
+| `/contact` | Demo / pilot form |
+| `/privacy` `/terms` | Legal |
 
-## Deploy to Vercel
-
-1. Push this repo to GitHub (`Kenan3477/Omnivox-Website`)
-2. Import the project in [Vercel](https://vercel.com/new)
-3. Framework preset: **Next.js** (auto-detected)
-4. Deploy
-
-### Environment variables (optional)
+## Environment
 
 | Variable | Description |
-|----------|-------------|
-| `CONTACT_WEBHOOK_URL` | Webhook URL to forward contact form submissions (e.g. Zapier, Make, Slack) |
+| --- | --- |
+| `CONTACT_WEBHOOK_URL` | Forward contact form submissions |
+| `OPENAI_API_KEY` | Optional. Site helper uses product facts without it; with it, answers are phrased by the model against the same facts |
+| `OPENAI_CHAT_MODEL` | Optional. Defaults to `gpt-4o-mini` |
+| `NEXT_PUBLIC_CALENDLY_URL` | Optional calendar embed on Contact |
 
-Without `CONTACT_WEBHOOK_URL`, form submissions are logged server-side and return success to the user.
-
-## Customisation
-
-- **Site URL**: Update `siteConfig.url` in `lib/constants.ts`
-- **Contact email**: Update `siteConfig.contactEmail` in `lib/constants.ts`
-- **Calendar embed**: Replace placeholder in `components/contact/ContactForm.tsx`
-- **OG image**: Replace `public/og-image.svg` (or add `public/og-image.png` and update `app/layout.tsx`)
-- **Legal pages**: Review stubs in `app/privacy/page.tsx` and `app/terms/page.tsx` with legal counsel
+Sign-in CTA points at `siteConfig.appLoginUrl` in `lib/constants.ts` (current Vercel app). Do not invent a custom domain.
 
 ## Build
 
@@ -63,4 +53,4 @@ npm start
 
 ## Licence
 
-Proprietary — Omnivox
+Proprietary — Omnivox / Quanterae Solutions

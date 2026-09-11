@@ -1,27 +1,33 @@
-import { VoiceWaveV } from "./VoiceWaveV";
-
-interface WordmarkProps {
-  size?: "sm" | "md" | "lg" | "hero";
+export function Wordmark({
+  className = "",
+  compact = false,
+}: {
   className?: string;
-  showAi?: boolean;
+  compact?: boolean;
+}) {
+  return (
+    <span className={`inline-flex items-center gap-2 ${className}`}>
+      <span className="font-display text-[1.05rem] font-extrabold tracking-tight text-paper" style={{ letterSpacing: "0.01em" }}>
+        OMNIVOX
+      </span>
+      {!compact && (
+        <span className="hidden items-center gap-1.5 sm:flex" aria-hidden="true">
+          <span className="h-1.5 w-1.5 bg-amber-400 tick-live" />
+        </span>
+      )}
+    </span>
+  );
 }
 
-const sizes = {
-  sm: "text-base",
-  md: "text-xl",
-  lg: "text-3xl sm:text-4xl",
-  hero: "text-4xl sm:text-5xl",
-};
-
-export function Wordmark({ size = "md", className = "", showAi = true }: WordmarkProps) {
+export function LogoMark({ className = "h-8 w-8" }: { className?: string }) {
   return (
-    <h1
-      className={`font-bold tracking-tight text-white inline-flex flex-wrap items-end ${sizes[size]} ${className}`}
-    >
-      <span>OMNI</span>
-      <VoiceWaveV className={size === "lg" || size === "hero" ? "mx-1 mb-0.5" : "mx-0.5"} />
-      <span className="text-cyan-300">OX</span>
-      {showAi && <span className="text-cyan-400 font-semibold ml-1.5 self-center text-[0.45em]">AI</span>}
-    </h1>
+    <svg className={className} viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <rect width="32" height="32" rx="2" fill="#101318" />
+      <rect x="0.5" y="0.5" width="31" height="31" rx="1.5" stroke="#2A323C" />
+      <rect x="5" y="8" width="22" height="16" rx="1" fill="#08090B" stroke="#E8A317" strokeWidth="0.75" />
+      <rect x="7" y="11" width="5" height="8" fill="#E8A317" />
+      <rect x="13.5" y="14" width="5" height="5" fill="#3DDC97" />
+      <rect x="20" y="12.5" width="5" height="6.5" fill="#E8A317" opacity="0.55" />
+    </svg>
   );
 }

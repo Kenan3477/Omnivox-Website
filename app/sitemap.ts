@@ -5,10 +5,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/features",
+    "/wallboards",
+    "/inbound",
     "/pricing",
     "/agencies",
     "/contact",
     "/trust",
+    "/faq",
     "/privacy",
     "/terms",
   ];
@@ -17,6 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),
     changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : 0.8,
+    priority: route === "" ? 1 : route === "/wallboards" ? 0.9 : 0.8,
   }));
 }

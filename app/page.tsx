@@ -1,22 +1,24 @@
 import { Hero } from "@/components/home/Hero";
-import { PillarsSection } from "@/components/home/PillarsSection";
-import { ProductShowcase } from "@/components/home/ProductShowcase";
-import { PlatformGrid } from "@/components/home/PlatformGrid";
-import { UsagePricingSection } from "@/components/home/UsagePricingSection";
-import { ComplianceSection } from "@/components/home/ComplianceSection";
-import { PricingFAQ } from "@/components/home/PricingFAQ";
+import { DialMethods } from "@/components/home/DialMethods";
+import { WallboardModule } from "@/components/home/WallboardModule";
+import { ProductSurfaces } from "@/components/home/ProductSurfaces";
+import { Comparison } from "@/components/home/Comparison";
+import { PricingTeaser } from "@/components/home/PricingTeaser";
+import { ProofPoints } from "@/components/home/ProofPoints";
+import { FAQ } from "@/components/home/FAQ";
 import { CTABand } from "@/components/home/CTABand";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <PillarsSection />
-      <ProductShowcase />
-      <UsagePricingSection />
-      <PlatformGrid />
-      <ComplianceSection />
-      <PricingFAQ />
+      <DialMethods />
+      <WallboardModule />
+      <ProductSurfaces />
+      <Comparison />
+      <PricingTeaser />
+      <ProofPoints />
+      <FAQ />
       <CTABand />
     </>
   );

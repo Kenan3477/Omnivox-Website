@@ -4,7 +4,7 @@ import { ContactPageContent } from "@/components/contact/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Book a demo or start a pilot with Omnivox. We'll provision your organisation and call credits for same-day onboarding.",
+    "Book a demo or start an Omnivox pilot. Same-day onboarding, £50 credits, and white-glove setup for qualified teams.",
 };
 
 export default function ContactPage() {

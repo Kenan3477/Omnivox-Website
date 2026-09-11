@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navLinks, siteConfig } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
+import { LogoMark, Wordmark } from "@/components/brand/Wordmark";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -12,7 +13,7 @@ export function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -21,33 +22,27 @@ export function Header() {
     setMobileOpen(false);
   }, [pathname]);
 
-  const glass = scrolled || pathname !== "/";
-
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        glass
-          ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
-          : "bg-transparent"
+      className={`sticky top-0 z-50 border-b border-ink-600 ${
+        scrolled || mobileOpen ? "bg-ink/95 backdrop-blur-md" : "bg-ink"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 md:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5 group" aria-label="OMNIVOX AI home">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-400/20 bg-gradient-to-br from-violet-600/60 to-cyan-600/40 text-cyan-100 font-bold shadow-glow transition group-hover:shadow-glow-violet">
-            O
-          </div>
-          <span className="font-display font-bold text-white hidden sm:block tracking-tight">OMNIVOX AI</span>
+      <div className="mx-auto flex max-w-site items-center justify-between px-4 py-3 md:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="OMNIVOX home">
+          <LogoMark className="h-8 w-8" />
+          <Wordmark compact />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                pathname === link.href
-                  ? "text-cyan-400 bg-cyan-400/10"
-                  : "text-slate-300 hover:text-white hover:bg-white/5"
+              className={`rounded-md px-3 py-2 text-sm transition-colors ${
+                pathname === link.href || pathname.startsWith(`${link.href}/`)
+                  ? "bg-ink-700 text-amber-300"
+                  : "text-ink-200 hover:bg-ink-800 hover:text-paper"
               }`}
             >
               {link.label}
@@ -66,12 +61,12 @@ export function Header() {
 
         <button
           type="button"
-          className="lg:hidden flex h-10 w-10 items-center justify-center rounded-lg text-slate-300 hover:bg-white/10"
+          className="flex h-10 w-10 items-center justify-center rounded-md text-ink-200 hover:bg-ink-800 lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
         >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
             {mobileOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -82,24 +77,26 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="lg:hidden border-t border-white/5 bg-slate-950/95 backdrop-blur-xl px-4 pb-6">
+        <div className="border-t border-ink-600 bg-ink px-4 pb-5 lg:hidden">
           <nav className="flex flex-col gap-1 pt-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-xl px-4 py-3 text-base font-medium ${
-                  pathname === link.href ? "text-cyan-400 bg-cyan-400/10" : "text-slate-300"
+                className={`rounded-md px-3 py-3 text-base ${
+                  pathname === link.href ? "bg-ink-700 text-amber-300" : "text-ink-200"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="mt-4 flex flex-col gap-2 px-2">
+            <div className="mt-3 flex flex-col gap-2">
               <Button href={siteConfig.appLoginUrl} variant="secondary" className="w-full" external>
                 Sign in
               </Button>
-              <Button href="/contact" className="w-full">Book a demo</Button>
+              <Button href="/contact" className="w-full">
+                Book a demo
+              </Button>
             </div>
           </nav>
         </div>

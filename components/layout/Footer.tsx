@@ -1,16 +1,20 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
+import { LogoMark, Wordmark } from "@/components/brand/Wordmark";
 
 const footerLinks = {
   product: [
     { href: "/features", label: "Features" },
+    { href: "/wallboards", label: "Wallboards" },
+    { href: "/inbound", label: "Inbound" },
     { href: "/pricing", label: "Pricing" },
     { href: "/agencies", label: "Agencies" },
+    { href: "/faq", label: "FAQ" },
   ],
   company: [
     { href: "/contact", label: "Book a demo" },
-    { href: "/trust", label: "Trust & Security" },
+    { href: "/trust", label: "Trust" },
     { href: siteConfig.appLoginUrl, label: "Sign in", external: true },
   ],
   legal: [
@@ -21,59 +25,71 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-slate-950 text-slate-400">
-      <div className="mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-12">
+    <footer className="border-t border-ink-600 bg-ink-950 text-ink-300">
+      <div className="mx-auto max-w-site px-4 py-12 md:px-6 md:py-16">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-400/20 bg-gradient-to-br from-violet-600/50 to-cyan-600/30 text-cyan-200 font-bold">
-                O
-              </div>
-              <span className="font-display font-bold text-white text-lg">OMNIVOX AI</span>
+            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="OMNIVOX home">
+              <LogoMark />
+              <Wordmark compact />
             </Link>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-500">
-              {siteConfig.tagline}
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-300">
+              UK/EU cloud contact centre for outbound sales and inbound voice. Preview, progressive and power dial.
+              Custom wallboards on the floor.
             </p>
-            <p className="mt-6 text-sm">
-              <span className="text-slate-600">Powered by </span>
-              <span className="text-cyan-400/90">{siteConfig.poweredBy}</span>
+            <p className="mt-4 text-sm">
+              <span className="text-ink-400">by </span>
+              <span className="text-ink-200">{siteConfig.poweredBy}</span>
             </p>
-            <div className="mt-8">
-              <Button href="/contact" size="sm">Book a demo</Button>
+            <a href={`mailto:${siteConfig.contactEmail}`} className="mt-3 inline-block font-mono text-sm text-amber-300">
+              {siteConfig.contactEmail}
+            </a>
+            <div className="mt-6">
+              <Button href="/contact" size="sm">
+                Book a demo
+              </Button>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-300">Product</h3>
-              <ul className="mt-4 space-y-3">
+              <h3 className="font-mono text-[10px] font-medium uppercase tracking-widest text-ink-200">Product</h3>
+              <ul className="mt-4 space-y-2.5">
                 {footerLinks.product.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm hover:text-cyan-400 transition-colors">{link.label}</Link>
+                    <Link href={link.href} className="text-sm hover:text-amber-300">
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-300">Company</h3>
-              <ul className="mt-4 space-y-3">
+              <h3 className="font-mono text-[10px] font-medium uppercase tracking-widest text-ink-200">Company</h3>
+              <ul className="mt-4 space-y-2.5">
                 {footerLinks.company.map((link) => (
                   <li key={link.href}>
                     {link.external ? (
-                      <a href={link.href} className="text-sm hover:text-cyan-400 transition-colors">{link.label}</a>
+                      <a href={link.href} className="text-sm hover:text-amber-300">
+                        {link.label}
+                      </a>
                     ) : (
-                      <Link href={link.href} className="text-sm hover:text-cyan-400 transition-colors">{link.label}</Link>
+                      <Link href={link.href} className="text-sm hover:text-amber-300">
+                        {link.label}
+                      </Link>
                     )}
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-300">Legal</h3>
-              <ul className="mt-4 space-y-3">
+              <h3 className="font-mono text-[10px] font-medium uppercase tracking-widest text-ink-200">Legal</h3>
+              <ul className="mt-4 space-y-2.5">
                 {footerLinks.legal.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm hover:text-cyan-400 transition-colors">{link.label}</Link>
+                    <Link href={link.href} className="text-sm hover:text-amber-300">
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -81,9 +97,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row text-sm text-slate-600">
-          <p>© {new Date().getFullYear()} {siteConfig.poweredBy}. All rights reserved.</p>
-          <p>Built for UK &amp; EU sales teams</p>
+        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-ink-600 pt-6 text-xs text-ink-400 md:flex-row md:items-center">
+          <p>
+            © {new Date().getFullYear()} {siteConfig.poweredBy}. OMNIVOX is a product of {siteConfig.poweredBy}.
+          </p>
+          <p>You are the data controller. We are the processor. UK/EU GDPR.</p>
         </div>
       </div>
     </footer>
