@@ -1,6 +1,8 @@
 import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/constants";
+import { organizationGraph, pageSeo } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PilotBanner } from "@/components/layout/PilotBanner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -32,10 +34,15 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "OMNIVOX — Contact centre for outbound teams",
+    default: pageSeo.home.title,
     template: "%s | OMNIVOX",
   },
-  description: siteConfig.description,
+  description: pageSeo.home.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.poweredBy, url: siteConfig.url }],
+  creator: siteConfig.poweredBy,
+  publisher: siteConfig.poweredBy,
+  category: "business",
   keywords: [
     "OMNIVOX",
     "cloud contact centre",
@@ -44,57 +51,56 @@ export const metadata: Metadata = {
     "power dial",
     "wallboards",
     "inbound ACD",
+    "prepaid call credits",
   ],
+  alternates: { canonical: siteConfig.url },
   openGraph: {
     type: "website",
     locale: "en_GB",
     url: siteConfig.url,
     siteName: siteConfig.name,
     title: "OMNIVOX — Preview, power, inbound, wallboards",
-    description: siteConfig.description,
+    description: pageSeo.home.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "OMNIVOX — Contact centre for outbound teams",
-    description: siteConfig.description,
+    title: pageSeo.home.title,
+    description: pageSeo.home.description,
   },
-  robots: { index: true, follow: true },
-  icons: { icon: "/favicon.svg" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  formatDetection: { telephone: false, email: false, address: false },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-icon",
+  },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "OMNIVOX",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  description: siteConfig.description,
-  provider: {
-    "@type": "Organization",
-    name: siteConfig.poweredBy,
-    email: siteConfig.contactEmail,
-  },
-  offers: {
-    "@type": "Offer",
-    price: "25",
-    priceCurrency: "GBP",
-    description: "£25 per agent per month plus prepaid call credits at approximately 5p per connected minute.",
-  },
+export const viewport: Viewport = {
+  themeColor: "#08090B",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      </head>
       <body className="font-sans antialiased">
-        <a href="#main" className="skip-link">
+        <JsonLd data={organizationGraph()} />
+        <a href="#main-content" className="skip-link">
           Skip to content
         </a>
         <PilotBanner />
         <Header />
-        <main id="main">{children}</main>
+        <main id="main-content" className="pb-20 md:pb-0">
+          {children}
+        </main>
         <Footer />
         <MobileCTA />
         <ChatWidget />

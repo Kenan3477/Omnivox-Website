@@ -1,23 +1,28 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
 import { CTABand } from "@/components/home/CTABand";
 import { dataCompliance, siteConfig } from "@/lib/constants";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Trust",
-  description:
-    "How OMNIVOX handles data under UK GDPR — controller/processor roles, DPA, DNC, audit logs, recording controls. No SOC 2 theatre.",
-};
+export const metadata = pageMetadata({
+  title: pageSeo.trust.title,
+  description: pageSeo.trust.description,
+  path: "/trust",
+  keywords: ["UK GDPR", "DPA", "data processor", "DNC", "call recording"],
+});
 
 export default function TrustPage() {
   const { roles, controls, practices } = dataCompliance;
 
   return (
     <>
+      <PageSeo page="trust" type="AboutPage" />
       <section className="border-b border-ink-600 bg-ink py-16 md:py-20">
         <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Trust", href: "/trust" }]} />
           <p className="kicker">Trust</p>
           <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">
             You stay the controller. We process. The DPA is not a brochure footnote.

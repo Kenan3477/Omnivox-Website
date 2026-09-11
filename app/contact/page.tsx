@@ -1,12 +1,18 @@
-import type { Metadata } from "next";
 import { ContactPageContent } from "@/components/contact/ContactForm";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Book a demo or start an Omnivox pilot. Same-day onboarding, £50 credits, and white-glove setup for qualified teams.",
-};
+export const metadata = pageMetadata({
+  title: pageSeo.contact.title,
+  description: pageSeo.contact.description,
+  path: "/contact",
+});
 
 export default function ContactPage() {
-  return <ContactPageContent />;
+  return (
+    <>
+      <PageSeo page="contact" type="ContactPage" />
+      <ContactPageContent />
+    </>
+  );
 }

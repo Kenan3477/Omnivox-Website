@@ -1,14 +1,17 @@
-import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { CTABand } from "@/components/home/CTABand";
 import { IvrCanvasMock } from "@/components/product/IvrCanvasMock";
 import { StatusLabel } from "@/components/ui/StatusLabel";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Inbound",
-  description:
-    "Platform-managed UK numbers, ACD queues, ring groups, business hours, voicemail, and a visual IVR studio. Contact-centre inbound on Omnivox.",
-};
+export const metadata = pageMetadata({
+  title: pageSeo.inbound.title,
+  description: pageSeo.inbound.description,
+  path: "/inbound",
+  keywords: ["inbound ACD", "IVR", "UK DID", "contact centre inbound"],
+});
 
 const inbound = [
   {
@@ -32,8 +35,10 @@ const inbound = [
 export default function InboundPage() {
   return (
     <>
+      <PageSeo page="inbound" />
       <section className="border-b border-ink-600 bg-ink py-16 md:py-24">
         <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Inbound", href: "/inbound" }]} />
           <p className="kicker">Inbound</p>
           <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">
             Queues, hours, IVR. Not a spare phone number on the side.

@@ -1,20 +1,25 @@
-import type { Metadata } from "next";
 import { StatusLabel } from "@/components/ui/StatusLabel";
 import { Button } from "@/components/ui/Button";
 import { CTABand } from "@/components/home/CTABand";
 import { comingSoon, featureGroups } from "@/lib/constants";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Features",
-  description:
-    "Live dialer, inbound ACD/IVR, custom wallboards, campaigns, DNC, credits. Every Omnivox capability labelled Live, Waitlist, or Coming.",
-};
+export const metadata = pageMetadata({
+  title: pageSeo.features.title,
+  description: pageSeo.features.description,
+  path: "/features",
+  keywords: ["preview dial", "power dial", "AMD", "wallboards", "inbound IVR", "DNC"],
+});
 
 export default function FeaturesPage() {
   return (
     <>
+      <PageSeo page="features" />
       <section className="border-b border-ink-600 bg-ink py-16 md:py-24">
         <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Features", href: "/features" }]} />
           <p className="kicker">Features</p>
           <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">
             Everything a voice floor runs. Labelled honestly.

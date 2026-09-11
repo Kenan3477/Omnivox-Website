@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
 import { CTABand } from "@/components/home/CTABand";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Agencies",
-  description:
-    "Run multiple client organisations on Omnivox: isolated users, campaigns, call data and credit wallets. Same-day onboard. £25/seat per client agent.",
-};
+export const metadata = pageMetadata({
+  title: pageSeo.agencies.title,
+  description: pageSeo.agencies.description,
+  path: "/agencies",
+});
 
 const benefits = [
   {
@@ -32,8 +34,10 @@ const benefits = [
 export default function AgenciesPage() {
   return (
     <>
+      <PageSeo page="agencies" />
       <section className="border-b border-ink-600 bg-ink py-16 md:py-24">
         <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Agencies", href: "/agencies" }]} />
           <p className="kicker">Agencies</p>
           <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">
             One stack. Many client floors. Credits that never mix.

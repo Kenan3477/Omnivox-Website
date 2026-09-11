@@ -1,15 +1,21 @@
-import type { Metadata } from "next";
 import { siteConfig } from "@/lib/constants";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "OMNIVOX terms of service — platform usage terms and conditions.",
-};
+export const metadata = pageMetadata({
+  title: pageSeo.terms.title,
+  description: pageSeo.terms.description,
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (
-    <section className="bg-paper py-16 text-ink md:py-24">
+    <>
+      <PageSeo page="terms" />
+      <section className="bg-paper py-16 text-ink md:py-24">
       <div className="mx-auto max-w-3xl px-4 md:px-6 lg:px-8">
+        <Breadcrumbs light crumbs={[{ name: "Home", href: "/" }, { name: "Terms", href: "/terms" }]} />
         <h1 className="display text-4xl">Terms of Service</h1>
         <p className="mt-4 text-sm text-ink-500">Last updated: September 2026</p>
 
@@ -58,5 +64,6 @@ export default function TermsPage() {
         </div>
       </div>
     </section>
+    </>
   );
 }

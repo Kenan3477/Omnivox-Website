@@ -1,22 +1,27 @@
-import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { CTABand } from "@/components/home/CTABand";
 import { PlaylistStory, WallboardMock } from "@/components/product/WallboardMock";
 import { TvBezel } from "@/components/product/TvBezel";
 import { wallboardTemplates, wallboardThemes, wallboardWidgets } from "@/lib/constants";
 import { StatusLabel } from "@/components/ui/StatusLabel";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Wallboards",
-  description:
-    "Custom contact-centre wallboards: drag-and-drop builder, TV mode, playlist rotation, role templates, and ~40 ops widgets. Built for the floor.",
-};
+export const metadata = pageMetadata({
+  title: pageSeo.wallboards.title,
+  description: pageSeo.wallboards.description,
+  path: "/wallboards",
+  keywords: ["contact centre wallboards", "TV wallboard", "playlist rotation", "AMD scoreboard"],
+});
 
 export default function WallboardsPage() {
   return (
     <>
+      <PageSeo page="wallboards" />
       <section className="border-b border-ink-600 bg-ink py-16 md:py-20">
         <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Wallboards", href: "/wallboards" }]} />
           <p className="kicker">Wallboards</p>
           <h1 className="display mt-3 max-w-4xl text-4xl text-paper md:text-5xl">
             A 16:9 TV on the wall. Occupancy, AMD, power ratio, credits — readable from the floor.

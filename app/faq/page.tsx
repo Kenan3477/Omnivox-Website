@@ -1,19 +1,23 @@
-import type { Metadata } from "next";
 import { Accordion } from "@/components/ui/Accordion";
 import { CTABand } from "@/components/home/CTABand";
 import { faqItems } from "@/lib/constants";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "FAQ",
-  description:
-    "Do I need a carrier? How are minutes billed? Is predictive live? Do you have wallboards? GDPR/DPA? Recording consent?",
-};
+export const metadata = pageMetadata({
+  title: pageSeo.faq.title,
+  description: pageSeo.faq.description,
+  path: "/faq",
+});
 
 export default function FaqPage() {
   return (
     <>
+      <PageSeo page="faq" type="FAQPage" includeFaq />
       <section className="border-b border-ink-600 bg-ink py-16 md:py-24">
         <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "FAQ", href: "/faq" }]} />
           <p className="kicker">FAQ</p>
           <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">
             Carrier, minutes, predictive, wallboards, GDPR.

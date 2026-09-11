@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { PricingCalculator } from "@/components/pricing/PricingCalculator";
 import { CTABand } from "@/components/home/CTABand";
@@ -10,18 +9,26 @@ import {
   pricingIncludes,
   siteConfig,
 } from "@/lib/constants";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Pricing",
-  description:
-    "£25 per agent per month. Prepaid call credits at ~5p/min inbound and outbound. Wallboards and inbound included on every seat.",
-};
+export const metadata = pageMetadata({
+  title: pageSeo.pricing.title,
+  description: pageSeo.pricing.description,
+  path: "/pricing",
+  keywords: ["cloud dialer pricing", "£25 per seat", "prepaid call credits", "5p per minute"],
+});
 
 export default function PricingPage() {
   return (
     <>
+      <PageSeo page="pricing" />
       <section className="border-b border-ink-600 bg-ink py-16 md:py-24">
         <div className="mx-auto max-w-site px-4 text-center sm:px-6 lg:px-8">
+          <div className="text-left">
+            <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Pricing", href: "/pricing" }]} />
+          </div>
           <p className="kicker">Pricing</p>
           <h1 className="display mx-auto mt-3 max-w-3xl text-4xl text-paper md:text-5xl">
             Half the typical seat. Pay for the minutes you actually connect.

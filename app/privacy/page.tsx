@@ -1,16 +1,22 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/constants";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "How OMNIVOX and Quanterae Solutions collect, use, and protect personal data under UK GDPR.",
-};
+export const metadata = pageMetadata({
+  title: pageSeo.privacy.title,
+  description: pageSeo.privacy.description,
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
-    <section className="bg-paper py-16 text-ink md:py-24">
+    <>
+      <PageSeo page="privacy" />
+      <section className="bg-paper py-16 text-ink md:py-24">
       <div className="mx-auto max-w-3xl px-4 md:px-6 lg:px-8">
+        <Breadcrumbs light crumbs={[{ name: "Home", href: "/" }, { name: "Privacy", href: "/privacy" }]} />
         <h1 className="display text-4xl">Privacy Policy</h1>
         <p className="mt-4 text-sm text-ink-500">Last updated: September 2026 · {siteConfig.poweredBy}</p>
 
@@ -142,5 +148,6 @@ export default function PrivacyPage() {
         </div>
       </div>
     </section>
+    </>
   );
 }

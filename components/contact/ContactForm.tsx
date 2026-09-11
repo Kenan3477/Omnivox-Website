@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/constants";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 const useCases = [
   { value: "outbound", label: "Outbound" },
@@ -187,6 +188,7 @@ export function ContactPageContent() {
     <>
       <section className="border-b border-ink-600 bg-ink py-16 md:py-20">
         <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Contact", href: "/contact" }]} />
           <p className="kicker">Contact</p>
           <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">Book a demo or start a pilot.</h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-300">

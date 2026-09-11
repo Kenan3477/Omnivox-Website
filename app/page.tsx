@@ -7,10 +7,27 @@ import { PricingTeaser } from "@/components/home/PricingTeaser";
 import { ProofPoints } from "@/components/home/ProofPoints";
 import { FAQ } from "@/components/home/FAQ";
 import { CTABand } from "@/components/home/CTABand";
+import { PageSeo } from "@/components/seo/PageSeo";
+import { pageMetadata, pageSeo } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: pageSeo.home.title,
+  description: pageSeo.home.description,
+  path: "/",
+  keywords: [
+    "OMNIVOX",
+    "cloud contact centre",
+    "preview dial",
+    "power dial",
+    "outbound dialer UK",
+    "wallboards",
+  ],
+});
 
 export default function HomePage() {
   return (
     <>
+      <PageSeo page="home" includeApp includeFaq />
       <Hero />
       <DialMethods />
       <WallboardModule />
