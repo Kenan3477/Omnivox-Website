@@ -1,49 +1,23 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import { navLinks, siteConfig } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
-import { LogoMark, Wordmark } from "@/components/brand/Wordmark";
+import { LogoMark } from "@/components/brand/Wordmark";
 
 export function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
   return (
-    <header
-      className={`sticky top-0 z-50 border-b border-ink-600 ${
-        scrolled || mobileOpen ? "bg-ink/95 backdrop-blur-md" : "bg-ink"
-      }`}
-    >
-      <div className="mx-auto flex max-w-site items-center justify-between px-4 py-3 md:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="OMNIVOX home">
-          <LogoMark className="h-8 w-8" />
-          <Wordmark compact />
+    <header className="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 shadow-lg shadow-black/20 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 md:px-6 lg:px-8">
+        <Link href="/" className="group flex items-center gap-2.5" aria-label="OMNIVOX home">
+          <LogoMark className="h-9 w-9" />
+          <span className="hidden font-display text-lg font-bold tracking-tight text-white sm:block">OMNIVOX</span>
         </Link>
 
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`rounded-md px-3 py-2 text-sm transition-colors ${
-                pathname === link.href || pathname.startsWith(`${link.href}/`)
-                  ? "bg-ink-700 text-signal-300"
-                  : "text-ink-200 hover:bg-ink-800 hover:text-paper"
-              }`}
+              className="rounded-lg px-4 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
             >
               {link.label}
             </Link>
@@ -59,48 +33,36 @@ export function Header() {
           </Button>
         </div>
 
-        <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-md text-ink-200 hover:bg-ink-800 lg:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-        >
-          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-            {mobileOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
+        <details className="relative lg:hidden">
+          <summary className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg text-slate-300 hover:bg-white/10 [&::-webkit-details-marker]:hidden">
+            <span className="sr-only">Open menu</span>
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+            </svg>
+          </summary>
+          <div className="absolute right-0 mt-2 w-64 rounded-2xl border border-white/5 bg-slate-950/95 p-3 shadow-xl backdrop-blur-xl">
+            <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-xl px-4 py-3 text-base font-medium text-slate-300 hover:bg-white/5"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="mt-3 flex flex-col gap-2 px-1">
+                <Button href={siteConfig.appLoginUrl} variant="secondary" className="w-full" external>
+                  Sign in
+                </Button>
+                <Button href="/contact" className="w-full">
+                  Book a demo
+                </Button>
+              </div>
+            </nav>
+          </div>
+        </details>
       </div>
-
-      {mobileOpen && (
-        <div className="border-t border-ink-600 bg-ink px-4 pb-5 lg:hidden">
-          <nav className="flex flex-col gap-1 pt-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`rounded-md px-3 py-3 text-base ${
-                  pathname === link.href ? "bg-ink-700 text-signal-300" : "text-ink-200"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="mt-3 flex flex-col gap-2">
-              <Button href={siteConfig.appLoginUrl} variant="secondary" className="w-full" external>
-                Sign in
-              </Button>
-              <Button href="/contact" className="w-full">
-                Book a demo
-              </Button>
-            </div>
-          </nav>
-        </div>
-      )}
     </header>
   );
 }

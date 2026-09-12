@@ -10,92 +10,54 @@ export function absoluteUrl(path = "") {
 
 export const pageSeo = {
   home: {
-    title: "OMNIVOX — Contact centre: voice + Work Inbox",
+    title: "OMNIVOX — Cloud dialer for outbound sales teams",
     description:
-      "UK/EU cloud contact centre: preview, progressive and power dial, inbound ACD/IVR, Work Inbox for SMS, WhatsApp, email, chat and social DMs, custom wallboards. £25 a seat. Prepaid voice minutes.",
+      "UK and EU cloud dialer with preview outbound, £25 per seat, prepaid credits, and one wallet for inbound and outbound calls.",
     path: "/",
-    crumb: "Home",
   },
   features: {
-    title: "Features: dialer, inbox, inbound, wallboards — live or waitlist",
+    title: "Cloud dialer features: preview, credits, DNC",
     description:
-      "Omnivox capabilities with honest labels. Live: preview, progressive, power, AMD, 8-channel catalog, Work Inbox, inbound IVR, wallboards. Predictive is waitlist only.",
+      "OMNIVOX features for outbound teams: preview and manual dial, prepaid credit wallet, inbound routing, campaigns, and UK GDPR tools.",
     path: "/features",
-    crumb: "Features",
-  },
-  wallboards: {
-    title: "Contact-centre wallboards: TV mode, playlists, Digital waiting",
-    description:
-      "Custom Omnivox wallboards: drag-and-drop builder, TV mode, playlist rotation, role templates, ~40 widgets including Digital waiting.",
-    path: "/wallboards",
-    crumb: "Wallboards",
-  },
-  channels: {
-    title: "Channel Types: eight live in catalog, org-ready when configured",
-    description:
-      "Admin → Channels → Channel Types. Voice, SMS, WhatsApp, chat, email, Facebook, Instagram and X. Catalog live is not org-ready. Work Inbox is where agents handle digital.",
-    path: "/channels",
-    crumb: "Channels",
-  },
-  inbound: {
-    title: "Inbound ACD and IVR on platform-managed UK numbers",
-    description:
-      "Omnivox inbound: platform DIDs, queues, ring groups, business hours, voicemail, and a visual IVR studio. No customer carrier account.",
-    path: "/inbound",
-    crumb: "Inbound",
   },
   pricing: {
-    title: "Pricing: £25/seat plus prepaid credits",
+    title: "Cloud dialer pricing: £25/seat plus credits",
     description:
-      "Omnivox pricing is £25 per agent per month plus prepaid voice credits (~5p outbound / ~4p inbound). Digital is not in the voice wallet. Wallboards and inbox included.",
+      "OMNIVOX pricing is £25 per agent per month plus prepaid call credits at about 5p per minute. No bundled fair-use minute caps.",
     path: "/pricing",
-    crumb: "Pricing",
   },
   agencies: {
-    title: "Agencies: multi-org, isolated credits, same-day onboard",
+    title: "Cloud dialer for agencies and multi-client teams",
     description:
-      "Run multiple client organisations on Omnivox. Isolated users, campaigns, call data and wallets. £25/seat per client agent.",
+      "Onboard agency clients in a day on OMNIVOX. Isolated orgs, pilot credit grants, and one telephony stack at £25 per seat.",
     path: "/agencies",
-    crumb: "Agencies",
   },
   contact: {
-    title: "Book an Omnivox demo or same-day pilot",
+    title: "Book an OMNIVOX demo or same-day pilot",
     description:
-      "Book a demo or start an Omnivox pilot. Same-day org provisioning, £50 credits, and white-glove setup for qualified teams.",
+      "Book a demo or start an OMNIVOX pilot. We provision your organisation, grant starter credits, and can have agents dialling the same day.",
     path: "/contact",
-    crumb: "Contact",
   },
   trust: {
-    title: "Trust, UK GDPR, and processor controls",
+    title: "Trust, UK GDPR, and dialer security controls",
     description:
-      "You are the data controller. Omnivox is the processor. DPA at onboarding, DNC, audit logs, recording controls. No SOC 2 theatre.",
+      "How OMNIVOX handles data as your processor: DPA, DNC registry, audit logs, recording controls, and UK GDPR roles for outbound teams.",
     path: "/trust",
-    crumb: "Trust",
-  },
-  faq: {
-    title: "FAQ: carrier, minutes, WhatsApp, predictive, wallboards, GDPR",
-    description:
-      "Do I need a carrier? Do you have WhatsApp? How are minutes billed? Is predictive live? Do you have wallboards? GDPR/DPA?",
-    path: "/faq",
-    crumb: "FAQ",
   },
   privacy: {
-    title: "Privacy Policy",
+    title: "Privacy Policy for the OMNIVOX website",
     description:
       "How OMNIVOX and Quanterae Solutions collect and use website enquiry and platform data under UK GDPR, including processor roles.",
     path: "/privacy",
-    crumb: "Privacy",
   },
   terms: {
-    title: "Terms of service and acceptable use",
+    title: "OMNIVOX terms of service and acceptable use",
     description:
-      "Terms for using the OMNIVOX contact centre: billing, prepaid credits, acceptable use, and your responsibility for calling compliance.",
+      "Terms for using the OMNIVOX cloud dialer: billing, prepaid credits, acceptable use, and your responsibility for calling compliance.",
     path: "/terms",
-    crumb: "Terms",
   },
 } as const;
-
-export type PageSeoKey = keyof typeof pageSeo;
 
 export function pageMetadata({
   title,
@@ -187,7 +149,7 @@ export function organizationGraph() {
 
 export function softwareApplicationJsonLd() {
   const availableFeatures = featureGroups.flatMap((group) =>
-    group.features.filter((feature) => feature.status === "live").map((feature) => feature.name)
+    group.features.filter((feature) => feature.status === "available").map((feature) => feature.name)
   );
 
   return {
@@ -211,7 +173,7 @@ export function softwareApplicationJsonLd() {
       availability: "https://schema.org/InStock",
       url: `${siteUrl}/pricing`,
       priceValidUntil: "2027-12-31",
-      description: "£25 per agent per month, plus prepaid voice credits at approximately 5p outbound / 4p inbound per connected minute. Digital is not in the voice wallet.",
+      description: "£25 per agent per month, plus prepaid call credits at approximately 5p per connected minute.",
     },
     provider: { "@id": `${siteUrl}/#organization` },
     publisher: { "@id": `${siteUrl}/#organization` },
@@ -269,15 +231,6 @@ export function webPageJsonLd({
     isPartOf: { "@id": `${siteUrl}/#website` },
     about: { "@id": `${siteUrl}/#organization` },
     publisher: { "@id": `${siteUrl}/#organization` },
-    dateModified: "2026-09-11",
+    dateModified: "2026-08-25",
   };
-}
-
-export function crumbsFor(key: PageSeoKey) {
-  const page = pageSeo[key];
-  if (page.path === "/") return [{ name: "Home", path: "/" }];
-  return [
-    { name: "Home", path: "/" },
-    { name: page.crumb, path: page.path },
-  ];
 }

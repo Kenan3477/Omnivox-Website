@@ -1,21 +1,21 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { SectionHeading } from "@/components/ui/Accordion";
 import { Button } from "@/components/ui/Button";
-import { siteConfig } from "@/lib/constants";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { siteConfig } from "@/lib/constants";
+import { Starfield } from "@/components/brand/Starfield";
 
 const useCases = [
   { value: "outbound", label: "Outbound" },
   { value: "inbound", label: "Inbound" },
-  { value: "inbox", label: "Digital inbox" },
-  { value: "both", label: "Voice + inbox" },
-  { value: "agency", label: "Agency / multi-org" },
+  { value: "both", label: "Both" },
 ];
 
 const pilotSteps = [
   { title: "We reply within one business day", detail: "Usually same day for UK/EU enquiries." },
-  { title: "Same-day org provisioning", detail: "Pilot org, users, dial methods, wallboard template." },
+  { title: "Same-day org provisioning", detail: "Pilot org, users, and dial methods set up for you." },
   { title: "£50 free call credits", detail: "Qualified pilots get starter credits and white-glove setup." },
 ];
 
@@ -23,41 +23,47 @@ function ContactSidebar() {
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
 
   return (
-    <div className="space-y-6">
-      <div className="border border-stone-300 bg-white p-6 md:p-8">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-signal-800">What happens next</p>
+    <aside className="mt-8 space-y-6">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+        <p className="text-[11px] font-semibold uppercase tracking-widest text-blue-700">What happens next</p>
         <ol className="mt-5 space-y-5">
           {pilotSteps.map((step, i) => (
             <li key={step.title} className="flex gap-4">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center border border-stone-300 font-mono text-xs">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold text-blue-700 border border-blue-100">
                 {i + 1}
               </span>
               <div>
-                <p className="text-sm font-semibold text-ink">{step.title}</p>
-                <p className="mt-0.5 text-sm text-ink-500">{step.detail}</p>
+                <p className="text-sm font-semibold text-slate-900">{step.title}</p>
+                <p className="mt-0.5 text-sm text-slate-600">{step.detail}</p>
               </div>
             </li>
           ))}
         </ol>
       </div>
-      <div className="border border-stone-300 bg-white p-6 md:p-8">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-ink-500">Prefer email?</p>
-        <p className="mt-3 text-sm leading-relaxed text-ink-500">
-          Send agent count, dial methods (preview / progressive / power), inbound or not, and timeline.
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+        <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500">Prefer email?</p>
+        <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+          Send your agent count, use case, and timeline — we&apos;ll come back with pilot options.
         </p>
         <a
-          href={`mailto:${siteConfig.contactEmail}?subject=OMNIVOX%20demo%20request`}
-          className="mt-4 inline-flex font-mono text-sm text-signal-800"
+          href={`mailto:${siteConfig.contactEmail}?subject=OMNIVOX%20AI%20demo%20request`}
+          className="mt-4 inline-flex text-base font-semibold text-blue-600 hover:text-blue-500"
         >
           {siteConfig.contactEmail}
         </a>
       </div>
+
       {calendlyUrl ? (
-        <div className="min-h-[480px] overflow-hidden border border-stone-300 bg-white">
-          <iframe title="Book a demo with OMNIVOX" src={calendlyUrl} className="h-[480px] w-full border-0" />
+        <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm min-h-[480px]">
+          <iframe
+            title="Book a demo with OMNIVOX"
+            src={calendlyUrl}
+            className="w-full h-[480px] border-0"
+          />
         </div>
       ) : null}
-    </div>
+    </aside>
   );
 }
 
@@ -69,6 +75,7 @@ export function ContactForm() {
     e.preventDefault();
     setStatus("loading");
     setErrorMessage("");
+
     const form = e.currentTarget;
     const data = new FormData(form);
 
@@ -95,91 +102,59 @@ export function ContactForm() {
       form.reset();
     } catch (err) {
       setStatus("error");
-      const message = err instanceof Error ? err.message : "Something went wrong.";
-      setErrorMessage(message);
-      const subject = encodeURIComponent("OMNIVOX demo request");
-      const body = encodeURIComponent(
-        `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nCompany: ${data.get("company")}\nAgents: ${data.get("agentCount")}\nUse case: ${data.get("useCase")}\n\n${data.get("message")}`
-      );
-      window.location.href = `mailto:${siteConfig.contactEmail}?subject=${subject}&body=${body}`;
+      setErrorMessage(err instanceof Error ? err.message : "Something went wrong.");
     }
   }
 
   if (status === "success") {
     return (
-      <div className="border border-live/40 bg-emerald-50 p-8 text-center">
-        <h3 className="font-display text-xl font-bold text-ink">Received</h3>
-        <p className="mt-2 text-ink-500">We will be in touch within one UK business day.</p>
+      <div className="rounded-2xl border border-blue-200 bg-blue-50 p-8 text-center">
+        <h3 className="text-xl font-bold text-slate-900">Thank you</h3>
+        <p className="mt-2 text-slate-600">We&apos;ll be in touch within one business day.</p>
       </div>
     );
   }
 
   const inputClass =
-    "w-full rounded-md border border-stone-300 bg-white px-4 py-3 text-ink placeholder:text-stone-400 focus:border-signal-500 focus:ring-2 focus:ring-signal-500/20 outline-none";
+    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 outline-none";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
-            Name *
-          </label>
+          <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1.5">Name *</label>
           <input type="text" id="name" name="name" required className={inputClass} />
         </div>
         <div>
-          <label htmlFor="email" className="mb-1.5 block text-sm font-medium">
-            Email *
-          </label>
+          <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1.5">Email *</label>
           <input type="email" id="email" name="email" required className={inputClass} />
         </div>
       </div>
       <div>
-        <label htmlFor="company" className="mb-1.5 block text-sm font-medium">
-          Company *
-        </label>
+        <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-1.5">Company *</label>
         <input type="text" id="company" name="company" required className={inputClass} />
       </div>
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="agentCount" className="mb-1.5 block text-sm font-medium">
-            Agent count
-          </label>
-          <input type="text" id="agentCount" name="agentCount" placeholder="e.g. 8" className={inputClass} />
+          <label htmlFor="agentCount" className="block text-sm font-medium text-slate-700 mb-1.5">Agent count</label>
+          <input type="text" id="agentCount" name="agentCount" placeholder="e.g. 5" className={inputClass} />
         </div>
         <div>
-          <label htmlFor="useCase" className="mb-1.5 block text-sm font-medium">
-            Use case
-          </label>
+          <label htmlFor="useCase" className="block text-sm font-medium text-slate-700 mb-1.5">Use case</label>
           <select id="useCase" name="useCase" className={inputClass}>
             <option value="">Select</option>
             {useCases.map((uc) => (
-              <option key={uc.value} value={uc.value}>
-                {uc.label}
-              </option>
+              <option key={uc.value} value={uc.value}>{uc.label}</option>
             ))}
           </select>
         </div>
       </div>
       <div>
-        <label htmlFor="message" className="mb-1.5 block text-sm font-medium">
-          What do you run today?
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={4}
-          placeholder="Preview / power / inbound queues / agency clients…"
-          className={`${inputClass} resize-y`}
-        />
+        <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
+        <textarea id="message" name="message" rows={4} className={`${inputClass} resize-y`} />
       </div>
-      {status === "error" && (
-        <p className="text-sm text-red-700">
-          {errorMessage} Opening your mail client as a fallback.
-        </p>
-      )}
-      <Button type="submit" size="lg" variant="paper" disabled={status === "loading"}>
-        {status === "loading" ? "Sending…" : "Book a demo"}
-      </Button>
+      {status === "error" && <p className="text-sm text-red-600">{errorMessage}</p>}
+      <Button type="submit" size="lg">{status === "loading" ? "Sending..." : "Book a demo"}</Button>
     </form>
   );
 }
@@ -187,27 +162,69 @@ export function ContactForm() {
 export function ContactPageContent() {
   return (
     <>
-      <section className="border-b border-ink-600 bg-ink py-16 md:py-20">
-        <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Contact", href: "/contact" }]} />
-          <p className="kicker">Contact</p>
-          <h1 className="display mt-3 max-w-3xl text-4xl text-paper md:text-5xl">Book a demo or start a pilot.</h1>
-          <p className="mt-4 max-w-2xl text-lg text-ink-300">
-            Same-day org provisioning for qualified teams. £50 credits and white-glove setup. Already on the platform?{" "}
-            <a href={siteConfig.appLoginUrl} className="text-signal-300">
-              Sign in
-            </a>
-            .
-          </p>
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        <Starfield />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+          <Breadcrumbs
+            crumbs={[
+              { name: "Home", href: "/" },
+              { name: "Contact", href: "/contact" },
+            ]}
+          />
+          <SectionHeading
+            as="h1"
+            eyebrow="Contact"
+            title="Book a demo or start a pilot"
+            description="We'll provision your org and grant starter credits. Same-day onboarding for pilots."
+            dark
+            align="left"
+          />
         </div>
       </section>
-      <section className="bg-paper py-16 text-ink">
-        <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+
+      <section className="bg-slate-50 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2">
-            <ContactSidebar />
-            <div className="border border-stone-300 bg-white p-6 md:p-8">
-              <ContactForm />
+            <div>
+              <p className="text-slate-600 leading-relaxed">
+                Tell us your agent count, outbound or inbound use case, and when you want to go live. We reply within
+                one UK business day, provision a pilot organisation, and can grant £50 starter credits so your team
+                can preview-dial the same afternoon. Review{" "}
+                <a href="/pricing" className="font-medium text-blue-700 hover:text-blue-600">
+                  pricing
+                </a>{" "}
+                and{" "}
+                <a href="/features" className="font-medium text-blue-700 hover:text-blue-600">
+                  features
+                </a>{" "}
+                first if you want the numbers before we talk. Agencies can ask for multi-org setup on the{" "}
+                <a href="/agencies" className="font-medium text-blue-700 hover:text-blue-600">
+                  agencies page
+                </a>
+                . Privacy questions belong on{" "}
+                <a href="/trust" className="font-medium text-blue-700 hover:text-blue-600">
+                  Trust
+                </a>{" "}
+                or the{" "}
+                <a href="/privacy" className="font-medium text-blue-700 hover:text-blue-600">
+                  Privacy Policy
+                </a>
+                .
+              </p>
+              <p className="mt-4 text-slate-600 leading-relaxed">
+                Already have an account?{" "}
+                <a href={siteConfig.appLoginUrl} className="text-blue-600 hover:text-blue-500 font-medium" rel="noopener noreferrer">
+                  Sign in to OMNIVOX →
+                </a>
+              </p>
+              <ContactSidebar />
             </div>
+            <section className="glass-card-light p-6 md:p-8" aria-labelledby="contact-form-heading">
+              <h2 id="contact-form-heading" className="sr-only">
+                Demo request form
+              </h2>
+              <ContactForm />
+            </section>
           </div>
         </div>
       </section>

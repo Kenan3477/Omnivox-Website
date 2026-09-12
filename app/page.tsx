@@ -1,16 +1,13 @@
 import { Hero } from "@/components/home/Hero";
-import { ChannelModule } from "@/components/home/ChannelModule";
-import { DialMethods } from "@/components/home/DialMethods";
-import { InboxModule } from "@/components/home/InboxModule";
-import { WallboardModule } from "@/components/home/WallboardModule";
-import { ProductSurfaces } from "@/components/home/ProductSurfaces";
-import { Comparison } from "@/components/home/Comparison";
-import { PricingTeaser } from "@/components/home/PricingTeaser";
-import { ProofPoints } from "@/components/home/ProofPoints";
-import { FAQ } from "@/components/home/FAQ";
+import { PillarsSection } from "@/components/home/PillarsSection";
+import { ProductShowcase } from "@/components/home/ProductShowcase";
+import { PlatformGrid } from "@/components/home/PlatformGrid";
+import { UsagePricingSection } from "@/components/home/UsagePricingSection";
+import { ComplianceSection } from "@/components/home/ComplianceSection";
+import { PricingFAQ } from "@/components/home/PricingFAQ";
 import { CTABand } from "@/components/home/CTABand";
-import { PageSeo } from "@/components/seo/PageSeo";
-import { pageMetadata, pageSeo } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { pageMetadata, pageSeo, faqPageJsonLd, softwareApplicationJsonLd, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: pageSeo.home.title,
@@ -18,28 +15,34 @@ export const metadata = pageMetadata({
   path: "/",
   keywords: [
     "OMNIVOX",
-    "cloud contact centre",
+    "cloud dialer",
     "preview dial",
-    "power dial",
-    "WhatsApp inbox",
-    "wallboards",
+    "outbound dialer UK",
+    "contact centre software",
   ],
 });
 
 export default function HomePage() {
   return (
     <>
-      <PageSeo page="home" includeApp includeFaq />
+      <JsonLd
+        data={[
+          webPageJsonLd({
+            path: "/",
+            name: pageSeo.home.title,
+            description: pageSeo.home.description,
+          }),
+          softwareApplicationJsonLd(),
+          faqPageJsonLd(),
+        ]}
+      />
       <Hero />
-      <ChannelModule />
-      <DialMethods />
-      <InboxModule />
-      <WallboardModule />
-      <ProductSurfaces />
-      <Comparison />
-      <PricingTeaser />
-      <ProofPoints />
-      <FAQ />
+      <PillarsSection />
+      <ProductShowcase />
+      <UsagePricingSection />
+      <PlatformGrid />
+      <ComplianceSection />
+      <PricingFAQ />
       <CTABand />
     </>
   );

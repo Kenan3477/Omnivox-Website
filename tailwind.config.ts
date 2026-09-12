@@ -9,81 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-body)", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "var(--font-body)", "sans-serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
-      },
-      colors: {
-        ink: {
-          DEFAULT: "#09090B",
-          50: "#F8FAFC",
-          100: "#E2E8F0",
-          200: "#CBD5E1",
-          300: "#94A3B8",
-          400: "#64748B",
-          500: "#475569",
-          600: "#1E293B",
-          700: "#162032",
-          800: "#111827",
-          900: "#0C1018",
-          950: "#09090B",
-        },
-        // Product dark accent (app dark theme --theme-accent)
-        signal: {
-          DEFAULT: "#6366F1",
-          50: "#EEF2FF",
-          100: "#E0E7FF",
-          200: "#C7D2FE",
-          300: "#A5B4FC",
-          400: "#818CF8",
-          500: "#6366F1",
-          600: "#4F46E5",
-          700: "#4338CA",
-          800: "#3730A3",
-        },
-        // App Sign in / light accent (#2563eb)
-        cta: {
-          DEFAULT: "#2563EB",
-          50: "#EFF6FF",
-          100: "#DBEAFE",
-          200: "#BFDBFE",
-          300: "#93C5FD",
-          400: "#60A5FA",
-          500: "#2563EB",
-          600: "#1D4ED8",
-          700: "#1E40AF",
-        },
-        // Credits / money only — not chrome
-        amber: {
-          DEFAULT: "#E8A317",
-          50: "#FBF3DE",
-          100: "#F7E4B3",
-          200: "#F0CC6E",
-          300: "#F5C14A",
-          400: "#E8A317",
-          500: "#C8880F",
-          600: "#A06B0C",
-          700: "#7A520A",
-          800: "#5C3E08",
-        },
-        live: {
-          DEFAULT: "#3DDC97",
-          dim: "#1F8A5E",
-        },
-        paper: "#F8FAFC",
-        panel: "#101318",
-        raised: "#171C22",
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-inter)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        board: "0 40px 80px -32px rgba(0,0,0,0.7), 0 0 0 1px rgba(99,102,241,0.16)",
-        raised: "0 12px 40px -16px rgba(0,0,0,0.55)",
+        glow: "0 0 60px -12px rgba(37, 99, 235, 0.4)",
+        "glow-violet": "0 0 60px -12px rgba(99, 102, 241, 0.3)",
+        card: "0 4px 24px -4px rgba(15, 23, 42, 0.08), 0 8px 48px -8px rgba(15, 23, 42, 0.04)",
+        "card-hover": "0 20px 60px -12px rgba(37, 99, 235, 0.14), 0 8px 24px -8px rgba(15, 23, 42, 0.1)",
       },
-      letterSpacing: {
-        display: "-0.03em",
-        kicker: "0.18em",
-      },
-      maxWidth: {
-        site: "72rem",
+      backgroundImage: {
+        "mesh-dark":
+          "radial-gradient(at 40% 20%, rgba(37,99,235,0.16) 0px, transparent 50%), radial-gradient(at 80% 0%, rgba(99,102,241,0.1) 0px, transparent 50%), radial-gradient(at 0% 50%, rgba(37,99,235,0.08) 0px, transparent 50%)",
+        "gradient-cta": "linear-gradient(135deg, #020617 0%, #1e3a8a 50%, #1d4ed8 100%)",
       },
     },
   },

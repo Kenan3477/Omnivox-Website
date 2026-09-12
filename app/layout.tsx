@@ -1,4 +1,4 @@
-import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/constants";
 import { organizationGraph, pageSeo } from "@/lib/seo";
@@ -7,34 +7,24 @@ import { PilotBanner } from "@/components/layout/PilotBanner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCTA } from "@/components/layout/MobileCTA";
-import { ChatWidget } from "@/components/chat/ChatWidget";
 import "./globals.css";
 
-const display = Archivo({
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["600", "700", "800"],
-});
-
-const body = IBM_Plex_Sans({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-  weight: ["400", "500", "600"],
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: pageSeo.home.title,
+    default: "OMNIVOX — Cloud dialer for outbound sales teams",
     template: "%s | OMNIVOX",
   },
   description: pageSeo.home.description,
@@ -45,14 +35,12 @@ export const metadata: Metadata = {
   category: "business",
   keywords: [
     "OMNIVOX",
-    "cloud contact centre",
-    "outbound dialer UK",
+    "cloud dialer",
     "preview dial",
-    "power dial",
-    "WhatsApp inbox",
-    "wallboards",
-    "inbound ACD",
+    "outbound dialer UK",
+    "contact centre software",
     "prepaid call credits",
+    "UK GDPR dialer",
   ],
   alternates: { canonical: siteConfig.url },
   openGraph: {
@@ -60,12 +48,12 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "OMNIVOX — Voice, inbox, wallboards",
+    title: "OMNIVOX — Cloud dialer for outbound sales teams",
     description: pageSeo.home.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: pageSeo.home.title,
+    title: "OMNIVOX — Cloud dialer for outbound sales teams",
     description: pageSeo.home.description,
   },
   robots: {
@@ -84,27 +72,24 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#09090B",
+  themeColor: "#020617",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GB" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+    <html lang="en-GB" className={`${inter.variable} ${plusJakarta.variable}`}>
       <body className="font-sans antialiased">
         <JsonLd data={organizationGraph()} />
         <a href="#main-content" className="skip-link">
-          Skip to content
+          Skip to main content
         </a>
         <PilotBanner />
         <Header />
-        <main id="main-content" className="pb-20 md:pb-0">
-          {children}
-        </main>
+        <main id="main-content" className="pb-20 md:pb-0">{children}</main>
         <Footer />
         <MobileCTA />
-        <ChatWidget />
       </body>
     </html>
   );
