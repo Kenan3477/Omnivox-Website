@@ -1,37 +1,31 @@
 # OMNIVOX
 
-> UK/EU cloud contact centre for outbound sales and inbound voice. Preview, progressive and power dial, inbound queues and IVR, custom wallboards. £25 a seat, prepaid minutes, no fair-use fiction.
+> Cloud dialer and agent workspace for UK and EU outbound sales teams. Preview and manual outbound, platform-managed telephony, and one prepaid credit wallet for inbound and outbound calls.
 
-OMNIVOX is operated by Quanterae Solutions. Platform fee £25 per agent per month. Telephony is prepaid at approximately 5p per connected minute, inbound and outbound, one wallet, one-minute minimum. Usage is visible in Admin → Call Credits.
+OMNIVOX is operated by Quanterae Solutions. The platform fee is £25 per agent per month. Telephony is prepaid at approximately 5p per connected minute. There is no bundled “unlimited minutes” fair-use cap — usage is visible in Admin → Call Credits.
 
 ## Pages
 
-- [Home](https://omnivox-website-three.vercel.app/): Product overview, dial methods, wallboards, comparison, FAQ
-- [Features](https://omnivox-website-three.vercel.app/features): Live / Waitlist / Coming labels
-- [Wallboards](https://omnivox-website-three.vercel.app/wallboards): Builder, TV mode, playlists, widget catalogue
-- [Inbound](https://omnivox-website-three.vercel.app/inbound): Platform DIDs, ACD, hours, IVR studio
-- [Pricing](https://omnivox-website-three.vercel.app/pricing): £25/seat plus prepaid credits, calculator, top-up packs
-- [Agencies](https://omnivox-website-three.vercel.app/agencies): Multi-org isolation, per-client credits, same-day onboard
-- [Trust](https://omnivox-website-three.vercel.app/trust): UK GDPR controller/processor, DPA, DNC, audit, recording
-- [FAQ](https://omnivox-website-three.vercel.app/faq): Carrier, minutes, predictive, wallboards, GDPR
+- [Home](https://omnivox-website-three.vercel.app/): Product overview, metered pricing, compliance summary, and FAQ
+- [Features](https://omnivox-website-three.vercel.app/features): Dialing modes, agent workspace, credit wallet, inbound routing, campaigns, and compliance tools
+- [Pricing](https://omnivox-website-three.vercel.app/pricing): £25/seat plus prepaid credits, cost calculator, and top-up packs
+- [Agencies](https://omnivox-website-three.vercel.app/agencies): Same-day client onboarding, multi-org isolation, and pilot credit grants
+- [Trust & Security](https://omnivox-website-three.vercel.app/trust): UK GDPR controller/processor roles, DPA, DNC, audit logs, and recording controls
 - [Contact](https://omnivox-website-three.vercel.app/contact): Book a demo or start a same-day pilot
-- [Privacy Policy](https://omnivox-website-three.vercel.app/privacy)
-- [Terms of Service](https://omnivox-website-three.vercel.app/terms)
+- [Privacy Policy](https://omnivox-website-three.vercel.app/privacy): How website and platform data is handled
+- [Terms of Service](https://omnivox-website-three.vercel.app/terms): Platform usage terms
 
 ## Product facts
 
-- Live dial methods: manual / click-to-call, preview, progressive (1:1), power (ratio > 1, AMD-gated)
-- Twilio AMD is live. Adaptive Power and statistical predictive are waitlist only — predictive is not shipped
-- Custom wallboards are first-class: builder, TV mode, playlists, ~40 widgets
-- Inbound is a contact-centre stack: platform-managed UK numbers, queues, hours, visual IVR
+- Manual dial and preview dial are available today
+- Progressive and predictive auto-dial is in development
 - One prepaid credit wallet covers inbound and outbound
-- No BYOC / multi-carrier — we run Twilio
-- Call recording is configurable per organisation or campaign; consent is the customer’s job
+- Platform-managed telephony — no carrier accounts required
+- Call recording is configurable per organisation or campaign
 - UK GDPR: the customer is the data controller; OMNIVOX is the data processor
 - A Data Processing Agreement is provided at onboarding
-- Not omnichannel. Not a conversational-AI platform
 - Contact: hello@omnivox.co.uk
-- App login: https://omnivox-ai.vercel.app/login
+- App login: https://omnivox.vercel.app/login
 
 ## Optional
 
