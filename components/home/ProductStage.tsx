@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type KeyboardEvent } from "react";
 import { BrowserFrame, Section, SectionContainer, SectionHeader } from "@/components/ui/Section";
 import { channels, dialModes } from "@/lib/product";
 import { siteConfig } from "@/lib/constants";
@@ -14,8 +14,28 @@ const tabs = [
 type TabId = (typeof tabs)[number]["id"];
 type DialId = (typeof dialModes)[number]["id"];
 
+const frameTitle: Record<TabId, string> = {
+  dialer: siteConfig.appWorkHost,
+  inbox: `${siteConfig.appWorkHost} · inbox`,
+  wallboard: `${siteConfig.appWorkHost} · wallboard`,
+};
+
 export function ProductStage() {
   const [tab, setTab] = useState<TabId>("dialer");
+
+  function onTabKeyDown(event: KeyboardEvent<HTMLButtonElement>, index: number) {
+    const last = tabs.length - 1;
+    let next = index;
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") next = index === last ? 0 : index + 1;
+    else if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = index === 0 ? last : index - 1;
+    else if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = last;
+    else return;
+    event.preventDefault();
+    const id = tabs[next].id;
+    setTab(id);
+    requestAnimationFrame(() => document.getElementById(`product-tab-${id}`)?.focus());
+  }
 
   return (
     <Section id="product" className="bg-white">
@@ -27,13 +47,17 @@ export function ProductStage() {
         />
 
         <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Product surfaces">
-          {tabs.map((item) => (
+          {tabs.map((item, index) => (
             <button
               key={item.id}
+              id={`product-tab-${item.id}`}
               type="button"
               role="tab"
               aria-selected={tab === item.id}
+              aria-controls={`product-panel-${item.id}`}
+              tabIndex={tab === item.id ? 0 : -1}
               onClick={() => setTab(item.id)}
+              onKeyDown={(event) => onTabKeyDown(event, index)}
               className={`rounded-2xl border px-4 py-3 text-left transition-colors ${
                 tab === item.id
                   ? "border-blue-600 bg-blue-600 text-white shadow-sm"
@@ -48,19 +72,17 @@ export function ProductStage() {
           ))}
         </div>
 
-        <BrowserFrame
-          title={
-            tab === "dialer"
-              ? siteConfig.appWorkHost
-              : tab === "inbox"
-                ? "omnivox.vercel.app/work · inbox"
-                : "omnivox.vercel.app/wallboards"
-          }
+        <div
+          id={`product-panel-${tab}`}
+          role="tabpanel"
+          aria-labelledby={`product-tab-${tab}`}
         >
-          {tab === "dialer" && <DialerStage />}
-          {tab === "inbox" && <InboxStage />}
-          {tab === "wallboard" && <WallboardStage />}
-        </BrowserFrame>
+          <BrowserFrame title={frameTitle[tab]}>
+            {tab === "dialer" && <DialerStage />}
+            {tab === "inbox" && <InboxStage />}
+            {tab === "wallboard" && <WallboardStage />}
+          </BrowserFrame>
+        </div>
 
         <ul className="mt-6 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
           {channels.map((ch) => (
@@ -159,32 +181,52 @@ function DialerStage() {
   );
 }
 
+function InboxThreadList({
+  thread,
+  setThread,
+}: {
+  thread: "whatsapp" | "sms";
+  setThread: (value: "whatsapp" | "sms") => void;
+}) {
+  const isWa = thread === "whatsapp";
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setThread("whatsapp")}
+        className={`w-full rounded-xl border p-3 text-left ${isWa ? "border-emerald-500/40 bg-emerald-500/10" : "border-white/5"}`}
+      >
+        <p className="text-[10px] font-semibold text-emerald-400">WhatsApp</p>
+        <p className="text-xs font-medium text-white mt-0.5">James Chen</p>
+        <p className="text-[10px] text-slate-500 mt-0.5">Can you send the pack?</p>
+      </button>
+      <button
+        type="button"
+        onClick={() => setThread("sms")}
+        className={`w-full rounded-xl border p-3 text-left ${!isWa ? "border-blue-500/40 bg-blue-500/10" : "border-white/5"}`}
+      >
+        <p className="text-[10px] font-semibold text-blue-300">SMS</p>
+        <p className="text-xs font-medium text-white mt-0.5">Emma Walsh</p>
+        <p className="text-[10px] text-slate-500 mt-0.5">Thanks — call me tomorrow</p>
+      </button>
+    </>
+  );
+}
+
 function InboxStage() {
   const [thread, setThread] = useState<"whatsapp" | "sms">("whatsapp");
   const isWa = thread === "whatsapp";
 
   return (
     <div className="grid min-h-[320px] grid-cols-12 bg-slate-950 text-slate-200">
+      <div className="col-span-12 grid grid-cols-2 gap-2 p-3 sm:hidden">
+        <InboxThreadList thread={thread} setThread={setThread} />
+      </div>
       <div className="col-span-4 border-r border-white/5 p-3 hidden sm:block">
         <p className="text-[10px] uppercase tracking-wider text-slate-500 mb-3 px-1">Inbox</p>
-        <button
-          type="button"
-          onClick={() => setThread("whatsapp")}
-          className={`w-full rounded-xl border p-3 text-left mb-2 ${isWa ? "border-emerald-500/40 bg-emerald-500/10" : "border-white/5"}`}
-        >
-          <p className="text-[10px] font-semibold text-emerald-400">WhatsApp</p>
-          <p className="text-xs font-medium text-white mt-0.5">James Chen</p>
-          <p className="text-[10px] text-slate-500 mt-0.5">Can you send the pack?</p>
-        </button>
-        <button
-          type="button"
-          onClick={() => setThread("sms")}
-          className={`w-full rounded-xl border p-3 text-left ${!isWa ? "border-blue-500/40 bg-blue-500/10" : "border-white/5"}`}
-        >
-          <p className="text-[10px] font-semibold text-blue-300">SMS</p>
-          <p className="text-xs font-medium text-white mt-0.5">Emma Walsh</p>
-          <p className="text-[10px] text-slate-500 mt-0.5">Thanks — call me tomorrow</p>
-        </button>
+        <div className="space-y-2">
+          <InboxThreadList thread={thread} setThread={setThread} />
+        </div>
       </div>
       <div className="col-span-12 sm:col-span-8 p-5 flex flex-col">
         <div className="flex items-center justify-between gap-3">

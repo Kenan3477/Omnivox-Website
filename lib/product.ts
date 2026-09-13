@@ -1,9 +1,5 @@
 /** Honest product surfaces for the marketing site. Catalog live ≠ org-ready. */
 
-export const appOrigin = "https://omnivox.vercel.app";
-export const appWorkUrl = `${appOrigin}/work`;
-export const appLoginUrl = `${appOrigin}/login`;
-
 export const dialModes = [
   {
     id: "preview",

@@ -9,12 +9,22 @@ function Cell({ cell, highlight }: { cell: CompareCell; highlight: boolean }) {
 
   const mark =
     cell.kind === "yes" ? (
-      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-        <CheckIcon className="h-3 w-3" />
+      <span
+        className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-50 text-emerald-600"
+        aria-label="Yes"
+      >
+        <span aria-hidden="true">
+          <CheckIcon className="h-3 w-3" />
+        </span>
       </span>
     ) : cell.kind === "no" ? (
-      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-slate-400">
-        <XIcon className="h-3 w-3" />
+      <span
+        className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-slate-400"
+        aria-label="No"
+      >
+        <span aria-hidden="true">
+          <XIcon className="h-3 w-3" />
+        </span>
       </span>
     ) : cell.kind === "waitlist" ? (
       <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-700">

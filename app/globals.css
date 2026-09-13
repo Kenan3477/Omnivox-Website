@@ -235,12 +235,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-product {
+  .hero-product,
+  .hero-product:hover {
     transform: none;
+    transition: none;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
   .animate-twinkle,
   .animate-voice-bar,
   .animate-pulse-glow {

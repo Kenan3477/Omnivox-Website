@@ -1,14 +1,14 @@
 # OMNIVOX
 
-> Cloud dialer and agent workspace for UK and EU outbound sales teams. Preview and manual outbound, platform-managed telephony, and one prepaid credit wallet for inbound and outbound calls.
+> UK/EU cloud contact centre: preview, progressive, and power dial with AMD, inbound ACD, a Work Inbox, and floor wallboards. Prepaid voice at about 5p outbound and 4p inbound.
 
-OMNIVOX is operated by Quanterae Solutions. The platform fee is £25 per agent per month. Telephony is prepaid at approximately 5p per connected minute. There is no bundled “unlimited minutes” fair-use cap — usage is visible in Admin → Call Credits.
+OMNIVOX is operated by Quanterae Solutions. The platform fee is £25 per agent per month (sales policy). Voice telephony is prepaid: about 5p per connected outbound minute and 4p per connected inbound minute. SMS, WhatsApp, email, chat, and social DMs are not billed from Call Credits. There is no bundled “unlimited minutes” fair-use cap — voice usage is visible in Admin → Call Credits.
 
 ## Pages
 
-- [Home](https://omnivox-website-three.vercel.app/): Product overview, metered pricing, compliance summary, and FAQ
-- [Features](https://omnivox-website-three.vercel.app/features): Dialing modes, agent workspace, credit wallet, inbound routing, campaigns, and compliance tools
-- [Pricing](https://omnivox-website-three.vercel.app/pricing): £25/seat plus prepaid credits, cost calculator, and top-up packs
+- [Home](https://omnivox-website-three.vercel.app/): Product overview, interactive workspace, competitor comparison, metered pricing, compliance summary, and FAQ
+- [Features](https://omnivox-website-three.vercel.app/features): Dialing modes, Work Inbox, wallboards, credit wallet, inbound ACD, campaigns, and compliance tools
+- [Pricing](https://omnivox-website-three.vercel.app/pricing): £25/seat plus prepaid voice credits, cost calculator, and top-up packs
 - [Agencies](https://omnivox-website-three.vercel.app/agencies): Same-day client onboarding, multi-org isolation, and pilot credit grants
 - [Trust & Security](https://omnivox-website-three.vercel.app/trust): UK GDPR controller/processor roles, DPA, DNC, audit logs, and recording controls
 - [Contact](https://omnivox-website-three.vercel.app/contact): Book a demo or start a same-day pilot
@@ -17,13 +17,17 @@ OMNIVOX is operated by Quanterae Solutions. The platform fee is £25 per agent p
 
 ## Product facts
 
-- Manual dial and preview dial are available today
-- Progressive and predictive auto-dial is in development
-- One prepaid credit wallet covers inbound and outbound
-- Platform-managed telephony — no carrier accounts required
+- Manual, preview, progressive, and power dial are available today. AMD is on progressive and power.
+- Predictive Live is waitlist only — not enabled in production
+- Work Inbox catalog: SMS, WhatsApp (24-hour customer-care sessions, not HSM broadcasts), email, live chat, Facebook/Instagram/X DMs
+- Catalog live does not mean an organisation is ready — enable channels in Admin → Channels
+- Floor wallboards include a Digital waiting lane
+- Voice Call Credits wallet: ~5p outbound / ~4p inbound, one-minute minimum. Digital is not in this wallet
+- Platform-managed Twilio telephony — no carrier accounts required
 - Call recording is configurable per organisation or campaign
 - UK GDPR: the customer is the data controller; OMNIVOX is the data processor
 - A Data Processing Agreement is provided at onboarding
+- No SOC 2, ISO, PCI, native iOS/Android, or CRM marketplace claims
 - Contact: hello@omnivox.co.uk
 - App login: https://omnivox.vercel.app/login
 
