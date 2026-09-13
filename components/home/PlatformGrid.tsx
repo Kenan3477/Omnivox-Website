@@ -28,8 +28,8 @@ export function PlatformGrid() {
           <div>
             <SectionHeader
               eyebrow="Proof, not quotes"
-              title="What we will put on the homepage"
-              description="No invented testimonials. These are operating facts from how OMNIVOX actually ships."
+              title="How the product actually ships"
+              description="No invented testimonials. These are operating facts from how OMNIVOX ships."
             />
             <div className="space-y-3">
               {proofPoints.map((p) => (

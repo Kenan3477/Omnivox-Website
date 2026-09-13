@@ -22,8 +22,8 @@ export function ProductStage() {
       <SectionContainer>
         <SectionHeader
           eyebrow="Product"
-          title="The workspace CloudTalk-class sites put in the hero"
-          description="Click through the dialer, inbox, and floor board. Catalog live does not mean every org has the channel enabled — that is Admin → Channels."
+          title="Dialer, inbox, and floor — click through"
+          description="Preview, progressive, and power. WhatsApp as a 24-hour session. Digital waiting until Admin → Channels is configured for the org."
         />
 
         <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Product surfaces">

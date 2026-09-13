@@ -41,11 +41,14 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="pointer-events-none absolute -right-8 -top-16 hidden opacity-40 lg:block" aria-hidden="true">
-              <OmniCube size="md" />
+          <div className="relative lg:min-h-[480px]">
+            <div
+              className="pointer-events-none absolute left-1/2 top-0 z-0 hidden -translate-x-[20%] -translate-y-[18%] opacity-80 lg:block"
+              aria-hidden="true"
+            >
+              <OmniCube size="lg" />
             </div>
-            <div className="hero-product relative z-10">
+            <div className="hero-product relative z-10 lg:mt-8 lg:mr-8">
               <BrowserFrame title={siteConfig.appWorkHost}>
                 <HeroWorkspace />
               </BrowserFrame>
