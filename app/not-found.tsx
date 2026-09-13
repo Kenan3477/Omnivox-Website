@@ -1,28 +1,25 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
-    <section className="border-b border-ink-600 bg-ink py-24 md:py-32">
+    <section className="bg-slate-50 py-24 md:py-32">
       <div className="mx-auto max-w-xl px-4 text-center">
-        <p className="kicker">404</p>
-        <h1 className="display mt-3 text-4xl text-paper">Page not found</h1>
-        <p className="mt-4 text-ink-300 leading-relaxed">
-          That URL is not on the OMNIVOX site. Head home or book a demo and we will point you to the right place.
+        <p className="text-[11px] font-semibold uppercase tracking-widest text-blue-700">404</p>
+        <h1 className="mt-3 font-display text-4xl font-bold text-slate-900">Page not found</h1>
+        <p className="mt-4 text-slate-600 leading-relaxed">
+          That URL is not part of the OMNIVOX site. Head home or book a demo and we will point you to the right place.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button href="/" size="lg">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="/"
+            className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-blue-400"
+          >
             Back to homepage
-          </Button>
-          <Button href="/contact" variant="outline" size="lg">
-            Contact
-          </Button>
-        </div>
-        <p className="mt-6">
-          <Link href="/faq" className="text-sm text-signal-300">
-            Or read the FAQ
           </Link>
-        </p>
+          <Link href="/contact" className="text-sm font-semibold text-blue-700 hover:text-blue-600">
+            Contact us →
+          </Link>
+        </div>
       </div>
     </section>
   );

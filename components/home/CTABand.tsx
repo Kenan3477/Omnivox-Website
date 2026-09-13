@@ -3,22 +3,15 @@ import { siteConfig } from "@/lib/constants";
 
 export function CTABand() {
   return (
-    <section className="bg-amber-400 py-14 text-ink md:py-16">
-      <div className="mx-auto flex max-w-site flex-col items-start justify-between gap-6 px-4 sm:px-6 md:flex-row md:items-center lg:px-8">
+    <section className="bg-slate-950 border-t border-white/5 py-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <p className="font-mono text-[11px] uppercase tracking-widest text-ink/70">Same-day pilot</p>
-          <h2 className="display mt-2 text-3xl md:text-4xl">£50 credits. White-glove. Agents dialling this afternoon.</h2>
-          <p className="mt-2 max-w-xl text-ink/80">
-            Qualified outbound and inbound voice teams. Email {siteConfig.contactEmail} if the form is too slow.
-          </p>
+          <h2 className="font-display text-lg font-bold text-white">Start a pilot — £50 free credits</h2>
+          <p className="text-sm text-slate-500 mt-0.5">Powered by {siteConfig.poweredBy}</p>
         </div>
-        <div className="flex flex-wrap gap-3">
-          <Button href="/contact" variant="paper" size="lg">
-            Start a pilot
-          </Button>
-          <Button href={siteConfig.appLoginUrl} variant="ghost" size="lg" external className="text-ink hover:bg-ink/10 hover:text-ink">
-            Sign in
-          </Button>
+        <div className="flex gap-3 shrink-0">
+          <Button href="/contact" size="md">Book a demo</Button>
+          <Button href="/pricing" variant="outline" size="md">Pricing</Button>
         </div>
       </div>
     </section>
