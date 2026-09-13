@@ -47,7 +47,7 @@ export default function AgenciesPage() {
             as="h1"
             eyebrow="Agencies"
             title="One platform for every client you onboard"
-            description="Compete with Connex and CloudTalk on capability — win on £25/seat pricing and transparent credits per client."
+            description="Win on campaign dialling, floor wallboards, and £25/seat — without buying a full suite. CloudTalk and Aircall still win native mobile and CRM app stores."
             dark
             align="left"
           />
@@ -59,10 +59,11 @@ export default function AgenciesPage() {
         <SectionContainer>
           <article className="mb-12 max-w-3xl space-y-4 text-slate-600 leading-relaxed">
             <p>
-              Agencies lose days setting up a new dialer for each client: carrier accounts, seat licences, and fair-use
+              Agencies lose days setting up a new stack for each client: carrier accounts, seat licences, and fair-use
               minute pools that do not match part-time or seasonal teams. OMNIVOX is built for that workflow. We
-              provision a separate organisation, load contacts, set preview or manual dial, and grant pilot credits so
-              agents can call the same day.
+              provision a separate organisation, load contacts, set preview, progressive, or power, and grant pilot
+              credits so agents can work the same day. Work Inbox and wallboards are per org — digital channels stay off
+              until you enable them.
             </p>
             <p>
               Each client keeps isolated users, campaigns, recordings, and DNC lists. You still work from one

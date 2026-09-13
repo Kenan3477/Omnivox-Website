@@ -9,7 +9,7 @@ export function PillarsSection() {
       <SectionContainer>
         <SectionHeader
           eyebrow="Platform"
-          title="Outbound, telephony, compliance — in one stack"
+            title="Outbound, inbox, floor — in one stack"
           compact
         />
         <div className="grid md:grid-cols-3 gap-4">

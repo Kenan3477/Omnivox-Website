@@ -47,7 +47,7 @@ function ContactSidebar() {
           Send your agent count, use case, and timeline — we&apos;ll come back with pilot options.
         </p>
         <a
-          href={`mailto:${siteConfig.contactEmail}?subject=OMNIVOX%20AI%20demo%20request`}
+          href={`mailto:${siteConfig.contactEmail}?subject=OMNIVOX%20demo%20request`}
           className="mt-4 inline-flex text-base font-semibold text-blue-600 hover:text-blue-500"
         >
           {siteConfig.contactEmail}

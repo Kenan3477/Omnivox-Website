@@ -13,7 +13,7 @@ export const metadata = pageMetadata({
   title: pageSeo.features.title,
   description: pageSeo.features.description,
   path: "/features",
-  keywords: ["preview dial", "manual dial", "cloud dialer features", "call credits", "DNC registry"],
+  keywords: ["preview dial", "progressive dial", "WhatsApp inbox", "wallboards", "DNC registry"],
 });
 
 export default function FeaturesPage() {
@@ -41,35 +41,37 @@ export default function FeaturesPage() {
           <SectionHeader
             as="h1"
             eyebrow="Features"
-            title="Everything outbound teams need — nothing they don't"
-            description="Preview dial, credit wallet, campaigns, inbound, compliance. Honest availability labels on every feature."
+            title="Dial, inbox, and floor — labelled honestly"
+            description="Preview, progressive, and power are live. Predictive is waitlist. WhatsApp is a 24-hour session. Catalog live does not mean the org is ready."
             dark
             align="left"
           />
-          <Button href="/contact" size="lg">Book a demo</Button>
+          <Button href="/contact" size="lg">
+            Book a demo
+          </Button>
         </SectionContainer>
       </section>
 
       <Section>
         <SectionContainer>
           <p className="mb-12 max-w-3xl text-slate-600 leading-relaxed">
-            OMNIVOX is a browser cloud dialer for UK and EU outbound teams. Manual and preview dial are live today.
-            Progressive and predictive auto-dial is on the roadmap. Compare this list with{" "}
+            OMNIVOX is a UK/EU cloud contact centre: Twilio voice, a Work Inbox, inbound ACD, and floor wallboards.
+            Compare this list with{" "}
             <a href="/pricing" className="font-medium text-blue-700 hover:text-blue-600">
               pricing
             </a>{" "}
-            and our{" "}
+            and{" "}
             <a href="/trust" className="font-medium text-blue-700 hover:text-blue-600">
               trust controls
             </a>{" "}
-            before you pilot.
+            before you pilot. We do not claim native mobile, a CRM marketplace, or SOC 2.
           </p>
           <div className="space-y-20">
             {featureGroups.map((group) => (
               <section key={group.title} id={group.id} aria-labelledby={`${group.id}-heading`}>
                 <div className="mb-8 flex items-center gap-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/15 to-indigo-500/15 text-blue-600 border border-blue-100">
-                    <FeatureIcon name={group.icon as "phone"} className="h-7 w-7" />
+                    <FeatureIcon name={group.icon} className="h-7 w-7" />
                   </div>
                   <h2 id={`${group.id}-heading`} className="font-display text-2xl font-bold text-slate-900 md:text-3xl">
                     {group.title}

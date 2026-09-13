@@ -6,7 +6,7 @@ import { LogoMark } from "@/components/brand/Wordmark";
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 shadow-lg shadow-black/20 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 md:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 md:px-6 lg:px-8">
         <Link href="/" className="group flex items-center gap-2.5" aria-label="OMNIVOX home">
           <LogoMark className="h-9 w-9" />
           <span className="hidden font-display text-lg font-bold tracking-tight text-white sm:block">OMNIVOX</span>

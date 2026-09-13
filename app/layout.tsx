@@ -24,7 +24,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "OMNIVOX — Cloud dialer for outbound sales teams",
+    default: "OMNIVOX — UK/EU contact centre for campaigns and inbox",
     template: "%s | OMNIVOX",
   },
   description: pageSeo.home.description,
@@ -35,10 +35,11 @@ export const metadata: Metadata = {
   category: "business",
   keywords: [
     "OMNIVOX",
-    "cloud dialer",
+    "cloud contact centre",
     "preview dial",
+    "progressive dial",
+    "WhatsApp 24 hour session",
     "outbound dialer UK",
-    "contact centre software",
     "prepaid call credits",
     "UK GDPR dialer",
   ],
@@ -48,12 +49,12 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "OMNIVOX — Cloud dialer for outbound sales teams",
+    title: pageSeo.home.title,
     description: pageSeo.home.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "OMNIVOX — Cloud dialer for outbound sales teams",
+    title: pageSeo.home.title,
     description: pageSeo.home.description,
   },
   robots: {

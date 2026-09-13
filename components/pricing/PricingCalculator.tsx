@@ -124,7 +124,8 @@ export function PricingCalculator() {
       </div>
 
       <p className="mt-5 text-xs text-slate-500 border-t border-slate-100 pt-4">
-        Bundled comparison is illustrative (typical £50–90/seat dialers). OMNIVOX shows every minute in your credit ledger — no hidden ceiling.
+        Bundled comparison is illustrative (typical £50–90/seat dialers). Calculator uses outbound ~5p; inbound is
+        ~4p. Digital is not in Call Credits. OMNIVOX shows every voice minute in the ledger — no hidden ceiling.
       </p>
     </div>
   );

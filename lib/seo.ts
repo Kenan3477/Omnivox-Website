@@ -10,39 +10,39 @@ export function absoluteUrl(path = "") {
 
 export const pageSeo = {
   home: {
-    title: "OMNIVOX — Cloud dialer for outbound sales teams",
+    title: "OMNIVOX — UK/EU contact centre for campaigns and inbox",
     description:
-      "UK and EU cloud dialer with preview outbound, £25 per seat, prepaid credits, and one wallet for inbound and outbound calls.",
+      "UK and EU cloud contact centre with preview, progressive, and power dial, Work Inbox (WhatsApp 24-hour sessions), floor wallboards, and prepaid voice at about 5p outbound and 4p inbound.",
     path: "/",
   },
   features: {
-    title: "Cloud dialer features: preview, credits, DNC",
+    title: "Contact centre features: dial, inbox, wallboards",
     description:
-      "OMNIVOX features for outbound teams: preview and manual dial, prepaid credit wallet, inbound routing, campaigns, and UK GDPR tools.",
+      "OMNIVOX features: preview, progressive, and power dial with AMD, Work Inbox, inbound ACD, floor wallboards, prepaid credits, and UK GDPR tools. Predictive Live is waitlist only.",
     path: "/features",
   },
   pricing: {
-    title: "Cloud dialer pricing: £25/seat plus credits",
+    title: "Contact centre pricing: £25/seat plus voice credits",
     description:
-      "OMNIVOX pricing is £25 per agent per month plus prepaid call credits at about 5p per minute. No bundled fair-use minute caps.",
+      "OMNIVOX pricing is £25 per agent per month plus prepaid voice credits at about 5p outbound and 4p inbound. Digital is not in Call Credits. No bundled fair-use minute caps.",
     path: "/pricing",
   },
   agencies: {
-    title: "Cloud dialer for agencies and multi-client teams",
+    title: "Contact centre for agencies and multi-client teams",
     description:
-      "Onboard agency clients in a day on OMNIVOX. Isolated orgs, pilot credit grants, and one telephony stack at £25 per seat.",
+      "Onboard agency clients in a day on OMNIVOX. Isolated orgs, pilot credit grants, inbox and wallboards per client, £25 per seat.",
     path: "/agencies",
   },
   contact: {
     title: "Book an OMNIVOX demo or same-day pilot",
     description:
-      "Book a demo or start an OMNIVOX pilot. We provision your organisation, grant starter credits, and can have agents dialling the same day.",
+      "Book a demo or start an OMNIVOX pilot. We provision your organisation, grant starter credits, and can have agents working the same day.",
     path: "/contact",
   },
   trust: {
-    title: "Trust, UK GDPR, and dialer security controls",
+    title: "Trust, UK GDPR, and contact centre security controls",
     description:
-      "How OMNIVOX handles data as your processor: DPA, DNC registry, audit logs, recording controls, and UK GDPR roles for outbound teams.",
+      "How OMNIVOX handles data as your processor: DPA, DNC registry, audit logs, recording controls, and UK GDPR roles. No invented SOC 2 or ISO claims.",
     path: "/trust",
   },
   privacy: {
@@ -54,7 +54,7 @@ export const pageSeo = {
   terms: {
     title: "OMNIVOX terms of service and acceptable use",
     description:
-      "Terms for using the OMNIVOX cloud dialer: billing, prepaid credits, acceptable use, and your responsibility for calling compliance.",
+      "Terms for using OMNIVOX: billing, prepaid credits, acceptable use, and your responsibility for calling compliance.",
     path: "/terms",
   },
 } as const;
@@ -173,7 +173,7 @@ export function softwareApplicationJsonLd() {
       availability: "https://schema.org/InStock",
       url: `${siteUrl}/pricing`,
       priceValidUntil: "2027-12-31",
-      description: "£25 per agent per month, plus prepaid call credits at approximately 5p per connected minute.",
+      description: "£25 per agent per month, plus prepaid voice credits at approximately 5p outbound and 4p inbound per connected minute.",
     },
     provider: { "@id": `${siteUrl}/#organization` },
     publisher: { "@id": `${siteUrl}/#organization` },
@@ -231,6 +231,6 @@ export function webPageJsonLd({
     isPartOf: { "@id": `${siteUrl}/#website` },
     about: { "@id": `${siteUrl}/#organization` },
     publisher: { "@id": `${siteUrl}/#organization` },
-    dateModified: "2026-08-25",
+    dateModified: "2026-09-13",
   };
 }

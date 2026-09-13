@@ -43,8 +43,8 @@ export default function PricingPage() {
           <SectionHeader
             as="h1"
             eyebrow="Pricing"
-            title="Half the seat price. Pay for what you dial."
-            description="£25 per agent for the platform. Telephony on prepaid credits at ~5p/min — no bundled “unlimited” fine print. Optional seat + credit bundles available."
+            title="£25 per seat. Voice on the meter. Digital is not."
+            description="£25 per agent for the platform. Prepaid voice at ~5p outbound / ~4p inbound — no bundled “unlimited” fine print. SMS, WhatsApp, email, chat, and social DMs are not in Call Credits."
             dark
           />
         </SectionContainer>
@@ -58,7 +58,7 @@ export default function PricingPage() {
                 <p className="mt-2 font-display text-4xl md:text-5xl font-bold text-slate-900">
                   £25<span className="text-xl md:text-2xl font-semibold text-slate-500"> / agent / month</span>
                 </p>
-                <p className="mt-2 text-slate-600">+ prepaid call credits at ~5p per connected minute</p>
+                <p className="mt-2 text-slate-600">+ prepaid voice credits at ~5p outbound / ~4p inbound</p>
               </div>
 
               <table className="w-full text-left">
@@ -97,9 +97,9 @@ export default function PricingPage() {
             <UsagePricingSection variant="embedded" />
 
             <blockquote className="mt-10 rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-8 text-slate-800 leading-relaxed">
-              <strong>Worked example:</strong> 5 agents = <strong>£125/month</strong> platform.{" "}
-              £100 credit top-up ≈ <strong>2,000 minutes</strong> (inbound or outbound).{" "}
-              No surprise telecom invoice.
+              <strong>Worked example:</strong> 5 agents = <strong>£125/month</strong> platform. £100 outbound ≈{" "}
+              <strong>2,000 minutes</strong> at 5p. The same £100 inbound ≈ <strong>2,500 minutes</strong> at 4p.
+              Digital is not in this wallet.
             </blockquote>
 
             <div id="calculator" className="mt-12 grid gap-8 lg:grid-cols-2 scroll-mt-24">

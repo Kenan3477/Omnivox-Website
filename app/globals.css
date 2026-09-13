@@ -225,6 +225,21 @@
   animation: pulse-glow 4s ease-in-out infinite;
 }
 
+.hero-product {
+  transform: perspective(1400px) rotateY(-8deg) rotateX(3deg);
+  transition: transform 400ms ease;
+}
+
+.hero-product:hover {
+  transform: perspective(1400px) rotateY(-2deg) rotateX(1deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-product {
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-twinkle,
   .animate-voice-bar,

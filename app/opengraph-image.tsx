@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "OMNIVOX — Cloud dialer for outbound sales teams";
+export const alt = "OMNIVOX — UK/EU contact centre for campaigns and inbox";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -59,16 +59,16 @@ export default function OpenGraphImage() {
               maxWidth: 920,
             }}
           >
-            Cloud dialer for outbound sales teams
+            Campaigns, queues, and a Work Inbox — in one browser.
           </div>
           <div style={{ fontSize: 26, color: "#93c5fd", maxWidth: 820 }}>
-            Preview &amp; manual outbound · £25/seat · prepaid credits · platform-managed telephony
+            Preview · Progressive · Power · WhatsApp 24h · ~5p out / 4p in
           </div>
         </div>
 
         <div style={{ display: "flex", gap: 36, color: "#93c5fd", fontSize: 22, fontWeight: 600 }}>
           <span>£25 / agent / month</span>
-          <span>~5p / connected minute</span>
+          <span>~5p out · 4p in</span>
           <span>Same-day pilots</span>
         </div>
       </div>
