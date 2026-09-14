@@ -9,26 +9,25 @@ import { siteConfig, trustMetrics } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-slate-950 border-b border-white/5">
+    <section className="relative overflow-hidden bg-slate-950">
       <Starfield />
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28">
-        <div className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] gap-12 lg:gap-16 items-center">
-          <div className="text-center lg:text-left">
-            <p className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-300">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-12 md:pt-24 md:pb-16 lg:pt-28 lg:pb-20">
+        <div className="grid lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] gap-10 lg:gap-8 items-center">
+          <div className="text-center lg:text-left lg:pr-4">
+            <p className="inline-flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-blue-200/80">
               <LogoMark className="h-6 w-6" />
               UK / EU contact centre
             </p>
-            <h1 className="mt-5 font-display text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-bold tracking-tight text-white text-balance leading-[1.08]">
+            <h1 className="mt-6 font-display text-4xl sm:text-5xl lg:text-[3.35rem] xl:text-[3.75rem] font-semibold tracking-tight text-white text-balance leading-[1.07]">
               Campaigns, queues, and a Work Inbox — in one browser.
             </h1>
-            <p className="mt-5 text-base md:text-lg text-slate-300 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Preview, progressive, and power dial with AMD. Inbound ACD. SMS, WhatsApp{" "}
-              <span className="text-white">24-hour sessions</span>, email, chat, and social DMs. Floor
-              wallboards. Prepaid voice at ~5p outbound / ~4p inbound. Predictive is waitlist only.
+            <p className="mt-6 text-base md:text-[1.05rem] text-slate-400 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Preview, progressive, and power with AMD. WhatsApp as a 24-hour session. Floor
+              wallboards. Prepaid voice at ~5p outbound / ~4p inbound.
             </p>
-            <FeaturePills className="mt-6 justify-center lg:justify-start" />
+            <FeaturePills className="mt-7 justify-center lg:justify-start" />
 
-            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+            <div className="mt-9 flex flex-wrap items-center justify-center lg:justify-start gap-3">
               <Button href="/contact" size="lg">
                 Book a demo
               </Button>
@@ -41,26 +40,23 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative lg:min-h-[480px]">
-            <div
-              className="pointer-events-none absolute left-1/2 top-0 z-0 hidden -translate-x-[20%] -translate-y-[18%] opacity-80 lg:block"
-              aria-hidden="true"
-            >
+          <div className="relative min-h-[380px] lg:min-h-[520px] overflow-hidden">
+            <div className="pointer-events-none absolute left-1/2 top-0 z-0 -translate-x-1/2 lg:left-auto lg:right-0 lg:translate-x-8 lg:-top-6">
               <OmniCube size="lg" />
             </div>
-            <div className="hero-product relative z-10 lg:mt-8 lg:mr-8">
-              <BrowserFrame title={siteConfig.appWorkHost}>
+            <div className="relative z-10 mx-auto max-w-xl pt-28 sm:pt-32 lg:ml-0 lg:mr-6 lg:pt-36">
+              <BrowserFrame title={siteConfig.appWorkHost} tone="dark">
                 <HeroWorkspace />
               </BrowserFrame>
             </div>
           </div>
         </div>
 
-        <dl className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl border border-white/10 bg-white/10 overflow-hidden">
+        <dl className="mt-16 grid grid-cols-2 md:grid-cols-4 border-t border-white/10">
           {trustMetrics.map((m) => (
-            <div key={m.label} className="bg-slate-950/80 px-5 py-5 text-center md:text-left">
-              <dt className="font-display text-2xl md:text-3xl font-bold text-white">{m.value}</dt>
-              <dd className="text-xs text-slate-400 mt-1">{m.label}</dd>
+            <div key={m.label} className="px-0 py-6 md:px-6 md:first:pl-0 border-white/10 md:border-l md:first:border-l-0">
+              <dt className="font-display text-2xl md:text-[1.75rem] font-semibold tracking-tight text-white">{m.value}</dt>
+              <dd className="text-xs text-slate-500 mt-1 tracking-wide">{m.label}</dd>
             </div>
           ))}
         </dl>

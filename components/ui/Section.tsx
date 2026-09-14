@@ -5,18 +5,37 @@ interface BrowserFrameProps {
   children: ReactNode;
   title?: string;
   className?: string;
+  tone?: "light" | "dark";
 }
 
-export function BrowserFrame({ children, title = siteConfig.appWorkHost, className = "" }: BrowserFrameProps) {
+export function BrowserFrame({
+  children,
+  title = siteConfig.appWorkHost,
+  className = "",
+  tone = "light",
+}: BrowserFrameProps) {
+  const dark = tone === "dark";
   return (
-    <div className={`rounded-2xl border border-slate-200 bg-slate-100 shadow-card overflow-hidden ${className}`}>
-      <div className="flex items-center gap-2 border-b border-slate-200 bg-white px-3 py-2.5">
-        <div className="flex gap-1">
-          <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-          <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-          <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+    <div
+      className={`overflow-hidden rounded-2xl ${
+        dark
+          ? "border border-white/10 bg-slate-950 shadow-[0_40px_80px_-24px_rgba(0,0,0,0.75)]"
+          : "border border-slate-200 bg-slate-100 shadow-card"
+      } ${className}`}
+    >
+      <div
+        className={`flex items-center gap-2 px-3 py-2.5 ${
+          dark ? "border-b border-white/10 bg-slate-950/90" : "border-b border-slate-200 bg-white"
+        }`}
+      >
+        <div className="flex gap-1.5">
+          <span className={`h-2 w-2 rounded-full ${dark ? "bg-white/20" : "bg-red-400"}`} />
+          <span className={`h-2 w-2 rounded-full ${dark ? "bg-white/20" : "bg-amber-400"}`} />
+          <span className={`h-2 w-2 rounded-full ${dark ? "bg-white/20" : "bg-emerald-400"}`} />
         </div>
-        <div className="flex-1 text-center text-[11px] text-slate-400 truncate px-2">{title}</div>
+        <div className={`flex-1 text-center text-[11px] truncate px-2 tracking-wide ${dark ? "text-slate-500" : "text-slate-400"}`}>
+          {title}
+        </div>
       </div>
       <div className="overflow-hidden">{children}</div>
     </div>
