@@ -139,7 +139,13 @@ export default function TrustPage() {
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button href="/contact" size="md">Book a demo</Button>
-                <Button href={`mailto:${siteConfig.contactEmail}?subject=DPA%20request`} variant="outline" size="md" external>
+                <Button
+                  href={`mailto:${siteConfig.contactEmail}?subject=DPA%20request`}
+                  variant="ghost"
+                  size="md"
+                  className="border border-slate-300 text-slate-800 hover:bg-white hover:text-slate-900"
+                  external
+                >
                   Request DPA
                 </Button>
               </div>

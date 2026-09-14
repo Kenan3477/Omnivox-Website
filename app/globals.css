@@ -32,17 +32,13 @@
 
   .starfield {
     background:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(37, 99, 235, 0.22), transparent),
-      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(99, 102, 241, 0.14), transparent),
-      radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.7) 0 0.6px, transparent 1.1px),
-      radial-gradient(circle at 28% 42%, rgba(255, 255, 255, 0.45) 0 0.5px, transparent 1px),
-      radial-gradient(circle at 47% 22%, rgba(255, 255, 255, 0.65) 0 0.7px, transparent 1.2px),
-      radial-gradient(circle at 63% 68%, rgba(255, 255, 255, 0.4) 0 0.5px, transparent 1px),
-      radial-gradient(circle at 81% 31%, rgba(255, 255, 255, 0.55) 0 0.6px, transparent 1.1px),
-      radial-gradient(circle at 73% 82%, rgba(255, 255, 255, 0.35) 0 0.5px, transparent 1px),
-      radial-gradient(circle at 19% 76%, rgba(255, 255, 255, 0.5) 0 0.6px, transparent 1.1px),
-      radial-gradient(circle at 91% 58%, rgba(255, 255, 255, 0.45) 0 0.5px, transparent 1px),
-      linear-gradient(to bottom, #020617, #0b1224 50%, #0b1120);
+      radial-gradient(ellipse 90% 55% at 50% -8%, rgba(37, 99, 235, 0.28), transparent 58%),
+      radial-gradient(ellipse 50% 40% at 88% 78%, rgba(15, 23, 42, 0.9), transparent 55%),
+      radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.28) 0 0.45px, transparent 1px),
+      radial-gradient(circle at 62% 18%, rgba(255, 255, 255, 0.18) 0 0.4px, transparent 0.9px),
+      radial-gradient(circle at 81% 42%, rgba(255, 255, 255, 0.22) 0 0.45px, transparent 1px),
+      radial-gradient(circle at 34% 72%, rgba(255, 255, 255, 0.14) 0 0.4px, transparent 0.9px),
+      linear-gradient(to bottom, #020617 0%, #070d1c 55%, #050814 100%);
   }
 
   .glass-card {
@@ -54,34 +50,136 @@
   }
 }
 
-/* OmniCube — ported from dialer login (glass cube + floating icons) */
-.omni-cube-scene {
+/* Prestige OmniCube — slow glass monolith, hairline rings, no icon orbit */
+.omni-sculpture {
+  position: relative;
+  width: 28rem;
+  height: 28rem;
+  margin-inline: auto;
+  transform-origin: center center;
+}
+
+.omni-glow {
+  position: absolute;
+  inset: 14%;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.55), rgba(37, 99, 235, 0.12) 55%, transparent 70%);
+  filter: blur(22px);
+}
+
+.omni-floor {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  width: 14rem;
+  height: 2.5rem;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: radial-gradient(ellipse, rgba(15, 23, 42, 0.55), transparent 70%);
+  filter: blur(10px);
+}
+
+.omni-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1600px;
   transform-style: preserve-3d;
-  animation: omni-cube-spin 18s linear infinite;
-  transform: perspective(1000px) rotateX(-18deg) rotateY(24deg);
 }
 
-.omni-cube-orbit {
-  animation: omni-orbit-spin 24s linear infinite;
+.omni-rings {
+  position: absolute;
+  width: 22rem;
+  height: 22rem;
+  transform-style: preserve-3d;
+  animation: omni-ring-spin 80s linear infinite;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .omni-cube-scene,
-  .omni-cube-orbit {
-    animation: none;
-  }
+.omni-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 9999px;
+  border: 1px solid rgba(191, 219, 254, 0.45);
+  pointer-events: none;
+}
+
+.omni-ring-outer {
+  width: 22rem;
+  height: 22rem;
+  margin: -11rem 0 0 -11rem;
+  transform: rotateX(74deg);
+}
+
+.omni-ring-inner {
+  width: 15.5rem;
+  height: 15.5rem;
+  margin: -7.75rem 0 0 -7.75rem;
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: rotateX(74deg) rotateZ(28deg);
+}
+
+.omni-cube-scene {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  transform-style: preserve-3d;
+  animation: omni-cube-spin 56s linear infinite;
+  transform: rotateX(-16deg) rotateY(28deg);
+}
+
+.omni-glass {
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.38) 0%, rgba(96, 165, 250, 0.28) 38%, rgba(15, 23, 42, 0.55) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1.35rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -16px 28px rgba(2, 6, 23, 0.28),
+    0 24px 48px rgba(2, 6, 23, 0.4);
+}
+
+.omni-cube-face {
+  position: absolute;
+  display: flex;
+  height: 10rem;
+  width: 10rem;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+}
+
+.omni-face-front {
+  transform: translateZ(80px);
+}
+.omni-face-back {
+  transform: rotateY(180deg) translateZ(80px);
+}
+.omni-face-right {
+  transform: rotateY(90deg) translateZ(80px);
+}
+.omni-face-left {
+  transform: rotateY(-90deg) translateZ(80px);
+}
+.omni-face-top {
+  transform: rotateX(90deg) translateZ(80px);
+}
+.omni-face-bottom {
+  transform: rotateX(-90deg) translateZ(80px);
 }
 
 @keyframes omni-cube-spin {
   from {
-    transform: perspective(1000px) rotateX(-18deg) rotateY(0deg);
+    transform: rotateX(-16deg) rotateY(0deg);
   }
   to {
-    transform: perspective(1000px) rotateX(-18deg) rotateY(360deg);
+    transform: rotateX(-16deg) rotateY(360deg);
   }
 }
 
-@keyframes omni-orbit-spin {
+@keyframes omni-ring-spin {
   from {
     transform: rotateZ(0deg);
   }
@@ -90,53 +188,10 @@
   }
 }
 
-.omni-cube-face {
-  backface-visibility: hidden;
-}
-.omni-face-front {
-  transform: translateZ(64px);
-}
-.omni-face-back {
-  transform: rotateY(180deg) translateZ(64px);
-}
-.omni-face-right {
-  transform: rotateY(90deg) translateZ(64px);
-}
-.omni-face-left {
-  transform: rotateY(-90deg) translateZ(64px);
-}
-.omni-face-top {
-  transform: rotateX(90deg) translateZ(64px);
-}
-.omni-face-bottom {
-  transform: rotateX(-90deg) translateZ(64px);
-}
-
-@keyframes omni-float {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-  }
-  25% {
-    transform: translateY(-10px) scale(1.05);
-  }
-  50% {
-    transform: translateY(-5px) scale(1.1);
-  }
-  75% {
-    transform: translateY(-15px) scale(1.05);
-  }
-}
-
-@keyframes omni-icon-pulse {
-  0%,
-  100% {
-    opacity: 0.6;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  }
-  50% {
-    opacity: 1;
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+@media (prefers-reduced-motion: reduce) {
+  .omni-cube-scene,
+  .omni-rings {
+    animation: none;
   }
 }
 

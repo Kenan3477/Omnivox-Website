@@ -1,7 +1,8 @@
 const pills = [
-  { label: "Smart dialing" },
-  { label: "Live analytics" },
-  { label: "Campaign ops" },
+  { label: "Preview · Progressive · Power" },
+  { label: "WhatsApp 24h" },
+  { label: "Floor wallboards" },
+  { label: "Predictive waitlist" },
 ];
 
 export function FeaturePills({ className = "" }: { className?: string }) {
@@ -10,7 +11,7 @@ export function FeaturePills({ className = "" }: { className?: string }) {
       {pills.map((pill) => (
         <span
           key={pill.label}
-          className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-slate-400"
+          className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-medium tracking-wide text-slate-400"
         >
           {pill.label}
         </span>

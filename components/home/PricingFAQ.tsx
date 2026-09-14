@@ -6,10 +6,10 @@ import { CheckIcon } from "@/components/ui/Icons";
 import { faqItems } from "@/lib/constants";
 
 const includes = [
-  "Manual & preview dial",
-  "Campaigns & contacts",
-  "Prepaid credit wallet",
-  "Inbound DIDs & routing",
+  "Preview, progressive & power + AMD",
+  "Work Inbox (8 channels in catalog)",
+  "Floor wallboards",
+  "Prepaid voice wallet",
   "DNC, audit, recording",
 ];
 
@@ -25,7 +25,7 @@ export function PricingFAQ() {
               £25<span className="text-base font-normal text-slate-500">/agent/mo</span>
             </p>
             <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-              + prepaid credits ~5p/min. 5 agents = £125/mo + top-ups.
+              + prepaid voice ~5p out / ~4p in. 5 agents = £125/mo + top-ups.
             </p>
             <ul className="mt-4 space-y-1.5">
               {includes.map((item) => (

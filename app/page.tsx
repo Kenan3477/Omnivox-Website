@@ -1,6 +1,7 @@
 import { Hero } from "@/components/home/Hero";
+import { ProductStage } from "@/components/home/ProductStage";
 import { PillarsSection } from "@/components/home/PillarsSection";
-import { ProductShowcase } from "@/components/home/ProductShowcase";
+import { RivalCompare } from "@/components/home/RivalCompare";
 import { PlatformGrid } from "@/components/home/PlatformGrid";
 import { UsagePricingSection } from "@/components/home/UsagePricingSection";
 import { ComplianceSection } from "@/components/home/ComplianceSection";
@@ -15,10 +16,11 @@ export const metadata = pageMetadata({
   path: "/",
   keywords: [
     "OMNIVOX",
-    "cloud dialer",
+    "cloud contact centre",
     "preview dial",
-    "outbound dialer UK",
-    "contact centre software",
+    "progressive dial",
+    "WhatsApp contact centre",
+    "UK outbound dialer",
   ],
 });
 
@@ -37,8 +39,9 @@ export default function HomePage() {
         ]}
       />
       <Hero />
+      <ProductStage />
       <PillarsSection />
-      <ProductShowcase />
+      <RivalCompare />
       <UsagePricingSection />
       <PlatformGrid />
       <ComplianceSection />

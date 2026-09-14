@@ -1,48 +1,67 @@
 import { Button } from "@/components/ui/Button";
 import { Starfield } from "@/components/brand/Starfield";
 import { OmniCube } from "@/components/brand/OmniCube";
-import { Wordmark } from "@/components/brand/Wordmark";
+import { LogoMark } from "@/components/brand/Wordmark";
 import { FeaturePills } from "@/components/brand/FeaturePills";
+import { BrowserFrame } from "@/components/ui/Section";
+import { HeroWorkspace } from "@/components/product/WorkspaceMockups";
 import { siteConfig, trustMetrics } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-slate-950 border-b border-white/5">
+    <section className="relative overflow-hidden bg-slate-950">
       <Starfield />
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
-        <div className="grid lg:grid-cols-[minmax(0,340px)_1fr] gap-8 lg:gap-12 items-center">
-          {/* Left: brand */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <OmniCube size="md" className="lg:origin-left" />
-          </div>
-
-          {/* Right: copy + actions */}
-          <div>
-            <Wordmark size="lg" className="justify-center lg:justify-start" />
-            <h1 className="mt-4 text-base text-slate-300 leading-snug max-w-lg mx-auto lg:mx-0 font-normal">
-              {siteConfig.tagline}
-            </h1>
-            <p className="mt-2 text-sm text-slate-500 max-w-lg mx-auto lg:mx-0">
-              Preview &amp; manual outbound · £25/seat · prepaid credits · platform-managed telephony
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-16 md:pt-24 md:pb-20 lg:pt-28">
+        <div className="grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-12 lg:gap-10 items-center">
+          <div className="text-center lg:text-left">
+            <p className="inline-flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.22em] text-blue-200/80">
+              <LogoMark className="h-6 w-6" />
+              UK / EU contact centre
             </p>
-            <FeaturePills className="mt-5 justify-center lg:justify-start" />
+            <h1 className="mt-6 font-display text-4xl sm:text-5xl lg:text-[3.35rem] xl:text-[3.75rem] font-semibold tracking-tight text-white text-balance leading-[1.07]">
+              Campaigns, queues, and a Work Inbox — in one browser.
+            </h1>
+            <p className="mt-6 text-base md:text-[1.05rem] text-slate-400 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Preview, progressive, and power with AMD. WhatsApp as a 24-hour session. Floor
+              wallboards. Prepaid voice at ~5p outbound / ~4p inbound.
+            </p>
+            <FeaturePills className="mt-7 justify-center lg:justify-start" />
 
-            <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-              <Button href="/contact" size="md">Book a demo</Button>
-              <Button href="/pricing" variant="outline" size="md">See pricing</Button>
-              <Button href={siteConfig.appLoginUrl} variant="ghost" size="md" external>
+            <div className="mt-9 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <Button href="/contact" size="lg">
+                Book a demo
+              </Button>
+              <Button href="/pricing" variant="outline" size="lg">
+                See pricing
+              </Button>
+              <Button href={siteConfig.appLoginUrl} variant="ghost" size="lg" external>
                 Sign in
               </Button>
             </div>
           </div>
+
+          <div className="relative flex flex-col items-center">
+            <div className="hidden lg:block -mb-24">
+              <OmniCube size="lg" />
+            </div>
+            <div className="relative z-10 w-full max-w-xl">
+              <BrowserFrame title={siteConfig.appWorkHost} tone="dark">
+                <HeroWorkspace />
+              </BrowserFrame>
+            </div>
+          </div>
         </div>
 
-        {/* Inline stats — no separate band */}
-        <dl className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-px rounded-lg border border-white/10 bg-white/10 overflow-hidden">
+        <dl className="mt-16 grid grid-cols-2 md:grid-cols-4 border-t border-white/10">
           {trustMetrics.map((m) => (
-            <div key={m.label} className="bg-slate-950/80 px-4 py-3 text-center md:text-left md:px-5">
-              <dt className="font-display text-lg md:text-xl font-bold text-white">{m.value}</dt>
-              <dd className="text-[11px] text-slate-500 mt-0.5">{m.label}</dd>
+            <div
+              key={m.label}
+              className="px-0 py-6 md:px-6 md:first:pl-0 border-white/10 md:border-l md:first:border-l-0"
+            >
+              <dt className="font-display text-2xl md:text-[1.75rem] font-semibold tracking-tight text-white">
+                {m.value}
+              </dt>
+              <dd className="text-xs text-slate-500 mt-1 tracking-wide">{m.label}</dd>
             </div>
           ))}
         </dl>

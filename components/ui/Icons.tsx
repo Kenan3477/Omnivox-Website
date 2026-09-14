@@ -82,6 +82,22 @@ export function ArrowRightIcon({ className = "h-5 w-5" }: IconProps) {
   );
 }
 
+export function InboxIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M2.25 13.5V6A2.25 2.25 0 015.25 3.75h13.5A2.25 2.25 0 0121 6v7.5m-18.75 0V18A2.25 2.25 0 005.25 20.25h13.5A2.25 2.25 0 0021 18v-4.5" />
+    </svg>
+  );
+}
+
+export function BoardIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h12A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6zM7.5 9.75h9M7.5 13.5h5.25" />
+    </svg>
+  );
+}
+
 const iconMap = {
   phone: PhoneIcon,
   desktop: DesktopIcon,
@@ -90,6 +106,8 @@ const iconMap = {
   data: DataIcon,
   shield: ShieldIcon,
   chart: ChartIcon,
+  inbox: InboxIcon,
+  board: BoardIcon,
 };
 
 export function FeatureIcon({ name, className }: { name: keyof typeof iconMap; className?: string }) {

@@ -3,7 +3,7 @@ import { Section, SectionContainer, SectionHeader } from "@/components/ui/Sectio
 
 const steps = [
   { n: "01", title: "Book a demo", desc: "Tell us your team size and use case. We provision your org same day for pilots." },
-  { n: "02", title: "Load your data", desc: "Import contacts, create campaigns, assign preview or manual dial methods." },
+  { n: "02", title: "Load your data", desc: "Import contacts, create campaigns, assign preview, progressive, or power." },
   { n: "03", title: "Top up credits", desc: "Buy prepaid credits or get pilot grants. One wallet for all calls." },
   { n: "04", title: "Start calling", desc: "Agents log into Work and dial. Supervisors track outcomes in real time." },
 ];

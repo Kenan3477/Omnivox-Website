@@ -23,7 +23,7 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer className="border-t border-white/5 bg-slate-950 text-slate-400">
-      <div className="mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-12">
+      <div className="mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Link href="/" className="flex items-center gap-2.5" aria-label="OMNIVOX home">
@@ -92,7 +92,7 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {siteConfig.poweredBy}. All rights reserved.
           </p>
-          <p>Built for UK &amp; EU sales teams</p>
+          <p>Built for UK &amp; EU contact centres</p>
         </div>
       </div>
     </footer>

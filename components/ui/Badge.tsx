@@ -1,4 +1,4 @@
-type BadgeVariant = "available" | "pilot" | "beta" | "coming-soon";
+type BadgeVariant = "available" | "pilot" | "beta" | "coming-soon" | "waitlist";
 
 interface BadgeProps {
   variant: BadgeVariant;
@@ -10,6 +10,7 @@ const labels: Record<BadgeVariant, string> = {
   pilot: "Pilot",
   beta: "Beta",
   "coming-soon": "Coming soon",
+  waitlist: "Waitlist",
 };
 
 const styles: Record<BadgeVariant, string> = {
@@ -17,6 +18,7 @@ const styles: Record<BadgeVariant, string> = {
   pilot: "bg-amber-50 text-amber-700 border-amber-200",
   beta: "bg-blue-50 text-blue-700 border-blue-200",
   "coming-soon": "bg-slate-100 text-slate-600 border-slate-200",
+  waitlist: "bg-amber-50 text-amber-800 border-amber-200",
 };
 
 export function Badge({ variant, className = "" }: BadgeProps) {
