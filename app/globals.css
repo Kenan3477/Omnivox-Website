@@ -61,10 +61,10 @@
 
 .omni-glow {
   position: absolute;
-  inset: 18%;
+  inset: 14%;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.35), transparent 68%);
-  filter: blur(28px);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.55), rgba(37, 99, 235, 0.12) 55%, transparent 70%);
+  filter: blur(22px);
 }
 
 .omni-floor {
@@ -102,7 +102,7 @@
   left: 50%;
   top: 50%;
   border-radius: 9999px;
-  border: 1px solid rgba(191, 219, 254, 0.22);
+  border: 1px solid rgba(191, 219, 254, 0.45);
   pointer-events: none;
 }
 
@@ -117,7 +117,7 @@
   width: 15.5rem;
   height: 15.5rem;
   margin: -7.75rem 0 0 -7.75rem;
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
   transform: rotateX(74deg) rotateZ(28deg);
 }
 
@@ -132,13 +132,13 @@
 
 .omni-glass {
   background:
-    linear-gradient(155deg, rgba(255, 255, 255, 0.2) 0%, rgba(37, 99, 235, 0.16) 42%, rgba(8, 15, 35, 0.72) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+    linear-gradient(155deg, rgba(255, 255, 255, 0.38) 0%, rgba(96, 165, 250, 0.28) 38%, rgba(15, 23, 42, 0.55) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 1.35rem;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.38),
-    inset 0 -12px 24px rgba(2, 6, 23, 0.35),
-    0 18px 40px rgba(2, 6, 23, 0.35);
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -16px 28px rgba(2, 6, 23, 0.28),
+    0 24px 48px rgba(2, 6, 23, 0.4);
 }
 
 .omni-cube-face {
