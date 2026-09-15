@@ -42,7 +42,7 @@ export function Hero() {
           </div>
 
           <div className="relative flex flex-col items-center">
-            <div className="relative z-20 hidden w-full lg:-mb-16 lg:block">
+            <div className="relative z-20 hidden w-full lg:-mb-8 lg:block">
               <OmniCube size="lg" />
             </div>
             <div className="relative z-10 w-full max-w-xl">
