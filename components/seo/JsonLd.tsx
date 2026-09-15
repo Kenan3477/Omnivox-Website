@@ -1,3 +1,7 @@
+function serializeJsonLd(data: object) {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
 export function JsonLd({ data }: { data: object | object[] }) {
   const items = Array.isArray(data) ? data : [data];
 
@@ -7,7 +11,7 @@ export function JsonLd({ data }: { data: object | object[] }) {
         <script
           key={`${String((item as { "@type"?: string })["@type"] ?? "ld")}-${index}`}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(item) }}
         />
       ))}
     </>

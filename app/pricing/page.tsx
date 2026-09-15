@@ -52,6 +52,25 @@ export default function PricingPage() {
 
       <Section className="-mt-8">
         <SectionContainer>
+            <article className="mb-10 max-w-3xl space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                OMNIVOX splits platform and telephony on purpose. The seat is £25 per agent per month. Connected voice
+                minutes debit prepaid Call Credits at about 5p outbound and 4p inbound, with a one-minute minimum.
+                That is the whole rate card for voice. SMS, WhatsApp, email, live chat, and social DMs are not taken
+                from Call Credits — do not model them as 5p digital. Bundled “unlimited” dialer plans often hide a
+                fair-use cap around 3,000 minutes per user; we would rather show the meter in Admin → Call Credits.
+              </p>
+              <p>
+                Use the calculator below for an illustrative monthly range. It is not a quote. Optional seat plus
+                credit bundles exist if you want a committed pack; they are still metered. Digital waiting on the
+                wallboard is free of the voice wallet. Predictive Live is waitlist and is not billed because it is not
+                on. Book a demo from{" "}
+                <a href="/contact" className="font-medium text-blue-700 hover:text-blue-600">
+                  contact
+                </a>{" "}
+                if you need a written pilot credit grant.
+              </p>
+            </article>
             <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-card">
               <div className="border-b border-slate-100 bg-gradient-to-r from-slate-50 to-blue-50/40 px-6 py-8 md:px-8">
                 <p className="text-[11px] font-semibold uppercase tracking-widest text-blue-700">One plan</p>

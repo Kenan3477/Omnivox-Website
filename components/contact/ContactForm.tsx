@@ -212,11 +212,28 @@ export function ContactPageContent() {
                 .
               </p>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                Already have an account?{" "}
+                A typical demo is a live walkthrough of preview, progressive, and power with AMD, the Work Inbox
+                (including how WhatsApp is a 24-hour customer-care session, not an HSM broadcast product), floor
+                wallboards, and Admin → Call Credits. We will also show what stays waitlist-only: Predictive Live.
+                Sign-in after the pilot is at omnivox.vercel.app and is IP-whitelisted — send the office or VPN ranges
+                you want allowed.
+              </p>
+              <p className="mt-4 text-slate-600 leading-relaxed">
+                Come with a rough seat count, whether you need inbound DIDs as well as outbound campaigns, and whether
+                digital channels should stay off until you enable them per organisation. We do not need a carrier
+                account: telephony is platform-managed Twilio. Digital is not billed from Call Credits. If you already
+                have an account,{" "}
                 <a href={siteConfig.appLoginUrl} className="text-blue-600 hover:text-blue-500 font-medium" rel="noopener noreferrer">
-                  Sign in to OMNIVOX →
+                  sign in to OMNIVOX →
                 </a>
               </p>
+              <h2 className="mt-8 font-display text-lg font-semibold text-slate-900">What we will not claim on a call</h2>
+              <ul className="mt-3 list-disc pl-5 space-y-2 text-slate-600">
+                <li>Native iOS or Android apps, or a Salesforce-live CRM marketplace.</li>
+                <li>SOC 2, ISO 27001, PCI, or SSO as current certifications.</li>
+                <li>Conference, whisper, or barge. Those are not in the product.</li>
+                <li>WhatsApp template catalogs or broadcast campaigns.</li>
+              </ul>
               <ContactSidebar />
             </div>
             <section className="glass-card-light p-6 md:p-8" aria-labelledby="contact-form-heading">

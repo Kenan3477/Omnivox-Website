@@ -78,6 +78,23 @@ export default function AgenciesPage() {
               </a>{" "}
               stay available in every org.
             </p>
+            <p>
+              A typical agency week on OMNIVOX looks like this. Monday: we provision the client org and whitelist the
+              floor IPs. Tuesday: you load the campaign list, set preview or progressive, and grant starter credits.
+              Agents work from the browser — no native app to install, and no per-client carrier account. WhatsApp,
+              SMS, and social DMs stay off until that client is ready in Admin → Channels. Wallboards can hang on the
+              floor the same day. Predictive Live stays on the waitlist; do not promise it in a pitch.
+            </p>
+            <p>
+              We are honest about the gaps buyers compare. CloudTalk and Aircall still win native mobile and CRM app
+              stores. Connex One is the fuller suite. OMNIVOX is the thinner Twilio stack: campaign dialling, a visible
+              voice meter, floor wallboards, and WhatsApp as a 24-hour session rather than an HSM broadcast product.
+              If that is the motion you sell, book a demo from{" "}
+              <a href="/contact" className="font-medium text-blue-700 hover:text-blue-600">
+                contact
+              </a>
+              .
+            </p>
           </article>
           <div className="grid gap-6 md:grid-cols-2">
             {benefits.map((b) => (
