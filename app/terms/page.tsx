@@ -2,6 +2,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { breadcrumbJsonLd, pageMetadata, pageSeo, webPageJsonLd } from "@/lib/seo";
+import { appLoginHost, siteConfig } from "@/lib/constants";
 
 export const metadata = pageMetadata({
   title: pageSeo.terms.title,
@@ -40,8 +41,8 @@ export default function TermsPage() {
             Privacy Policy
           </Link>{" "}
           and, for paying customers, a Data Processing Agreement. If you need a copy of the DPA before you sign, email{" "}
-          <a href="mailto:hello@omnivox.co.uk" className="text-blue-700 hover:text-blue-600">
-            hello@omnivox.co.uk
+          <a href={`mailto:${siteConfig.contactEmail}`} className="text-blue-700 hover:text-blue-600">
+            {siteConfig.contactEmail}
           </a>
           .
         </p>
@@ -79,7 +80,7 @@ export default function TermsPage() {
           <section>
             <h2 className="font-display text-xl font-bold text-slate-900">Accounts and access</h2>
             <p className="mt-3">
-              Login is at omnivox.vercel.app and is IP-whitelisted. You must keep credentials confidential, tell us
+              Login is at {appLoginHost} and is IP-whitelisted. You must keep credentials confidential, tell us
               promptly if access is compromised, and only grant roles (Admin, Supervisor, Agent) that match how your
               team works. You are responsible for activity under your organisation, including lists you upload and
               calls your agents place.
@@ -163,8 +164,8 @@ export default function TermsPage() {
             <h2 className="font-display text-xl font-bold text-slate-900">Contact</h2>
             <p className="mt-3">
               For terms-related enquiries, email{" "}
-              <a href="mailto:hello@omnivox.co.uk" className="text-blue-700 hover:text-blue-600">
-                hello@omnivox.co.uk
+              <a href={`mailto:${siteConfig.contactEmail}`} className="text-blue-700 hover:text-blue-600">
+                {siteConfig.contactEmail}
               </a>{" "}
               or use the{" "}
               <Link href="/contact" className="text-blue-700 hover:text-blue-600">

@@ -86,6 +86,21 @@ export const channels = [
   },
 ] as const;
 
+export const catalogChannelCount = channels.length;
+export const catalogChannelNames = channels.map((channel) => channel.name);
+export const catalogChannelList = catalogChannelNames.join(", ");
+
+export const softwareFeatureList = [
+  "Preview, progressive, and power dial",
+  "AMD on progressive and power",
+  `Work Inbox with ${catalogChannelCount} catalog channels`,
+  "WhatsApp 24-hour customer-care sessions",
+  "Floor wallboards",
+  "Prepaid voice credits",
+  "Inbound ACD and IVR",
+  "DNC registry and audit logs",
+] as const;
+
 export const proofPoints = [
   {
     metric: "Same day",

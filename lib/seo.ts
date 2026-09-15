@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { faqItems, siteConfig } from "@/lib/constants";
+import { softwareFeatureList } from "@/lib/product";
 
 const siteUrl = siteConfig.url;
 
@@ -18,7 +19,7 @@ export const pageSeo = {
   features: {
     title: "Contact centre features: dial, inbox, wallboards",
     description:
-      "OMNIVOX features: preview, progressive, and power dial with AMD, Work Inbox, inbound ACD, floor wallboards, prepaid credits, and UK GDPR tools. Predictive Live is waitlist only.",
+      "OMNIVOX features: preview, progressive, and power dial (AMD on progressive and power), Work Inbox, inbound ACD, floor wallboards, prepaid credits, and UK GDPR tools. Predictive Live is waitlist only.",
     path: "/features",
   },
   pricing: {
@@ -161,15 +162,7 @@ export function softwareApplicationJsonLd() {
     operatingSystem: "Web browser",
     image: screenshotObject,
     screenshot: screenshotObject,
-    featureList: [
-      "Preview, progressive, and power dial with AMD",
-      "Work Inbox with eight catalog channels",
-      "WhatsApp 24-hour customer-care sessions",
-      "Floor wallboards",
-      "Prepaid voice credits",
-      "Inbound ACD and IVR",
-      "DNC registry and audit logs",
-    ],
+    featureList: [...softwareFeatureList],
     brand: {
       "@type": "Brand",
       name: siteConfig.name,

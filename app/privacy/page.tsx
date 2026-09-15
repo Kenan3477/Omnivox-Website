@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { siteConfig } from "@/lib/constants";
+import { siteConfig, appLoginHost } from "@/lib/constants";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { breadcrumbJsonLd, pageMetadata, pageSeo, webPageJsonLd } from "@/lib/seo";
 
@@ -127,8 +127,14 @@ export default function PrivacyPage() {
             <p className="mt-3">
               This marketing site is a static Next.js app hosted on Vercel. We do not run a third-party advertising
               pixel or a client-side analytics tag on these pages. Essential hosting logs (IP, user agent, path) may
-              be collected by the platform to operate and secure the site. The product application at
-              omnivox.vercel.app has its own operational logs as described under account and technical data above.
+              be collected by the platform to operate and secure the site. The product application at{" "}
+              {appLoginHost} has its own operational logs as described under account and technical data above.
+            </p>
+            <p className="mt-3">
+              If a Calendly booking embed is enabled on the contact page, Calendly loads in an iframe when you open
+              that page. Calendly may then set cookies and process the name, email, and scheduling details you submit,
+              under Calendly&apos;s own privacy policy. That embed is optional and is not present unless we configure
+              it. The contact form itself posts to our server and is described under website enquiries above.
             </p>
           </section>
 

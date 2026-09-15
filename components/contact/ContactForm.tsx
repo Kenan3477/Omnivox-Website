@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import { SectionHeading } from "@/components/ui/Accordion";
 import { Button } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { siteConfig } from "@/lib/constants";
+import { siteConfig, appLoginHost } from "@/lib/constants";
 import { Starfield } from "@/components/brand/Starfield";
 
 const useCases = [
@@ -61,6 +61,17 @@ function ContactSidebar() {
             src={calendlyUrl}
             className="w-full h-[480px] border-0"
           />
+          <p className="border-t border-slate-100 px-6 py-3 text-xs text-slate-500">
+            Scheduling is provided by Calendly. Calendly may set cookies and process the details you enter under{" "}
+            <a
+              href="https://calendly.com/privacy"
+              className="font-medium text-blue-600 hover:text-blue-500"
+              rel="noopener noreferrer"
+            >
+              Calendly&apos;s privacy policy
+            </a>
+            . Prefer not to use the embed? Email {siteConfig.contactEmail} instead.
+          </p>
         </div>
       ) : null}
     </aside>
@@ -212,10 +223,10 @@ export function ContactPageContent() {
                 .
               </p>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                A typical demo is a live walkthrough of preview, progressive, and power with AMD, the Work Inbox
+                A typical demo is a live walkthrough of preview, then progressive and power with AMD, the Work Inbox
                 (including how WhatsApp is a 24-hour customer-care session, not an HSM broadcast product), floor
                 wallboards, and Admin → Call Credits. We will also show what stays waitlist-only: Predictive Live.
-                Sign-in after the pilot is at omnivox.vercel.app and is IP-whitelisted — send the office or VPN ranges
+                Sign-in after the pilot is at {appLoginHost} and is IP-whitelisted — send the office or VPN ranges
                 you want allowed.
               </p>
               <p className="mt-4 text-slate-600 leading-relaxed">
@@ -230,7 +241,7 @@ export function ContactPageContent() {
               <h2 className="mt-8 font-display text-lg font-semibold text-slate-900">What we will not claim on a call</h2>
               <ul className="mt-3 list-disc pl-5 space-y-2 text-slate-600">
                 <li>Native iOS or Android apps, or a Salesforce-live CRM marketplace.</li>
-                <li>SOC 2, ISO 27001, PCI, or SSO as current certifications.</li>
+                <li>SOC 2, ISO 27001, or PCI as current certifications. SSO is not in the product.</li>
                 <li>Conference, whisper, or barge. Those are not in the product.</li>
                 <li>WhatsApp template catalogs or broadcast campaigns.</li>
               </ul>

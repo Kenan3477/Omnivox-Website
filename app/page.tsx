@@ -8,6 +8,8 @@ import { ComplianceSection } from "@/components/home/ComplianceSection";
 import { PricingFAQ } from "@/components/home/PricingFAQ";
 import { CTABand } from "@/components/home/CTABand";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { appLoginHost } from "@/lib/constants";
+import { catalogChannelList } from "@/lib/product";
 import { pageMetadata, pageSeo, faqPageJsonLd, softwareApplicationJsonLd, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -44,17 +46,16 @@ export default function HomePage() {
           <h2 className="font-display text-2xl font-semibold text-slate-900">What ships today</h2>
           <p>
             OMNIVOX is a UK and EU cloud contact centre in the browser. Agents preview, progressive-dial, or
-            power-dial with answering-machine detection. Inbound uses ACD and IVR. The Work Inbox catalog is eight
-            channels: Voice, SMS, WhatsApp, Email, Live chat, Facebook, Instagram, and X. WhatsApp is a 24-hour
-            customer-care session — not template broadcasts. Floor wallboards include Digital waiting until you enable
-            a channel in Admin → Channels. Voice is prepaid at about 5p outbound and 4p inbound. Digital is not in that
-            wallet.
+            power-dial. Answering-machine detection runs on progressive and power, not preview. Inbound uses ACD and
+            IVR. The Work Inbox catalog is {catalogChannelList}. WhatsApp is a 24-hour customer-care session — not
+            template broadcasts. Floor wallboards include Digital waiting until you enable a channel in Admin →
+            Channels. Voice is prepaid at about 5p outbound and 4p inbound. Digital is not in that wallet.
           </p>
           <p>
             Predictive Live is waitlist only. We do not claim native mobile, a CRM marketplace, conference, whisper,
-            barge, or SOC 2 / ISO / PCI. Login is at omnivox.vercel.app and is IP-whitelisted. The comparison table
-            below names CloudTalk, Aircall, and Connex One so you can see where they win and where this stack is
-            thinner. Book a demo if you want a same-day pilot with starter credits.
+            barge, or SOC 2 / ISO / PCI. Login is at {appLoginHost} and is IP-whitelisted. SSO is not in the product.
+            The comparison table below names CloudTalk, Aircall, and Connex One so you can see where they win and where
+            this stack is thinner. Book a demo if you want a same-day pilot with starter credits.
           </p>
         </div>
       </section>
