@@ -3,23 +3,13 @@ import { channels } from "@/lib/product";
 
 type ChannelId = (typeof channels)[number]["id"];
 
-const facePairs: { face: string; ids: [ChannelId, ChannelId] }[] = [
-  { face: "omni-face-front", ids: ["voice", "sms"] },
-  { face: "omni-face-right", ids: ["whatsapp", "email"] },
-  { face: "omni-face-back", ids: ["chat", "facebook"] },
-  { face: "omni-face-left", ids: ["instagram", "x"] },
-];
-
-/**
- * Eight catalog channels on an ellipse, rotated 22.5° so none sit at 6 o’clock
- * under the workspace mock. Flattened and lifted so every label stays readable.
- */
+/** Eight catalog channels on an ellipse, rotated so none sit under the workspace mock. */
 const nodeLayout = channels.map((channel, index) => {
   const angle = (index / channels.length) * Math.PI * 2 - Math.PI / 2 + Math.PI / 8;
   return {
     channel,
-    left: `${50 + 47 * Math.cos(angle)}%`,
-    top: `${44 + 34 * Math.sin(angle)}%`,
+    left: `${50 + 42 * Math.cos(angle)}%`,
+    top: `${48 + 32 * Math.sin(angle)}%`,
   };
 });
 
@@ -132,6 +122,17 @@ function ChannelChip({ id, name }: { id: ChannelId; name: string }) {
   );
 }
 
+function ChannelOrb({ id, name }: { id: ChannelId; name: string }) {
+  return (
+    <span className="omni-channel-orb">
+      <span className="omni-channel-orb-icon">
+        <ChannelGlyph id={id} className="h-4 w-4" />
+      </span>
+      <span className="omni-channel-orb-name">{name}</span>
+    </span>
+  );
+}
+
 function Equalizer({ className = "h-10 w-10 text-white" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -144,23 +145,6 @@ function Equalizer({ className = "h-10 w-10 text-white" }: { className?: string 
 
 function Face({ className, children }: { className: string; children?: ReactNode }) {
   return <div className={`omni-cube-face omni-glass ${className}`}>{children}</div>;
-}
-
-function FacePair({ ids }: { ids: [ChannelId, ChannelId] }) {
-  return (
-    <ul className="omni-face-pair">
-      {ids.map((id) => {
-        const channel = channels.find((item) => item.id === id);
-        if (!channel) return null;
-        return (
-          <li key={id}>
-            <ChannelGlyph id={id} className="h-3.5 w-3.5 shrink-0" />
-            <span>{channel.name}</span>
-          </li>
-        );
-      })}
-    </ul>
-  );
 }
 
 interface OmniCubeProps {
@@ -182,29 +166,17 @@ export function CatalogChannelChips({ className = "" }: { className?: string }) 
   );
 }
 
-/** Glass cube with the eight Work Inbox channels on its faces and as a labeled constellation. */
+/** Glass cube with eight catalog channels as quiet nodes — no spokes, no face type. */
 export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
   const scale = sizeScale[size];
 
   return (
     <div className={className}>
       <div className="omni-hero-stage" style={{ transform: `scale(${scale})` }}>
-        <svg className="omni-spokes" viewBox="0 0 100 100" aria-hidden="true">
-          {nodeLayout.map((node) => (
-            <line
-              key={node.channel.id}
-              x1="50"
-              y1="50"
-              x2={parseFloat(node.left)}
-              y2={parseFloat(node.top)}
-            />
-          ))}
-        </svg>
-
         <ul className="omni-channel-nodes">
           {nodeLayout.map(({ channel, left, top }) => (
             <li key={channel.id} style={{ left, top }}>
-              <ChannelChip id={channel.id} name={channel.name} />
+              <ChannelOrb id={channel.id} name={channel.name} />
             </li>
           ))}
         </ul>
@@ -218,16 +190,23 @@ export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
               <span className="omni-ring omni-ring-inner" />
             </div>
             <div className="omni-cube-scene">
-              {facePairs.map((pair) => (
-                <Face key={pair.face} className={pair.face}>
-                  <FacePair ids={pair.ids} />
-                </Face>
-              ))}
+              <Face className="omni-face-front">
+                <Equalizer className="h-14 w-14 text-white" />
+              </Face>
+              <Face className="omni-face-back">
+                <Equalizer className="h-12 w-12 text-white/80" />
+              </Face>
+              <Face className="omni-face-right">
+                <Equalizer className="h-12 w-12 text-white/85" />
+              </Face>
+              <Face className="omni-face-left">
+                <Equalizer className="h-12 w-12 text-white/85" />
+              </Face>
               <Face className="omni-face-top">
-                <Equalizer className="h-10 w-10 text-white/90" />
+                <Equalizer className="h-11 w-11 text-white/90" />
               </Face>
               <Face className="omni-face-bottom">
-                <Equalizer className="h-9 w-9 text-white/70" />
+                <Equalizer className="h-10 w-10 text-white/70" />
               </Face>
             </div>
           </div>
