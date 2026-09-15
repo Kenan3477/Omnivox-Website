@@ -26,7 +26,7 @@ export function Hero() {
               wallboards. Prepaid voice at ~5p outbound / ~4p inbound.
             </p>
             <FeaturePills className="mt-7 justify-center lg:justify-start" />
-            <CatalogChannelChips className="mt-7" />
+            <CatalogChannelChips className="mt-7 lg:hidden" />
 
             <div className="mt-9 flex flex-wrap items-center justify-center lg:justify-start gap-3">
               <Button href="/contact" size="lg">

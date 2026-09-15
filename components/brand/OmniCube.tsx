@@ -170,11 +170,9 @@ interface OmniCubeProps {
 
 const sizeScale = { sm: 0.62, md: 0.82, lg: 1 };
 
-const catalogLabel = `Eight channels in catalog: ${channels.map((channel) => channel.name).join(", ")}`;
-
 export function CatalogChannelChips({ className = "" }: { className?: string }) {
   return (
-    <ul className={`omni-channel-mobile ${className}`.trim()} aria-label={catalogLabel}>
+    <ul className={`omni-channel-mobile ${className}`.trim()}>
       {channels.map((channel) => (
         <li key={channel.id}>
           <ChannelChip id={channel.id} name={channel.name} />
@@ -203,7 +201,7 @@ export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
           ))}
         </svg>
 
-        <ul className="omni-channel-nodes" aria-label={catalogLabel}>
+        <ul className="omni-channel-nodes">
           {nodeLayout.map(({ channel, left, top }) => (
             <li key={channel.id} style={{ left, top }}>
               <ChannelChip id={channel.id} name={channel.name} />
