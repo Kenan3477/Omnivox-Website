@@ -8,8 +8,8 @@ const nodeLayout = channels.map((channel, index) => {
   const angle = (index / channels.length) * Math.PI * 2 - Math.PI / 2 + Math.PI / 8;
   return {
     channel,
-    left: `${50 + 42 * Math.cos(angle)}%`,
-    top: `${48 + 32 * Math.sin(angle)}%`,
+    left: `${50 + 46 * Math.cos(angle)}%`,
+    top: `${48 + 36 * Math.sin(angle)}%`,
   };
 });
 
@@ -122,13 +122,34 @@ function ChannelChip({ id, name }: { id: ChannelId; name: string }) {
   );
 }
 
-function ChannelOrb({ id, name }: { id: ChannelId; name: string }) {
+function MiniCube({ id, tilt }: { id: ChannelId; tilt: number }) {
   return (
-    <span className="omni-channel-orb">
-      <span className="omni-channel-orb-icon">
+    <div className="omni-mini-scene" style={{ transform: `rotateX(-26deg) rotateY(${tilt}deg)` }}>
+      <div className="omni-mini-face omni-glass omni-mini-front">
         <ChannelGlyph id={id} className="h-4 w-4" />
-      </span>
-      <span className="omni-channel-orb-name">{name}</span>
+      </div>
+      <div className="omni-mini-face omni-glass omni-mini-right" />
+      <div className="omni-mini-face omni-glass omni-mini-left" />
+      <div className="omni-mini-face omni-glass omni-mini-back" />
+      <div className="omni-mini-face omni-glass omni-mini-top" />
+      <div className="omni-mini-face omni-glass omni-mini-bottom" />
+    </div>
+  );
+}
+
+function ChannelCube({
+  id,
+  name,
+  tilt,
+}: {
+  id: ChannelId;
+  name: string;
+  tilt: number;
+}) {
+  return (
+    <span className="omni-channel-sat">
+      <MiniCube id={id} tilt={tilt} />
+      <span className="omni-channel-sat-name">{name}</span>
     </span>
   );
 }
@@ -166,7 +187,7 @@ export function CatalogChannelChips({ className = "" }: { className?: string }) 
   );
 }
 
-/** Glass cube with eight catalog channels as quiet nodes — no spokes, no face type. */
+/** Glass cube with eight catalog channels as floating mini cubes. */
 export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
   const scale = sizeScale[size];
 
@@ -174,9 +195,9 @@ export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
     <div className={className}>
       <div className="omni-hero-stage" style={{ transform: `scale(${scale})` }}>
         <ul className="omni-channel-nodes">
-          {nodeLayout.map(({ channel, left, top }) => (
+          {nodeLayout.map(({ channel, left, top }, index) => (
             <li key={channel.id} style={{ left, top }}>
-              <ChannelOrb id={channel.id} name={channel.name} />
+              <ChannelCube id={channel.id} name={channel.name} tilt={32 + index * 19} />
             </li>
           ))}
         </ul>
