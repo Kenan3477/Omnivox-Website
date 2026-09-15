@@ -218,10 +218,10 @@ export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
                 <Equalizer className="h-12 w-12 text-white/80" />
               </Face>
               <Face className="omni-face-right">
-                <Equalizer className="h-12 w-12 text-white/85" />
+                <Equalizer className="h-12 w-12 text-white/[.85]" />
               </Face>
               <Face className="omni-face-left">
-                <Equalizer className="h-12 w-12 text-white/85" />
+                <Equalizer className="h-12 w-12 text-white/[.85]" />
               </Face>
               <Face className="omni-face-top">
                 <Equalizer className="h-11 w-11 text-white/90" />
