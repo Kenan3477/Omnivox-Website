@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
 
 export default function TermsPage() {
   return (
-    <article className="py-20 md:py-28">
+    <article className="py-20 md:py-28 bg-slate-50">
       <JsonLd
         data={[
           webPageJsonLd({ path: "/terms", name: pageSeo.terms.title, description: pageSeo.terms.description }),
