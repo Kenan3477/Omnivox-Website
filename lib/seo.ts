@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { faqItems, featureGroups, siteConfig } from "@/lib/constants";
+import { faqItems, siteConfig } from "@/lib/constants";
+import { softwareFeatureList } from "@/lib/product";
 
 const siteUrl = siteConfig.url;
 
@@ -18,7 +19,7 @@ export const pageSeo = {
   features: {
     title: "Contact centre features: dial, inbox, wallboards",
     description:
-      "OMNIVOX features: preview, progressive, and power dial with AMD, Work Inbox, inbound ACD, floor wallboards, prepaid credits, and UK GDPR tools. Predictive Live is waitlist only.",
+      "OMNIVOX features: preview, progressive, and power dial (AMD on progressive and power), Work Inbox, inbound ACD, floor wallboards, prepaid credits, and UK GDPR tools. Predictive Live is waitlist only.",
     path: "/features",
   },
   pricing: {
@@ -94,11 +95,22 @@ export function pageMetadata({
   };
 }
 
+const logoUrl = `${siteUrl}/logo`;
+const screenshotUrl = `${siteUrl}/opengraph-image`;
+
 const logoObject = {
   "@type": "ImageObject",
-  url: `${siteUrl}/icon`,
-  width: 32,
-  height: 32,
+  url: logoUrl,
+  width: 512,
+  height: 512,
+  caption: siteConfig.name,
+};
+
+const screenshotObject = {
+  "@type": "ImageObject",
+  url: screenshotUrl,
+  width: 1200,
+  height: 630,
   caption: siteConfig.name,
 };
 
@@ -113,25 +125,16 @@ export function organizationGraph() {
         legalName: siteConfig.poweredBy,
         url: siteUrl,
         logo: logoObject,
-        image: {
-          "@type": "ImageObject",
-          url: `${siteUrl}/opengraph-image`,
-          width: 1200,
-          height: 630,
-          caption: siteConfig.name,
-        },
+        image: screenshotObject,
         email: siteConfig.contactEmail,
         description: siteConfig.description,
-        areaServed: [
-          { "@type": "Country", name: "United Kingdom" },
-          { "@type": "AdministrativeArea", name: "European Union" },
-        ],
+        areaServed: "United Kingdom and the European Union",
         contactPoint: {
           "@type": "ContactPoint",
           email: siteConfig.contactEmail,
           contactType: "sales",
-          availableLanguage: ["English"],
-          areaServed: ["GB", "EU"],
+          availableLanguage: "English",
+          areaServed: "GB",
         },
       },
       {
@@ -148,10 +151,6 @@ export function organizationGraph() {
 }
 
 export function softwareApplicationJsonLd() {
-  const availableFeatures = featureGroups.flatMap((group) =>
-    group.features.filter((feature) => feature.status === "available").map((feature) => feature.name)
-  );
-
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -160,11 +159,15 @@ export function softwareApplicationJsonLd() {
     url: siteUrl,
     description: siteConfig.description,
     applicationCategory: "BusinessApplication",
-    operatingSystem: "Web",
-    image: `${siteUrl}/opengraph-image`,
-    screenshot: `${siteUrl}/opengraph-image`,
-    featureList: availableFeatures,
-    brand: { "@id": `${siteUrl}/#organization` },
+    operatingSystem: "Web browser",
+    image: screenshotObject,
+    screenshot: screenshotObject,
+    featureList: [...softwareFeatureList],
+    brand: {
+      "@type": "Brand",
+      name: siteConfig.name,
+      logo: logoUrl,
+    },
     offers: {
       "@type": "Offer",
       name: "OMNIVOX platform seat",
@@ -173,10 +176,10 @@ export function softwareApplicationJsonLd() {
       availability: "https://schema.org/InStock",
       url: `${siteUrl}/pricing`,
       priceValidUntil: "2027-12-31",
-      description: "£25 per agent per month, plus prepaid voice credits at approximately 5p outbound and 4p inbound per connected minute.",
+      category: "SaaS",
+      description:
+        "£25 per agent per month, plus prepaid voice credits at approximately 5p outbound and 4p inbound per connected minute.",
     },
-    provider: { "@id": `${siteUrl}/#organization` },
-    publisher: { "@id": `${siteUrl}/#organization` },
   };
 }
 
@@ -231,6 +234,6 @@ export function webPageJsonLd({
     isPartOf: { "@id": `${siteUrl}/#website` },
     about: { "@id": `${siteUrl}/#organization` },
     publisher: { "@id": `${siteUrl}/#organization` },
-    dateModified: "2026-09-13",
+    dateModified: "2026-09-15",
   };
 }

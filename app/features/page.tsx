@@ -54,7 +54,7 @@ export default function FeaturesPage() {
 
       <Section>
         <SectionContainer>
-          <p className="mb-12 max-w-3xl text-slate-600 leading-relaxed">
+          <p className="mb-8 max-w-3xl text-slate-600 leading-relaxed">
             OMNIVOX is a UK/EU cloud contact centre: Twilio voice, a Work Inbox, inbound ACD, and floor wallboards.
             Compare this list with{" "}
             <a href="/pricing" className="font-medium text-blue-700 hover:text-blue-600">
@@ -65,6 +65,14 @@ export default function FeaturesPage() {
               trust controls
             </a>{" "}
             before you pilot. We do not claim native mobile, a CRM marketplace, or SOC 2.
+          </p>
+          <p className="mb-12 max-w-3xl text-slate-600 leading-relaxed">
+            Read the badges on each card. Live means you can run it after we provision the org. Catalog means the
+            channel exists in product code and still needs Admin → Channels before that organisation is ready.
+            Waitlist means Predictive Live — not enabled in production, and we will not demo it as if it were.
+            WhatsApp is a 24-hour customer-care session in the Work Inbox; there is no HSM template catalog. Voice is
+            prepaid from Call Credits (~5p outbound / ~4p inbound). Digital is not in that wallet. Conference,
+            whisper, and barge are not in the product.
           </p>
           <div className="space-y-20">
             {featureGroups.map((group) => (

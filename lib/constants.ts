@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "OMNIVOX",
   tagline: "Campaigns, queues, and a Work Inbox — in one browser.",
   description:
-    "OMNIVOX is a UK/EU cloud contact centre: preview, progressive, and power dial with AMD, inbound ACD, a Work Inbox for SMS, WhatsApp (24-hour sessions), email, chat, and social DMs, and floor wallboards. Prepaid voice at about 5p outbound and 4p inbound.",
+    "OMNIVOX is a UK/EU cloud contact centre: preview, progressive, and power dial (AMD on progressive and power), inbound ACD, a Work Inbox for SMS, WhatsApp (24-hour sessions), email, chat, and social DMs, and floor wallboards. Prepaid voice at about 5p outbound and 4p inbound.",
   url: "https://omnivox-website-three.vercel.app",
   appLoginUrl: "https://omnivox.vercel.app/login",
   appWorkHost: "omnivox.vercel.app/work",
@@ -14,6 +14,8 @@ export const siteConfig = {
   workingDaysPerMonth: 22,
   topUpPacks: [50, 100, 250, 500] as const,
 };
+
+export const appLoginHost = new URL(siteConfig.appLoginUrl).hostname;
 
 /** Illustrative bundled-dialer benchmark for calculator comparisons (not a specific vendor quote). */
 export const competitorBenchmark = {

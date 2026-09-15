@@ -57,6 +57,17 @@ export default function TrustPage() {
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-8">
               <h2 className="font-display text-xl font-bold text-slate-900">{roles.title}</h2>
               <p className="mt-3 text-slate-600 leading-relaxed max-w-3xl">{roles.description}</p>
+          <p className="mt-4 text-slate-600 leading-relaxed max-w-3xl">
+            This page is the public summary, not a substitute for the DPA. We do not list SOC 2, ISO 27001, or PCI DSS
+            as current certifications because we have not attested those. SSO is not in the product. Recording consent,
+            TPS/CTPS, and lawful basis for your lists stay with you as controller. We provide org isolation, DNC, audit
+            logs, recording toggles, role-based access, and a DPA at onboarding so your team can operate accountably.
+            Email{" "}
+            <a href={`mailto:${siteConfig.contactEmail}`} className="font-medium text-blue-700 hover:text-blue-600">
+              {siteConfig.contactEmail}
+            </a>{" "}
+            if you need the DPA before a pilot.
+          </p>
               <div className="mt-8 grid md:grid-cols-2 gap-6">
                 <div className="rounded-xl border border-blue-200 bg-white p-6">
                   <p className="text-sm font-bold text-blue-800">{roles.controller.label}</p>
