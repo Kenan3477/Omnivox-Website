@@ -41,7 +41,7 @@ export function Hero() {
           </div>
 
           <div className="relative flex flex-col items-center">
-            <div className="hidden lg:block -mb-24">
+            <div className="w-full lg:-mb-16">
               <OmniCube size="lg" />
             </div>
             <div className="relative z-10 w-full max-w-xl">
