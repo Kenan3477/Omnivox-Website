@@ -55,7 +55,7 @@
   position: relative;
   display: none;
   width: min(36rem, 100%);
-  height: 32rem;
+  height: 34rem;
   margin-inline: auto;
   transform-origin: center center;
 }
@@ -72,7 +72,8 @@
   gap: 0.5rem;
   width: 100%;
   max-width: 28rem;
-  margin: 0 auto 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0;
   list-style: none;
 }

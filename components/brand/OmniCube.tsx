@@ -10,13 +10,16 @@ const facePairs: { face: string; ids: [ChannelId, ChannelId] }[] = [
   { face: "omni-face-left", ids: ["instagram", "x"] },
 ];
 
-/** Eight catalog channels, clockwise from 12 o’clock. */
+/**
+ * Eight catalog channels on an ellipse, rotated 22.5° so none sit at 6 o’clock
+ * under the workspace mock. Flattened and lifted so every label stays readable.
+ */
 const nodeLayout = channels.map((channel, index) => {
-  const angle = (index / channels.length) * Math.PI * 2 - Math.PI / 2;
+  const angle = (index / channels.length) * Math.PI * 2 - Math.PI / 2 + Math.PI / 8;
   return {
     channel,
-    left: `${50 + 46 * Math.cos(angle)}%`,
-    top: `${50 + 40 * Math.sin(angle)}%`,
+    left: `${50 + 47 * Math.cos(angle)}%`,
+    top: `${44 + 34 * Math.sin(angle)}%`,
   };
 });
 
@@ -35,13 +38,11 @@ function ChannelGlyph({ id, className = "h-4 w-4" }: { id: ChannelId; className?
     ),
     sms: (
       <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinejoin="round"
-          d="M5 6.5h14v9.2H9.2L5 19.2V6.5Z"
-        />
-        <path stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" d="M8.2 10.2h7.6M8.2 13h5.2" />
+        <rect x="4.5" y="5.5" width="15" height="11" rx="2" stroke="currentColor" strokeWidth="1.6" />
+        <path stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" d="M8 10h8M8 13h5" />
+        <circle cx="8.2" cy="18.6" r="1.15" fill="currentColor" />
+        <circle cx="12" cy="18.6" r="1.15" fill="currentColor" />
+        <circle cx="15.8" cy="18.6" r="1.15" fill="currentColor" />
       </svg>
     ),
     whatsapp: (
@@ -50,21 +51,25 @@ function ChannelGlyph({ id, className = "h-4 w-4" }: { id: ChannelId; className?
           stroke="currentColor"
           strokeWidth="1.6"
           strokeLinejoin="round"
-          d="M12 4.2a7.6 7.6 0 0 0-6.6 11.4L4.4 19.6l4.1-.9A7.6 7.6 0 1 0 12 4.2Z"
+          d="M12.1 4.2a7.7 7.7 0 0 0-6.5 11.8l-1.4 3.8 3.9-.8A7.7 7.7 0 1 0 12.1 4.2Z"
         />
         <path
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M9.2 10.2c.2 1.6 1.5 3 3.1 3.3.4.1.8-.2.9-.6l.2-.7c.1-.3 0-.6-.3-.8l-.7-.5c-.2-.1-.4 0-.6.1-.2.2-.5.3-.7.2-.5-.2-.8-.7-.7-1.2.1-.2.3-.3.5-.3h.8"
+          d="M9 10.2h.01M12 10.2h.01M15 10.2h.01"
         />
       </svg>
     ),
     email: (
       <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect x="4" y="6.2" width="16" height="11.6" rx="1.6" stroke="currentColor" strokeWidth="1.6" />
-        <path stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" d="m4.6 7.4 7.4 5.4 7.4-5.4" />
+        <path
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+          d="M4.4 7.2h15.2v10.2H4.4V7.2Z"
+        />
+        <path stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" d="m4.8 7.6 7.2 5.6 7.2-5.6" />
       </svg>
     ),
     chat: (
@@ -73,13 +78,13 @@ function ChannelGlyph({ id, className = "h-4 w-4" }: { id: ChannelId; className?
           stroke="currentColor"
           strokeWidth="1.6"
           strokeLinejoin="round"
-          d="M6.2 13.8V7.6A1.8 1.8 0 0 1 8 5.8h8.6A1.8 1.8 0 0 1 18.4 7.6v4.4a1.8 1.8 0 0 1-1.8 1.8H11l-4.8 2.4V13.8Z"
+          d="M7.2 6.2h9.2A1.8 1.8 0 0 1 18.2 8v4.4A1.8 1.8 0 0 1 16.4 14.2h-4.6L8 16.4V14.2H7.2A1.8 1.8 0 0 1 5.4 12.4V8A1.8 1.8 0 0 1 7.2 6.2Z"
         />
         <path
           stroke="currentColor"
           strokeWidth="1.6"
           strokeLinejoin="round"
-          d="M8.2 14.8h-1a1.6 1.6 0 0 0-1.6 1.6v.9L8.4 16h4"
+          d="M8.4 15.6h-1A1.6 1.6 0 0 0 5.8 17.2v1.4l2.4-1.2h3.8"
         />
       </svg>
     ),
@@ -167,20 +172,24 @@ const sizeScale = { sm: 0.62, md: 0.82, lg: 1 };
 
 const catalogLabel = `Eight channels in catalog: ${channels.map((channel) => channel.name).join(", ")}`;
 
+export function CatalogChannelChips({ className = "" }: { className?: string }) {
+  return (
+    <ul className={`omni-channel-mobile ${className}`.trim()} aria-label={catalogLabel}>
+      {channels.map((channel) => (
+        <li key={channel.id}>
+          <ChannelChip id={channel.id} name={channel.name} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /** Glass cube with the eight Work Inbox channels on its faces and as a labeled constellation. */
 export function OmniCube({ size = "lg", className = "" }: OmniCubeProps) {
   const scale = sizeScale[size];
 
   return (
     <div className={className}>
-      <ul className="omni-channel-mobile" aria-label={catalogLabel}>
-        {channels.map((channel) => (
-          <li key={channel.id}>
-            <ChannelChip id={channel.id} name={channel.name} />
-          </li>
-        ))}
-      </ul>
-
       <div className="omni-hero-stage" style={{ transform: `scale(${scale})` }}>
         <svg className="omni-spokes" viewBox="0 0 100 100" aria-hidden="true">
           {nodeLayout.map((node) => (

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { Starfield } from "@/components/brand/Starfield";
-import { OmniCube } from "@/components/brand/OmniCube";
+import { OmniCube, CatalogChannelChips } from "@/components/brand/OmniCube";
 import { LogoMark } from "@/components/brand/Wordmark";
 import { FeaturePills } from "@/components/brand/FeaturePills";
 import { BrowserFrame } from "@/components/ui/Section";
@@ -26,6 +26,7 @@ export function Hero() {
               wallboards. Prepaid voice at ~5p outbound / ~4p inbound.
             </p>
             <FeaturePills className="mt-7 justify-center lg:justify-start" />
+            <CatalogChannelChips className="mt-7" />
 
             <div className="mt-9 flex flex-wrap items-center justify-center lg:justify-start gap-3">
               <Button href="/contact" size="lg">
@@ -41,7 +42,7 @@ export function Hero() {
           </div>
 
           <div className="relative flex flex-col items-center">
-            <div className="w-full lg:-mb-16">
+            <div className="relative z-20 hidden w-full lg:-mb-8 lg:block">
               <OmniCube size="lg" />
             </div>
             <div className="relative z-10 w-full max-w-xl">
